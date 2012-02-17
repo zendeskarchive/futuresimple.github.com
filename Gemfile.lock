@@ -1,0 +1,18 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    adsf (1.0.1)
+      rack (>= 1.0.0)
+    cri (2.1.0)
+    kramdown (0.13.4)
+    nanoc (3.3.0)
+      cri (~> 2.1)
+    rack (1.4.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  adsf
+  kramdown
+  nanoc
