@@ -50,6 +50,12 @@ end
 route '/js/*' do
   "/js/" + File.basename(item.identifier.chop) + ".js"
 end
+
+route '/index*' do
+  path = item.identifier.chop
+  File.join(File.dirname(path), File.basename(path, File.extname(path)))
+end
+
 route '*' do
   if item.binary?
     # Write item with identifier /foo/ to /foo.ext
@@ -60,7 +66,7 @@ route '*' do
       item.identifier + 'index.html'
     else
       path = item.identifier.chop
-      File.join(File.dirname(path), File.basename(path, File.extname(path)))
+      path
     end
   end
 end

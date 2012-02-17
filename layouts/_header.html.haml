@@ -1,11 +1,10 @@
 #header
-  .row
-    .span4
-      %a{:href => "/"}
-        %img.logo{:alt => "FS Logo", :src => "/images/logo-fs.png"}
-    .span8
-      %ul.nav.nav-pills.pull-right
-        %li
-          %a.active{:href => "/"} Blog
-        %li
-          %a{:href => "/rss"} RSS
+  %a{:href => "/"}
+    %img.logo{:alt => "FS Logo", :src => "/images/logo-fs.png"}
+  %ul.nav.nav-pills.pull-right
+    %li
+      %a{:href => "/jobs.html", :class => (@item.path == "/jobs.html" ? "active" : nil)} Jobs
+    %li
+      %a{:href => "http://hackkrk.com/", :target => "_blank"} HackKRK
+    %li
+      %a{:href => "/rss"} Subscribe
