@@ -2,13 +2,16 @@
 title: Home
 ---
 
-- sorted_articles.each do |article|
-  %section.article
-    .page-header.span9.grey-bottom-bar
-      %h2= article[:title]
-    .row
-      .span9
-        = article.compiled_content
+.row
+  .span10
+    - sorted_articles.each do |article|
+      %section.article
+        .page-header.grey-bottom-bar
+          %h2= article[:title]
+        .row
+          = article.compiled_content
+  .span2
+    jak sie masz ale jaja calkiem fajnie
 
 
 
