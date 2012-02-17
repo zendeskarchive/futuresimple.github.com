@@ -28,7 +28,7 @@ end
 
 compile '/index*' do
   if item.identifier =~ /html/
-    filter :haml
+    filter :haml, :ugly => true
     layout 'default.html'
   elsif item.identifier =~ /xml/
     filter :haml
@@ -39,7 +39,7 @@ compile '*' do
   if item.binary?
     # don’t filter binary items
   else
-    filter :haml
+    filter :haml, :ugly => true
     layout 'default.html'
   end
 end
@@ -72,4 +72,4 @@ route '*' do
   end
 end
 
-layout '*', :haml
+layout '*', :haml, :ugly => true
