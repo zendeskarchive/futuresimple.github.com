@@ -18,6 +18,15 @@ compile '/sass/*' do
   filter :sass
 end
 
+compile '/posts/*' do
+  filter :kramdown
+end
+
+compile '/' do
+  filter :haml
+  layout 'default'
+end
+
 compile '*' do
   if item.binary?
     # don’t filter binary items
