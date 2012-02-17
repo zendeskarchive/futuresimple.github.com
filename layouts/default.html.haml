@@ -9,11 +9,13 @@
       %script{:src => "/js/jquery.js", :type => "text/javascript"}
       %script{:src => "/js/floating.js", :type => "text/javascript"}
       %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+      %link{:href => "/index.xml", :rel => "alternate", :title => @config[:title], :type => "application/atom+xml"}
+
 
 
   %body
     .container
       #floating
         jak sie masz
-      = render "_header"
+      = render "_header.html"
       = yield
