@@ -12,7 +12,15 @@ Some kind of content Some kind of content Some kind of content Some kind of cont
 Code block:
 
     #!ruby
+    class Mike
+      def initialize
+        @ivar = /regex/
+      end
+    end
     puts 'haha'
+    # commented
+    "\n"
+    :symbol == true
     10.times do |e|
       print e
     end
