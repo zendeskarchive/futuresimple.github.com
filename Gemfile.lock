@@ -4,12 +4,14 @@ GEM
     adsf (1.0.1)
       rack (>= 1.0.0)
     builder (3.0.0)
+    coderay (1.0.5)
     cri (2.1.0)
     haml (3.1.4)
     kramdown (0.13.4)
     mime-types (1.17.2)
     nanoc (3.3.0)
       cri (~> 2.1)
+    nokogiri (1.5.0)
     rack (1.4.1)
     sass (3.1.15)
 
@@ -19,8 +21,10 @@ PLATFORMS
 DEPENDENCIES
   adsf
   builder
+  coderay
   haml
   kramdown
   mime-types
   nanoc
+  nokogiri
   sass

@@ -3,9 +3,8 @@ title: Home
 ---
 
 .row
-  .span10
+  .span12
     - sorted_articles.each do |article|
-      %section.article
-        .page-header.grey-bottom-bar
-          %h2= article[:title]
-          = article.compiled_content
+      %article
+        %h2= article[:title]
+        = article.compiled_content

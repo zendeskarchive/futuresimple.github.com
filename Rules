@@ -20,6 +20,7 @@ end
 
 compile '/posts/*' do
   filter :kramdown
+  filter :colorize_syntax
 end
 
 compile '/js/*' do

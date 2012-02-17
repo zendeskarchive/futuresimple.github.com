@@ -17,15 +17,16 @@ h1, h2, h3
 .grey-bottom-bar
   border-bottom: 1px solid #ddd
 
-section
+article
   p
     font-size: 16px
+    line-height: 1.4em
 
 #floating
   position: fixed
   top: 100px
 
-@media (max-width: 530px)
+@media (max-width: 480px)
   #header
     .nav
       float: left
@@ -35,6 +36,8 @@ section
 
   .logo
     padding-bottom: 30px
+    padding-right: 40px
+    float: left
 
 
 .stay-right
@@ -45,8 +48,9 @@ section
 #header
   background: url('/images/bg-noise.jpg') repeat
   font-size: 1.1em
-  margin-top: 23px
-  height: 58px
+  margin-top: 15px
+  margin-bottom: 15px
+  height: 45px
   border-bottom: 1px solid $light-gray
 
   .nav
@@ -70,3 +74,11 @@ section
 
       &.active:hover
         border-bottom: 5px solid $green
+
+.clear
+  clear: both
+
+#slogan
+  font-size: 1.5em
+  color: $green
+  margin-bottom: 20px
