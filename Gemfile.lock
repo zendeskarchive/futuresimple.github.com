@@ -6,6 +6,7 @@ GEM
     cri (2.1.0)
     haml (3.1.4)
     kramdown (0.13.4)
+    mime-types (1.17.2)
     nanoc (3.3.0)
       cri (~> 2.1)
     rack (1.4.1)
@@ -18,5 +19,6 @@ DEPENDENCIES
   adsf
   haml
   kramdown
+  mime-types
   nanoc
   sass
