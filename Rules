@@ -22,9 +22,13 @@ compile '/posts/*' do
   filter :kramdown
 end
 
-compile '/' do
-  filter :haml
-  layout 'default'
+compile '/index*' do
+  if item.identifier =~ /html/
+    filter :haml
+    layout 'default.html'
+  elsif item.identifier =~ /xml/
+    filter :haml
+  end
 end
 
 compile '*' do
@@ -32,12 +36,12 @@ compile '*' do
     # don’t filter binary items
   else
     filter :haml
-    layout 'default'
+    layout 'default.html'
   end
 end
 
 route '/sass/*' do
-  "/css/" + File.basename(item.identifier.chop) + ".css"
+  "/css/" + File.basename(item.identifier.chop)
 end
 
 route '*' do
@@ -45,8 +49,13 @@ route '*' do
     # Write item with identifier /foo/ to /foo.ext
     item.identifier.chop + '.' + item[:extension]
   else
-    # Write item with identifier /foo/ to /foo/index.html
-    item.identifier + 'index.html'
+    ext = File.extname(item.identifier.chop)
+    if ext == ""
+      item.identifier + 'index.html'
+    else
+      path = item.identifier.chop
+      File.join(File.dirname(path), File.basename(path, File.extname(path)))
+    end
   end
 end
 
