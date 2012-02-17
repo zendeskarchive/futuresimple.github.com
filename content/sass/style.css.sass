@@ -1,12 +1,18 @@
+$light-gray: #ddd
+$green: #7ca300
+$font-color: #666
+
+@mixin rounded($radius: 10px)
+  border-radius: $radius
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius
+
 body
   background: url('/images/bg-noise.jpg') repeat
-  color: #666
+  color: $font-color
 
 h1, h2, h3
-  color: #666
-
-#header
-  margin: 20px 0px
+  color: $font-color
 
 .grey-bottom-bar
   border-bottom: 1px solid #ddd
@@ -15,3 +21,42 @@ section
   p
     font-size: 16px
 
+#floating
+  position: fixed
+  top: 100px
+
+
+
+.stay-right
+  position: fixed
+  right: 0
+  top: 110px
+
+#header
+  background: url('/images/bg-noise.jpg') repeat
+  font-size: 1.1em
+  padding-top: 20px
+  height: 50px
+  border-bottom: 1px solid $light-gray
+
+  .nav
+    text-transform: uppercase
+    padding: 0
+    border: 0
+
+    li
+      padding: 5px 0 5px 20px
+
+    a
+      color: #333
+      @include rounded(0px)
+      padding: 5px 0
+
+      &:hover
+        border-bottom: 5px solid $green
+
+      &.active
+        border-bottom: 5px solid $light-gray
+
+      &.active:hover
+        border-bottom: 5px solid $green
