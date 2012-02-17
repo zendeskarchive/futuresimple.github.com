@@ -15,13 +15,14 @@
 
 compile '/stylesheet/' do
   # don’t filter or layout
+  filter :sass
 end
 
 compile '*' do
   if item.binary?
     # don’t filter binary items
   else
-    filter :erb
+    filter :haml
     layout 'default'
   end
 end
@@ -40,4 +41,4 @@ route '*' do
   end
 end
 
-layout '*', :erb
+layout '*', :haml
