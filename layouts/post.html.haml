@@ -10,8 +10,8 @@
       .row
         .span7
           %h2.post-title= @item[:title]
+          %h6.post-author= @item[:author]
           = yield
         .span5
           = render "_twitter.html"
           = render "_github.html"
-
