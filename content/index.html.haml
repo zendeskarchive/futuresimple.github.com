@@ -3,7 +3,7 @@ title: Home
 ---
 
 .row
-  .span7
+  .span8
     = render "_welcome.html"
     - sorted_articles.each do |article|
       %article
@@ -11,6 +11,6 @@ title: Home
           %a{href: article.path}= article[:title]
         %h6= article[:author]
         = article.compiled_content
-  .span5
+  .span4
     = render "_twitter.html"
     = render "_github.html"
