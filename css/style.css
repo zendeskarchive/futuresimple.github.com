@@ -13,20 +13,6 @@ article p {
   font-size: 18px;
   line-height: 1.4em; }
 
-@media (max-width: 480px) {
-  #header .nav {
-    float: left; }
-    #header .nav li {
-      padding: 5px 20px 5px 0 !important; }
-
-  .logo {
-    padding-bottom: 0px;
-    padding-right: 40px;
-    float: left; } }
-@media (max-width: 767px) {
-  #header .logo {
-    padding-bottom: 0px;
-    float: left; } }
 .stay-right {
   position: fixed;
   right: 0;
@@ -44,7 +30,8 @@ article p {
     text-transform: uppercase;
     padding: 0;
     border: 0;
-    margin: 0; }
+    margin: 0;
+    margin-top: 13px; }
     #header .nav li {
       padding: 5px 0 5px 20px; }
     #header .nav a {
@@ -129,3 +116,29 @@ h2.post-title {
 
 .bottom-space {
   padding-bottom: 30px; }
+
+@media (min-width: 480px) and (max-width: 767px) {
+  #header .nav {
+    margin: 0;
+    float: left;
+    clear: left; }
+    #header .nav li {
+      padding: 5px 20px 5px 0 !important; } }
+@media (max-width: 480px) {
+  #header .nav {
+    margin: 0;
+    float: left; }
+    #header .nav li {
+      padding: 5px 20px 5px 0 !important; }
+
+  .logo {
+    padding-bottom: 0px;
+    padding-right: 40px;
+    float: left; } }
+@media (max-width: 767px) {
+  #header .nav {
+    margin: 0; }
+
+  #header .logo {
+    padding-bottom: 0px;
+    float: left; } }
