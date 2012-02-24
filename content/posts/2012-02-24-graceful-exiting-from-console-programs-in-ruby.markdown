@@ -9,6 +9,8 @@ Imagine you write a CLI program or a Rake task which loops through some data per
 
 You could handle the `Interrupt` exception or add some conditions. But how about a cleaner and reusable way?
 
+EXCERPT
+
 No problem - you can trap signals, which means we can trap the ctrl-c (which is an INT signal). Servers, like unicorn, use signals for graceful restarts.
 
 How it works - you can use the [trap method](http://www.ruby-doc.org/core-1.9.3/Kernel.html#method-i-trap) which accepts the name of the signal and a block to which replaces the system's default handler.

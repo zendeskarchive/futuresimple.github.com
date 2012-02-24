@@ -5,3 +5,11 @@ include Nanoc::Helpers::Blogging
 include Nanoc::Helpers::HTMLEscape
 
 require "yajl"
+
+def article_content(content)
+  content.gsub("<p>EXCERPT</p>", "")
+end
+
+def article_excerpt(content)
+  content.split("<p>EXCERPT</p>")[0]
+end

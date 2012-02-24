@@ -16,7 +16,7 @@
               %h2.post-title
                 %a{href: article.path }= article[:title]
               %h6.post-author= article[:author]
-              = article.compiled_content.split("</p>")[0] + "</p>"
+              = article_excerpt(article.compiled_content)
               %a{href: article.path + "#disqus_thread", "data-disqus-identifier" => article[:identifier] }= = article[:title]
               = render 'disquss_sum_up.html'
             - if @item[:prev]
