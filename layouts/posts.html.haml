@@ -12,14 +12,17 @@
           = render "_welcome.html"
 
           - @item[:articles].each do |article|
-            %h2.post-title
-              %a{href: article.path}= article[:title]
-            %h6.post-author= article[:author]
-            = article.compiled_content.split("</p>")[0] + "</p>"
-          - if @item[:prev]
-            %a{href: @item[:prev].path}= "Prev page"
-          - if @item[:next]
-            %a{href: @item[:next].path}= "Next page"
+            %article
+              %h2.post-title
+                %a{href: article.path }= article[:title]
+              %h6.post-author= article[:author]
+              = article.compiled_content.split("</p>")[0] + "</p>"
+              %a{href: article.path + "#disqus_thread", "data-disqus-identifier" => article[:identifier] }= = article[:title]
+              = render 'disquss_sum_up.html'
+            - if @item[:prev]
+              %a{href: @item[:prev].path}= "Prev page"
+            - if @item[:next]
+              %a{href: @item[:next].path}= "Next page"
         .span4
           = render "_twitter.html"
           = render "_github.html"
