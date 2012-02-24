@@ -124,3 +124,8 @@ article p {
   #twtr-widget-1 .twtr-doc {
     margin: 0 auto;
     width: 90% !important; } }
+h2.post-title {
+  color: #0088cc; }
+
+.bottom-space {
+  padding-bottom: 30px; }
