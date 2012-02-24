@@ -9,3 +9,4 @@ release:
 	git add .
 	git ci -m "Updating blog"
 	git push origin master
+	git checkout development
