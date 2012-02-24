@@ -7,7 +7,8 @@ title: Home
     = render "_welcome.html"
     - sorted_articles.each do |article|
       %article
-        %h2= article[:title]
+        %h2
+          %a{href: article.path}= article[:title]
         = article.compiled_content
   .span5
     %script{:charset => "utf-8", :src => "http://widgets.twimg.com/j/2/widget.js"}

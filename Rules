@@ -21,6 +21,7 @@ end
 compile '/posts/*' do
   filter :kramdown
   filter :colorize_syntax
+  layout 'post.html'
 end
 
 compile '/welcome/*' do
