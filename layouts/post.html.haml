@@ -12,6 +12,7 @@
           %h2.post-title= @item[:title]
           %h6.post-author= @item[:author]
           = yield
+          = render "_disquss.html"
         .span4
           = render "_twitter.html"
           = render "_github.html"
