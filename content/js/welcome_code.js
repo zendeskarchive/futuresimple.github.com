@@ -13,8 +13,8 @@ $(function(){
      .each(function(){
        var self = $(this)
        var html = self.html()
-       html = html.replace('Base CRM', '<a href="http://futuresimple.com/base">Base CRM</a>')
-       html = html.replace('QuoteBase', '<a href="http://futuresimple.com/quotes">QuoteBase</a>')
+       html = html.replace('Base CRM', '<a href="http://futuresimple.com/base?ref=blog-lab">Base CRM</a>')
+       html = html.replace('QuoteBase', '<a href="http://futuresimple.com/quotes?ref=blog-lab">QuoteBase</a>')
        self.html(html)
      });
 
