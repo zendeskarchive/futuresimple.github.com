@@ -4,8 +4,7 @@
       FutureSimpleLab() {
         topics.push_back("technology");
         topics.push_back("coding");
-        authors.insert(std::make_pair<std::string, std::string>("devs", "Makers of Base CRM and QuoteBase"));
+        authors["devs"] = "Makers of Base CRM and QuoteBase";
     };
 
-    FutureSimpleLab futureSimpleLab;
-    futureSimpleLab.publish();
+    FutureSimpleLab::publish();
