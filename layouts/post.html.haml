@@ -7,4 +7,5 @@
     .container
       = render "_header.html"
       .clear
+      %h2= @item[:title]
       = yield
