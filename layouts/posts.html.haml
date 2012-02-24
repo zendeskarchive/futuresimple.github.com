@@ -9,6 +9,8 @@
       .clear
       .row
         .span8
+          = render "_welcome.html"
+
           - @item[:articles].each do |article|
             %h2.post-title
               %a{href: article.path}= article[:title]
