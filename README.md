@@ -15,3 +15,14 @@ make watch
 ```
 
 
+### Github
+
+There is a github widget, which reads in github data stored in data/github.json
+
+To update this data, run:
+
+```
+rake github
+```
+
+This will fetch all public info and update the data/github.json file
