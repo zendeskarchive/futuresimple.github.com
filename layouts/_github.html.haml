@@ -6,7 +6,10 @@
     - Yajl::Parser.parse(File.read('data/github.json')).sort { |a, b| b['watchers'].to_i <=> a['watchers'].to_i }.each do |repo|
       .repo
         .stats
-          == #{repo['watchers']} watchers, #{repo['forks']} forks
+          %img{ :src => '/images/icons/eye_12x9.png' }
+          = repo['watchers']
+          %img{ :src => '/images/icons/fork_11x12.png' }
+          = repo['forks']
         .name
           %a{ :href => repo['url'] }
             = repo['name']

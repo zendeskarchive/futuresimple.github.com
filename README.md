@@ -31,3 +31,8 @@ rake github
 ```
 
 This will fetch all public info and update the data/github.json file
+
+
+### Attribution
+
+Watch and fork icons are part of the [Iconic icon set](http://somerandomdude.com/work/iconic/) by [https://github.com/somerandomdude](https://github.com/somerandomdude)
