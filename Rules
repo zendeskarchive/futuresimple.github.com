@@ -23,6 +23,11 @@ compile '/posts/*' do
   filter :colorize_syntax
 end
 
+compile '/welcome/*' do
+  filter :kramdown
+  filter :colorize_syntax
+end
+
 compile '/js/*' do
 end
 
@@ -74,5 +79,5 @@ route '*' do
   end
 end
 
-layout '_welcome.html', :kramdown
+layout 'welcome/*', :kramdown_with_coloring
 layout '*', :haml, :ugly => true
