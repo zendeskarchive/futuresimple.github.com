@@ -3,7 +3,7 @@
   #twtr-widget-1 .twtr-doc {
     margin: 0 auto; }
   #twtr-widget-1 p {
-    font-size: 16px; }
+    font-size: 14px; }
   #twtr-widget-1 .twtr-tweet em {
     margin-top: 5px; }
     #twtr-widget-1 .twtr-tweet em a {
