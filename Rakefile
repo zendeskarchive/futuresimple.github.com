@@ -11,3 +11,5 @@ end
 task :build do
   Nanoc::CLI.run ["compile"]
 end
+
+task :default => :build
