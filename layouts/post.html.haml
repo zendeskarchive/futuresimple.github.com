@@ -4,14 +4,15 @@
     %meta{:charset => "utf-8"}
       = render "_meta.html"
   %body
-    .container
+    .container.bottom-space
       = render "_header.html"
       .clear
       .row
         .span8
           %h2.post-title= @item[:title]
           %h6.post-author= @item[:author]
-          = yield
+          %article
+            = yield
           = render "_disquss.html"
         .span4
           = render "_twitter.html"
