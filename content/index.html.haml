@@ -11,30 +11,5 @@ title: Home
           %a{href: article.path}= article[:title]
         = article.compiled_content
   .span5
-    %script{:charset => "utf-8", :src => "http://widgets.twimg.com/j/2/widget.js"}
-    :javascript
-      new TWTR.Widget({
-        version: 2,
-        type: 'profile',
-        rpp: 6,
-        interval: 30000,
-        width: 400,
-        height: 300,
-        theme: {
-          shell: {
-            background: '#cccccc',
-            color: '#666666'
-          },
-          tweets: {
-            background: '#ffffff',
-            color: '#666666',
-            links: '#2A95B3'
-          }
-        },
-        features: {
-          scrollbar: false,
-          loop: false,
-          live: false,
-          behavior: 'all'
-        }
-      }).render().setUser('futuresimplelab').start();
+    = render "_twitter.html"
+    = render "_github.html"

@@ -6,3 +6,4 @@ include Nanoc::Helpers::HTMLEscape
 
 
 require File.expand_path(File.join(File.dirname(__FILE__), "kramdown_with_coloring.rb"))
+require 'yajl'

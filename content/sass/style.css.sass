@@ -100,3 +100,38 @@ article
 .welcome
   div
     display: none
+
+.github
+  .repos
+    .logo
+      text-align: center
+      margin-bottom: 10px
+      padding-bottom: 10px
+      border-bottom: 1px solid #eee
+
+      img
+        width: 100px
+
+    @include rounded(6px)
+    background-color: #fff
+    margin: 10px 35px
+    padding: 20px
+    .repo
+      margin-bottom: 10px
+      padding-bottom: 10px
+      border-bottom: 1px solid #eee
+      &:last-child
+        border-bottom: 0
+        padding-bottom: 0
+        margin-bottom: 0
+      .language
+        color: #999
+        font-size: 11px
+        text-transform: uppercase
+      .stats
+        float: right
+      .name
+        font-size: 16px
+      .description
+        font-style: italic
+        margin-top: 5px

@@ -1,0 +1,16 @@
+.github
+
+  .repos
+    .logo
+      %img{:alt => "Github", :src => "/images/github_logo.png"}
+    - Yajl::Parser.parse(File.read('data/github.json')).sort { |a, b| b['watchers'].to_i <=> a['watchers'].to_i }.each do |repo|
+      .repo
+        .stats
+          == #{repo['watchers']} watchers, #{repo['forks']} forks
+        .name
+          %a{ :href => repo['url'] }
+            = repo['name']
+        .language
+          = repo['language']
+        .description
+          = repo['description']
