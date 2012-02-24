@@ -5,6 +5,8 @@ watch:
 release:
 	make
 	git checkout master
+	git pull origin master
+	git checkout development
 	cp -r output/* .
 	git add .
 	git ci -m "Updating blog"
