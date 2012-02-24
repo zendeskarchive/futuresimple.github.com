@@ -68,8 +68,11 @@ article p {
   color: #666666;
   margin-bottom: 40px; }
 
-.welcome div {
-  display: none; }
+.welcome {
+  opacity: 0.7;
+  margin-bottom: 40px; }
+  .welcome div {
+    display: none; }
 
 .github .repos {
   border-radius: 6px;

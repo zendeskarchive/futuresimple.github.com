@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en'>
 <head>
-<meta charset='utf-8'>
+<meta charset='utf-8' />
+<meta content='A technology blog of Future Simple developers. Ruby, JavaScript, Java, Objective C coders share their passion here!'>
 <title>Future Simple Lab</title>
 <link href='/css/bootstrap.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='/css/bootstrap-responsive.css' media='screen' rel='stylesheet' type='text/css' />
@@ -54,31 +55,26 @@ FutureSimpleLab().publish</code></pre></div>
   <span class="key">authors</span>: {<span class="key"><span class="delimiter">'</span><span class="content">devs</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">'</span></span>}
 })
 futureSimpleLab.publish()</code></pre></div>
-<div class='objc'><pre><code class="language-c"><span class="error">@</span>interface FutureSimpleLab : Blog &lt;Awesome&gt;
+<div class='objc'><pre><code class="language-cpp"><span class="error">@</span>interface FutureSimpleLab : Blog &lt;Awesome&gt;
 <span class="error">@</span>property (strong) NSArray *topics = <span class="error">@</span>[technology, coding];
 <span class="error">@</span>property (strong) NSDictionary *authors = <span class="error">@</span>[devs : <span class="error">@</span><span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>];
 <span class="error">@</span>end
-[[FutureSimpleLab new] publish];</code></pre></div>
+[[FutureSimpleLab <span class="keyword">new</span>] publish];</code></pre></div>
 <div class='cpp'><pre><code class="language-cpp"><span class="keyword">class</span> <span class="class">FutureSimpleLab</span> : <span class="directive">public</span> AwesomeBlog {
   <span class="directive">public</span>:
   FutureSimpleLab() {
     topics.push_back(<span class="string"><span class="delimiter">"</span><span class="content">technology</span><span class="delimiter">"</span></span>);
     topics.push_back(<span class="string"><span class="delimiter">"</span><span class="content">coding</span><span class="delimiter">"</span></span>);
-    authors.insert(std::make_pair&lt;std::<span class="predefined-type">string</span>, std::<span class="predefined-type">string</span>&gt;(<span class="string"><span class="delimiter">"</span><span class="content">devs</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>));
+    authors[<span class="string"><span class="delimiter">"</span><span class="content">devs</span><span class="delimiter">"</span></span>] = <span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>;
 };
 
-FutureSimpleLab futureSimpleLab;
-futureSimpleLab.publish();</code></pre></div>
+FutureSimpleLab::publish();</code></pre></div>
 <div class='java'><pre><code class="language-java"><span class="type">class</span> <span class="class">FutureSimpleLab</span> <span class="directive">extends</span> Blog.Awesome {
-
   <span class="directive">private</span> Topic<span class="type">[]</span> topics = <span class="keyword">new</span> Topic<span class="type">[]</span> {
-    <span class="keyword">new</span> Topic(<span class="string"><span class="delimiter">"</span><span class="content">technology</span><span class="delimiter">"</span></span>), <span class="keyword">new</span> Topic (<span class="string"><span class="delimiter">"</span><span class="content">coding</span><span class="delimiter">"</span></span>)
-  };
+    <span class="keyword">new</span> Topic(<span class="string"><span class="delimiter">"</span><span class="content">technology</span><span class="delimiter">"</span></span>), <span class="keyword">new</span> Topic (<span class="string"><span class="delimiter">"</span><span class="content">coding</span><span class="delimiter">"</span></span>) };
   <span class="directive">private</span> <span class="predefined-type">Map</span>&lt;AuthorType, <span class="predefined-type">String</span>&gt; authors = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;AuthorType, <span class="predefined-type">String</span>&gt;();
-
   <span class="directive">public</span> FutureSimpleLab() {
-    authors.put(<span class="keyword">new</span> AuthorType(<span class="string"><span class="delimiter">"</span><span class="content">devs</span><span class="delimiter">"</span></span>), <span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>);
-  }
+    authors.put(<span class="keyword">new</span> AuthorType(<span class="string"><span class="delimiter">"</span><span class="content">devs</span><span class="delimiter">"</span></span>), <span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>);}
 }
 <span class="keyword">new</span> FutureSimpleLab().publish();</code></pre></div>
 </div>
