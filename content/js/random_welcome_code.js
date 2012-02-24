@@ -1,5 +1,5 @@
 $(function(){
-  var containers = ['ruby', 'python', 'js']
-  var index = Math.floor((Math.random() * containers.length))
-  $('.' + containers[index]).show();
+  var technologies = $('.welcome div')
+  var index = Math.floor((Math.random() * technologies.length - 1 ))
+  $(technologies.get(index)).show();
 })
