@@ -9,6 +9,7 @@ title: Home
       %article
         %h2
           %a{href: article.path}= article[:title]
+        %h6= article[:author]
         = article.compiled_content
   .span5
     = render "_twitter.html"

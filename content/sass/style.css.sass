@@ -17,10 +17,6 @@ article
     line-height: 1.4em
 
 @media (max-width: 480px)
-  #twtr-widget-1
-    .twtr-doc
-      margin: 0 auto
-      width: 90% !important
   #header
     .nav
       float: left
@@ -83,56 +79,11 @@ article
   color: $font-color
   margin-bottom: 40px
 
-#twtr-widget-1
-  margin-top: 12px
-  padding: 0px 35px
-  .twtr-doc
-    margin: 0 auto
-  p
-    font-size: 16px
-  .twtr-tweet
-    em
-      margin-top: 5px
-      a
-        color: #999 !important
-        font-size: 13px
-
 .welcome
   opacity: 0.7
   div
     display: none
 
-.github
-  .repos
-    .logo
-      text-align: center
-      margin-bottom: 10px
-      padding-bottom: 10px
-      border-bottom: 1px solid #eee
+@import "shared/github.sass"
+@import "shared/twitter.sass"
 
-      img
-        width: 100px
-
-    @include rounded(6px)
-    background-color: #fff
-    margin: 10px 35px
-    padding: 20px
-    .repo
-      margin-bottom: 10px
-      padding-bottom: 10px
-      border-bottom: 1px solid #eee
-      &:last-child
-        border-bottom: 0
-        padding-bottom: 0
-        margin-bottom: 0
-      .language
-        color: #999
-        font-size: 11px
-        text-transform: uppercase
-      .stats
-        float: right
-      .name
-        font-size: 16px
-      .description
-        font-style: italic
-        margin-top: 5px
