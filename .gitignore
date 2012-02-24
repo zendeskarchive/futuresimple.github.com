@@ -1,0 +1,6 @@
+/tmp
+*.sw[a-z]
+/bin
+/.bundle
+/.sass-cache
+/output
