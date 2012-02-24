@@ -1,0 +1,123 @@
+body {
+  background: url("/images/bg-noise.jpg") repeat;
+  color: #666666; }
+
+h1, h2, h3 {
+  color: #666666;
+  font-weight: normal; }
+
+.grey-bottom-bar {
+  border-bottom: 1px solid #dddddd; }
+
+article p {
+  font-size: 18px;
+  line-height: 1.4em; }
+
+@media (max-width: 480px) {
+  #header .nav {
+    float: left; }
+    #header .nav li {
+      padding: 5px 20px 5px 0 !important; }
+
+  .logo {
+    padding-bottom: 0px;
+    padding-right: 40px;
+    float: left; } }
+@media (max-width: 767px) {
+  #header .logo {
+    padding-bottom: 0px;
+    float: left; } }
+.stay-right {
+  position: fixed;
+  right: 0;
+  top: 110px; }
+
+#header {
+  background: url("/images/bg-noise.jpg") repeat;
+  font-size: 1.1em;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #dddddd; }
+  #header .logo {
+    margin-bottom: 10px; }
+  #header .nav {
+    text-transform: uppercase;
+    padding: 0;
+    border: 0;
+    margin: 0; }
+    #header .nav li {
+      padding: 5px 0 5px 20px; }
+    #header .nav a {
+      color: #333333;
+      border-radius: 0px;
+      -moz-border-radius: 0px;
+      -webkit-border-radius: 0px;
+      padding: 3px 0 5px 0; }
+      #header .nav a:hover {
+        border-bottom: 5px solid #2a95b3; }
+      #header .nav a.active {
+        border-bottom: 5px solid #dddddd; }
+      #header .nav a.active:hover {
+        border-bottom: 5px solid #2a95b3; }
+
+.clear {
+  clear: both; }
+
+#slogan {
+  font-size: 1.2em;
+  color: #666666;
+  margin-bottom: 40px; }
+
+.welcome div {
+  display: none; }
+
+.github .repos {
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  background-color: white;
+  margin: 10px 0px;
+  padding: 20px; }
+  .github .repos .logo {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee; }
+    .github .repos .logo img {
+      width: 100px; }
+  .github .repos .repo {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee; }
+    .github .repos .repo:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: 0; }
+    .github .repos .repo .language {
+      color: #999999;
+      font-size: 11px;
+      text-transform: uppercase; }
+    .github .repos .repo .stats {
+      float: right; }
+    .github .repos .repo .name {
+      font-size: 16px; }
+    .github .repos .repo .description {
+      font-style: italic;
+      margin-top: 5px; }
+
+#twtr-widget-1 {
+  margin-top: 12px; }
+  #twtr-widget-1 .twtr-doc {
+    margin: 0 auto; }
+  #twtr-widget-1 p {
+    font-size: 16px; }
+  #twtr-widget-1 .twtr-tweet em {
+    margin-top: 5px; }
+    #twtr-widget-1 .twtr-tweet em a {
+      color: #999999 !important;
+      font-size: 13px; }
+
+@media (max-width: 480px) {
+  #twtr-widget-1 .twtr-doc {
+    margin: 0 auto;
+    width: 90% !important; } }

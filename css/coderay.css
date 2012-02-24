@@ -1,0 +1,36 @@
+pre {
+  background-color: #232323;
+  border: 1px solid black;
+  font-family: "Courier New", "Terminal", monospace;
+  color: #e6e0db;
+  padding: 5px 8px;
+  overflow: auto;
+  font-size: 12px;
+  margin: 12px 0; }
+  pre .an {
+    color: #e7be69; }
+  pre .comment {
+    color: #bc9358;
+    font-style: italic; }
+  pre .escaped-character {
+    color: #509e4f; }
+  pre .class, pre .constant {
+    color: white; }
+  pre .float {
+    color: #a4c260; }
+  pre .function {
+    color: #ffc56d; }
+  pre .global {
+    color: #d0cffe; }
+  pre .integer {
+    color: #a4c260; }
+  pre .instance-variable {
+    color: #d0cffe; }
+  pre .regexp, pre .string {
+    color: #a4c260; }
+  pre .keyword {
+    color: #cb7832; }
+  pre .symbol {
+    color: #6c9cbd; }
+  pre .predefined-constant {
+    color: #6c9cbd; }

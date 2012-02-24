@@ -1,0 +1,33 @@
+.github .repos {
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  background-color: white;
+  margin: 10px 0px;
+  padding: 20px; }
+  .github .repos .logo {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee; }
+    .github .repos .logo img {
+      width: 100px; }
+  .github .repos .repo {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee; }
+    .github .repos .repo:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: 0; }
+    .github .repos .repo .language {
+      color: #999999;
+      font-size: 11px;
+      text-transform: uppercase; }
+    .github .repos .repo .stats {
+      float: right; }
+    .github .repos .repo .name {
+      font-size: 16px; }
+    .github .repos .repo .description {
+      font-style: italic;
+      margin-top: 5px; }

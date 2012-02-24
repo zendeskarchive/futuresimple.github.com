@@ -1,0 +1,16 @@
+#twtr-widget-1 {
+  margin-top: 12px; }
+  #twtr-widget-1 .twtr-doc {
+    margin: 0 auto; }
+  #twtr-widget-1 p {
+    font-size: 16px; }
+  #twtr-widget-1 .twtr-tweet em {
+    margin-top: 5px; }
+    #twtr-widget-1 .twtr-tweet em a {
+      color: #999999 !important;
+      font-size: 13px; }
+
+@media (max-width: 480px) {
+  #twtr-widget-1 .twtr-doc {
+    margin: 0 auto;
+    width: 90% !important; } }

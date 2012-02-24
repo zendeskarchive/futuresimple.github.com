@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://futuresimple.github.com/</id>
+  <title>Future Simple Lab</title>
+  <updated>2012-02-24T11:00:00Z</updated>
+  <link rel="alternate" href="http://futuresimple.github.com/"/>
+  <link rel="self" href="http://futuresimple.github.com/index.xml"/>
+  <author>
+    <name>Future Simple Lab</name>
+    <uri>Future Simple Lab</uri>
+  </author>
+  <entry>
+    <id>tag:futuresimple.github.com,2012-02-24:/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/</id>
+    <title type="html">Gracefully exiting from console programs in Ruby</title>
+    <published>2012-02-24T11:00:00Z</published>
+    <updated>2012-02-24T11:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/"/>
+    <content type="html">&lt;p&gt;Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You’d love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.&lt;/p&gt;
+
+&lt;p&gt;You could handle the &lt;code&gt;Interrupt&lt;/code&gt; exception or add some conditions. But how about a cleaner and reusable way?&lt;/p&gt;
+
+&lt;p&gt;No problem - you can trap signals, which means we can trap the ctrl-c (which is an INT signal). Servers, like unicorn, use signals for graceful restarts.&lt;/p&gt;
+
+&lt;p&gt;How it works - you can use the &lt;a href="http://www.ruby-doc.org/core-1.9.3/Kernel.html#method-i-trap"&gt;trap method&lt;/a&gt; which accepts the name of the signal and a block to which replaces the system’s default handler.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-ruby"&gt;trap &lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;INT&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt; {
+  &lt;span class="comment"&gt;# You can do your own stuff here&lt;/span&gt;
+  &lt;span class="comment"&gt;#&lt;/span&gt;
+  &lt;span class="comment"&gt;# Remember, the signal dies here - if you don't&lt;/span&gt;
+  &lt;span class="comment"&gt;# raise an exception or exit the process, nothing will happen&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here’s a simple example where I wrapped this pattern in a singleton class:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-ruby"&gt;require &lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;singleton&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class="keyword"&gt;class&lt;/span&gt; &lt;span class="class"&gt;GracefulQuit&lt;/span&gt;
+  include &lt;span class="constant"&gt;Singleton&lt;/span&gt;
+
+  attr_accessor &lt;span class="symbol"&gt;:breaker&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;def&lt;/span&gt; &lt;span class="function"&gt;initialize&lt;/span&gt;
+    &lt;span class="predefined-constant"&gt;self&lt;/span&gt;.breaker = &lt;span class="predefined-constant"&gt;false&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;def&lt;/span&gt; &lt;span class="predefined-constant"&gt;self&lt;/span&gt;.&lt;span class="function"&gt;enable&lt;/span&gt;
+    trap(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;INT&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;) {
+      &lt;span class="keyword"&gt;yield&lt;/span&gt; &lt;span class="keyword"&gt;if&lt;/span&gt; block_given?
+      &lt;span class="predefined-constant"&gt;self&lt;/span&gt;.instance.breaker = &lt;span class="predefined-constant"&gt;true&lt;/span&gt;
+    }
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;def&lt;/span&gt; &lt;span class="predefined-constant"&gt;self&lt;/span&gt;.&lt;span class="function"&gt;check&lt;/span&gt;(message = &lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;Quitting&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;)
+    &lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="predefined-constant"&gt;self&lt;/span&gt;.instance.breaker
+      &lt;span class="keyword"&gt;yield&lt;/span&gt; &lt;span class="keyword"&gt;if&lt;/span&gt; block_given?
+      puts message
+      exit
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So now how to use it? First, enable it before the loop using &lt;code&gt;GracefulQuit.enable&lt;/code&gt; and then somewhere within the loop call &lt;code&gt;GracefulQuit.check&lt;/code&gt;. Like in this example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-ruby"&gt;&lt;span class="constant"&gt;GracefulQuit&lt;/span&gt;.enable
+some_collection.each &lt;span class="keyword"&gt;do&lt;/span&gt; |item|
+  heavy_duty_work_on item
+  &lt;span class="constant"&gt;GracefulQuit&lt;/span&gt;.check
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that’s it - when you press ctrl-c, an exception will not be raised but the program will quit when you want it to. You can even add your own handler for this event.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-ruby"&gt;&lt;span class="constant"&gt;GracefulQuit&lt;/span&gt;.enable
+some_collection.each &lt;span class="keyword"&gt;do&lt;/span&gt; |item|
+  heavy_duty_work_on item
+  &lt;span class="constant"&gt;GracefulQuit&lt;/span&gt;.check &lt;span class="keyword"&gt;do&lt;/span&gt;
+    cleanup
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, this doesn’t solve other problems, like picking up when you left off, but allows to have better control over console programs or Rake tasks.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:futuresimple.github.com,2012-02-24:/posts/2012-02-24-coding-this-blog/</id>
+    <title type="html">Coding this blog</title>
+    <published>2012-02-23T23:00:00Z</published>
+    <updated>2012-02-23T23:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-02-24-coding-this-blog/"/>
+    <content type="html">&lt;p&gt;Lol wut&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:futuresimple.github.com,2012-02-17:/posts/my-post/</id>
+    <title type="html">Some kind of title</title>
+    <published>2012-02-16T23:00:00Z</published>
+    <updated>2012-02-16T23:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/my-post/"/>
+    <content type="html">&lt;p&gt;Some kind of content&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:futuresimple.github.com,2012-02-17:/posts/second-post/</id>
+    <title type="html">different type of article</title>
+    <published>2012-02-16T23:00:00Z</published>
+    <updated>2012-02-16T23:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/second-post/"/>
+    <content type="html">&lt;p&gt;Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content &lt;/p&gt;
+
+&lt;p&gt;Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of contentSome kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content Some kind of content &lt;/p&gt;
+
+&lt;p&gt;Code block:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-ruby"&gt;&lt;span class="keyword"&gt;class&lt;/span&gt; &lt;span class="class"&gt;Mike&lt;/span&gt;
+  &lt;span class="keyword"&gt;def&lt;/span&gt; &lt;span class="function"&gt;initialize&lt;/span&gt;
+    &lt;span class="instance-variable"&gt;@ivar&lt;/span&gt; = &lt;span class="regexp"&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;span class="content"&gt;regex&lt;/span&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+puts &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;haha&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;
+&lt;span class="comment"&gt;# commented&lt;/span&gt;
+&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="char"&gt;\n&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;
+&lt;span class="symbol"&gt;:symbol&lt;/span&gt; == &lt;span class="predefined-constant"&gt;true&lt;/span&gt;
+&lt;span class="integer"&gt;10&lt;/span&gt;.times &lt;span class="keyword"&gt;do&lt;/span&gt; |e|
+  print e
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="integer"&gt;1&lt;/span&gt; == &lt;span class="integer"&gt;2&lt;/span&gt;
+  &lt;span class="keyword"&gt;while&lt;/span&gt; &lt;span class="predefined-constant"&gt;true&lt;/span&gt;
+    puts &lt;span class="integer"&gt;1&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+  puts &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;f&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; * &lt;span class="integer"&gt;50&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</content>
+  </entry>
+</feed>

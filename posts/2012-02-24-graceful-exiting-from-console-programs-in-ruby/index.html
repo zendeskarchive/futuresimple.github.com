@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>Future Simple Lab</title>
+<link href='/css/bootstrap.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/bootstrap-responsive.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/style.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/post.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/coderay.css' media='screen' rel='stylesheet' type='text/css' />
+<script src='/js/jquery.js' type='text/javascript'></script>
+<script src='/js/welcome_code.js' type='text/javascript'></script>
+<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+<link href='/index.xml' rel='alternate' title='Future Simple Lab' type='application/atom+xml' />
+
+</meta>
+</head>
+<body>
+<div class='container'>
+<div id='header'>
+<a href='/'>
+<img alt='FS Logo' class='logo' src='/images/logo-fs.png' />
+</a>
+<ul class='nav nav-pills pull-right'>
+<li>
+<a href='/jobs.html'>Jobs</a>
+</li>
+<li>
+<a href='http://hackkrk.com/' target='_blank'>HackKRK</a>
+</li>
+<li>
+<a href='/rss'>Subscribe</a>
+</li>
+</ul>
+<div class='clear'></div>
+</div>
+
+<div class='clear'></div>
+<div class='row'>
+<div class='span8'>
+<h2 class='post-title'>Gracefully exiting from console programs in Ruby</h2>
+<h6 class='post-author'>Marcin Bunsch</h6>
+<p>Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You’d love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.</p>
+
+<p>You could handle the <code>Interrupt</code> exception or add some conditions. But how about a cleaner and reusable way?</p>
+
+<p>No problem - you can trap signals, which means we can trap the ctrl-c (which is an INT signal). Servers, like unicorn, use signals for graceful restarts.</p>
+
+<p>How it works - you can use the <a href="http://www.ruby-doc.org/core-1.9.3/Kernel.html#method-i-trap">trap method</a> which accepts the name of the signal and a block to which replaces the system’s default handler.</p>
+
+<pre><code class="language-ruby">trap <span class="string"><span class="delimiter">"</span><span class="content">INT</span><span class="delimiter">"</span></span> {
+  <span class="comment"># You can do your own stuff here</span>
+  <span class="comment">#</span>
+  <span class="comment"># Remember, the signal dies here - if you don't</span>
+  <span class="comment"># raise an exception or exit the process, nothing will happen</span>
+}</code></pre>
+
+<p>Here’s a simple example where I wrapped this pattern in a singleton class:</p>
+
+<pre><code class="language-ruby">require <span class="string"><span class="delimiter">"</span><span class="content">singleton</span><span class="delimiter">"</span></span>
+
+<span class="keyword">class</span> <span class="class">GracefulQuit</span>
+  include <span class="constant">Singleton</span>
+
+  attr_accessor <span class="symbol">:breaker</span>
+
+  <span class="keyword">def</span> <span class="function">initialize</span>
+    <span class="predefined-constant">self</span>.breaker = <span class="predefined-constant">false</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def</span> <span class="predefined-constant">self</span>.<span class="function">enable</span>
+    trap(<span class="string"><span class="delimiter">'</span><span class="content">INT</span><span class="delimiter">'</span></span>) {
+      <span class="keyword">yield</span> <span class="keyword">if</span> block_given?
+      <span class="predefined-constant">self</span>.instance.breaker = <span class="predefined-constant">true</span>
+    }
+  <span class="keyword">end</span>
+
+  <span class="keyword">def</span> <span class="predefined-constant">self</span>.<span class="function">check</span>(message = <span class="string"><span class="delimiter">"</span><span class="content">Quitting</span><span class="delimiter">"</span></span>)
+    <span class="keyword">if</span> <span class="predefined-constant">self</span>.instance.breaker
+      <span class="keyword">yield</span> <span class="keyword">if</span> block_given?
+      puts message
+      exit
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+
+<span class="keyword">end</span></code></pre>
+
+<p>So now how to use it? First, enable it before the loop using <code>GracefulQuit.enable</code> and then somewhere within the loop call <code>GracefulQuit.check</code>. Like in this example:</p>
+
+<pre><code class="language-ruby"><span class="constant">GracefulQuit</span>.enable
+some_collection.each <span class="keyword">do</span> |item|
+  heavy_duty_work_on item
+  <span class="constant">GracefulQuit</span>.check
+<span class="keyword">end</span></code></pre>
+
+<p>And that’s it - when you press ctrl-c, an exception will not be raised but the program will quit when you want it to. You can even add your own handler for this event.</p>
+
+<pre><code class="language-ruby"><span class="constant">GracefulQuit</span>.enable
+some_collection.each <span class="keyword">do</span> |item|
+  heavy_duty_work_on item
+  <span class="constant">GracefulQuit</span>.check <span class="keyword">do</span>
+    cleanup
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+
+<p>Of course, this doesn’t solve other problems, like picking up when you left off, but allows to have better control over console programs or Rake tasks.</p>
+</div>
+<div class='span4'>
+<script charset='utf-8' src='http://widgets.twimg.com/j/2/widget.js'></script>
+<script type='text/javascript'>
+  //<![CDATA[
+    new TWTR.Widget({
+      version: 2,
+      type: 'profile',
+      rpp: 6,
+      interval: 30000,
+      width: 'auto',
+      height: 300,
+      theme: {
+        shell: {
+          background: '#ffffff',
+          color: '#666666'
+        },
+        tweets: {
+          background: '#ffffff',
+          color: '#666666',
+          links: '#2A95B3'
+        }
+      },
+      features: {
+        scrollbar: false,
+        loop: false,
+        live: false,
+        behavior: 'all'
+      }
+    }).render().setUser('futuresimplelab').start();
+  //]]>
+</script>
+
+<div class='github'>
+<div class='repos'>
+<div class='logo'>
+<img alt='Github' src='/images/github_logo.png' />
+</div>
+<div class='repo'>
+<div class='stats'>
+158 watchers, 6 forks
+</div>
+<div class='name'>
+<a href='https://api.github.com/repos/futuresimple/broadcast'>
+broadcast
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+A broadcasting microframework making publishing of messages to different services easy.
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+125 watchers, 9 forks
+</div>
+<div class='name'>
+<a href='https://api.github.com/repos/futuresimple/dropbox-api'>
+dropbox-api
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+Dropbox API Ruby Client
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+90 watchers, 14 forks
+</div>
+<div class='name'>
+<a href='https://api.github.com/repos/futuresimple/jessie'>
+jessie
+</a>
+</div>
+<div class='language'>
+JavaScript
+</div>
+<div class='description'>
+Node runner for Jasmine JavaScript BDD testing framework
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+3 watchers, 1 forks
+</div>
+<div class='name'>
+<a href='https://api.github.com/repos/futuresimple/futuresimple.github.com'>
+futuresimple.github.com
+</a>
+</div>
+<div class='language'>
+
+</div>
+<div class='description'>
+Future Simple's github homepage
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+2 watchers, 1 forks
+</div>
+<div class='name'>
+<a href='https://api.github.com/repos/futuresimple/api_client'>
+api_client
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+HTTP API Client Builder
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+2 watchers, 0 forks
+</div>
+<div class='name'>
+<a href='https://api.github.com/repos/futuresimple/obedience-core'>
+obedience-core
+</a>
+</div>
+<div class='language'>
+JavaScript
+</div>
+<div class='description'>
+Obedience Core
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+1 watchers, 1 forks
+</div>
+<div class='name'>
+<a href='https://api.github.com/repos/futuresimple/restart_butler'>
+restart_butler
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+1 watchers, 1 forks
+</div>
+<div class='name'>
+<a href='https://api.github.com/repos/futuresimple/presentations'>
+presentations
+</a>
+</div>
+<div class='language'>
+
+</div>
+<div class='description'>
+All kinds of presentations delivered by FS team members
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+1 watchers, 1 forks
+</div>
+<div class='name'>
+<a href='https://api.github.com/repos/futuresimple/blog-lab'>
+blog-lab
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>
