@@ -1,1 +1,1 @@
-= atom_feed
+= atom_feed({content_proc: -> a { article_content(a.compiled_content) }, excerpt_proc: -> a { article_excerpt(a.compiled_content) }})
