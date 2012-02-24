@@ -1,9 +1,6 @@
 class FutureSimpleLab < Blog::Awesome
-
   topics :technology, :coding
-
-  authors :best
-
+  authors :dev_team
 end
 
 FutureSimpleLab.new.publish!

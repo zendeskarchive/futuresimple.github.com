@@ -4,6 +4,7 @@ title: Home
 
 .row
   .span7
+    = render "_welcome.html"
     - sorted_articles.each do |article|
       %article
         %h2= article[:title]
