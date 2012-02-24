@@ -13,7 +13,7 @@
             %h2.post-title
               %a{href: article.path}= article[:title]
             %h6.post-author= article[:author]
-            = article.compiled_content
+            = article.compiled_content.split("</p>")[0] + "</p>"
           - if @item[:prev]
             %a{href: @item[:prev].path}= "Prev page"
           - if @item[:next]
