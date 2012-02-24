@@ -68,9 +68,12 @@ route '/js/*' do
   "/js/" + File.basename(item.identifier.chop) + ".js"
 end
 
-route '/index*' do
-  path = item.identifier.chop
-  File.join(File.dirname(path), File.basename(path, File.extname(path)))
+route '/index.xml.haml' do
+  '/rss.xml'
+end
+
+route '/index.html.haml' do
+  '/index.html'
 end
 
 route '*' do
