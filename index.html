@@ -38,6 +38,46 @@
 <div class='clear'></div>
 <div class='row'>
 <div class='span8'>
+<div class='welcome'>
+<div class='ruby'><pre><code class="language-ruby"><span class="keyword">class</span> <span class="class">FutureSimpleLab</span> &lt; <span class="constant">Blog</span>::<span class="constant">Awesome</span>
+  topics <span class="symbol">:technology</span>, <span class="symbol">:coding</span>
+  authors <span class="symbol">:devs</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">'</span></span>
+<span class="keyword">end</span>
+<span class="constant">FutureSimpleLab</span>.new.publish!</code></pre></div>
+<div class='python'><pre><code class="language-python"><span class="keyword">import</span> <span class="include">blog</span>
+<span class="keyword">class</span> <span class="class">FutureSimpleLab</span>(blog.Awesome):
+  topics = [<span class="string"><span class="delimiter">"</span><span class="content">technology</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">coding</span><span class="delimiter">"</span></span>]
+  authors = {<span class="string"><span class="delimiter">'</span><span class="content">devs</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">'</span></span>}
+FutureSimpleLab().publish</code></pre></div>
+<div class='js'><pre><code class="language-javascript"><span class="keyword">var</span> futureSimpleLab = <span class="keyword">new</span> Blog.Awesome({
+  <span class="key">topics</span>: [<span class="string"><span class="delimiter">'</span><span class="content">technology</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">coding</span><span class="delimiter">'</span></span>],
+  <span class="key">authors</span>: {<span class="key"><span class="delimiter">'</span><span class="content">devs</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">'</span></span>}
+})
+futureSimpleLab.publish()</code></pre></div>
+<div class='objc'><pre><code class="language-cpp"><span class="error">@</span>interface FutureSimpleLab : Blog &lt;Awesome&gt;
+<span class="error">@</span>property (strong) NSArray *topics = <span class="error">@</span>[technology, coding];
+<span class="error">@</span>property (strong) NSDictionary *authors = <span class="error">@</span>[devs : <span class="error">@</span><span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>];
+<span class="error">@</span>end
+[[FutureSimpleLab <span class="keyword">new</span>] publish];</code></pre></div>
+<div class='cpp'><pre><code class="language-cpp"><span class="keyword">class</span> <span class="class">FutureSimpleLab</span> : <span class="directive">public</span> AwesomeBlog {
+  <span class="directive">public</span>:
+  FutureSimpleLab() {
+    topics.push_back(<span class="string"><span class="delimiter">"</span><span class="content">technology</span><span class="delimiter">"</span></span>);
+    topics.push_back(<span class="string"><span class="delimiter">"</span><span class="content">coding</span><span class="delimiter">"</span></span>);
+    authors[<span class="string"><span class="delimiter">"</span><span class="content">devs</span><span class="delimiter">"</span></span>] = <span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>;
+};
+
+FutureSimpleLab::publish();</code></pre></div>
+<div class='java'><pre><code class="language-java"><span class="type">class</span> <span class="class">FutureSimpleLab</span> <span class="directive">extends</span> Blog.Awesome {
+  <span class="directive">private</span> Topic<span class="type">[]</span> topics = <span class="keyword">new</span> Topic<span class="type">[]</span> {
+    <span class="keyword">new</span> Topic(<span class="string"><span class="delimiter">"</span><span class="content">technology</span><span class="delimiter">"</span></span>), <span class="keyword">new</span> Topic (<span class="string"><span class="delimiter">"</span><span class="content">coding</span><span class="delimiter">"</span></span>) };
+  <span class="directive">private</span> <span class="predefined-type">Map</span>&lt;AuthorType, <span class="predefined-type">String</span>&gt; authors = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;AuthorType, <span class="predefined-type">String</span>&gt;();
+  <span class="directive">public</span> FutureSimpleLab() {
+    authors.put(<span class="keyword">new</span> AuthorType(<span class="string"><span class="delimiter">"</span><span class="content">devs</span><span class="delimiter">"</span></span>), <span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>);}
+}
+<span class="keyword">new</span> FutureSimpleLab().publish();</code></pre></div>
+</div>
+
 <h2 class='post-title'>
 <a href='/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/'>Gracefully exiting from console programs in Ruby</a>
 </h2>
