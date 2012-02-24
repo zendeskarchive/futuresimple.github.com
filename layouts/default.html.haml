@@ -19,5 +19,14 @@
       #slogan
         .row
           .span12
-            Future Simple tech blog.
+            = render "_welcome.html"
+
+            Welcome to the official Future Simple developers blog - makers of
+            %a{:href => "http://futuresimple.com/base"}
+              Base CRM
+            and
+            %a{:href => "http://futuresimple.com/quotes"}
+              QuoteBase
+
+
       = yield

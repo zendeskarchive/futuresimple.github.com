@@ -26,10 +26,16 @@ end
 compile '/js/*' do
 end
 
+compile "/layouts/_welcome*" do
+  filter :kramdown
+  filter :colorize_syntax
+end
+
 compile '/index*' do
   if item.identifier =~ /html/
     filter :haml, :ugly => true
     layout 'default.html'
+
   elsif item.identifier =~ /xml/
     filter :haml
   end
