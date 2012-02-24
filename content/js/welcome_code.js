@@ -1,13 +1,13 @@
 $(function(){
-  var technologies = $('.welcome div')
-  var index = Math.floor((Math.random() * technologies.length - 1 ))
-  $(technologies.get(index)).show();
+  var technologies = $('.welcome div');
+  var index = Math.floor((Math.random() * technologies.length - 1 ));
+  $(technologies.get(index)).removeClass('hidden');
 
   $('span.content')
-     .filter(function(){
-        var self = $(this)
-        if(self.text().indexOf('Base CRM') != -1){
-          return self
+     .filter(function() {
+        var self = $(this);
+        if(self.text().indexOf('Base CRM') != -1) {
+          return self;
         }
      })
      .each(function(){

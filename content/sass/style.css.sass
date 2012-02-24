@@ -1,11 +1,4 @@
-$light-gray: #ddd
-$blue: #2A95B3
-$font-color: #666
-
-@mixin rounded($radius: 10px)
-  border-radius: $radius
-  -moz-border-radius: $radius
-  -webkit-border-radius: $radius
+@import "_shared.sass"
 
 body
   background: url('/images/bg-noise.jpg') repeat
@@ -13,6 +6,7 @@ body
 
 h1, h2, h3
   color: $font-color
+  font-weight: normal
 
 .grey-bottom-bar
   border-bottom: 1px solid #ddd
@@ -73,13 +67,13 @@ article
       padding: 3px 0 5px 0
 
       &:hover
-        border-bottom: 5px solid $blue
+        border-bottom: 5px solid $main-color
 
       &.active
         border-bottom: 5px solid $light-gray
 
       &.active:hover
-        border-bottom: 5px solid $blue
+        border-bottom: 5px solid $main-color
 
 .clear
   clear: both
@@ -103,9 +97,5 @@ article
         color: #999 !important
         font-size: 13px
 
-.ruby, .python, .js
+.hidden
   display: none
-
-
-
-
