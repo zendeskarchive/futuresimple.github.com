@@ -16,7 +16,8 @@ How it works - you can use the [trap method](http://www.ruby-doc.org/core-1.9.3/
     trap "INT" {
       # You can do your own stuff here
       #
-      # Remember, the signal dies here - if you don't raise an exception or exit the process, nothing will happen
+      # Remember, the signal dies here - if you don't
+      # raise an exception or exit the process, nothing will happen
     }
 
 Here's a simple example where I wrapped this pattern in a singleton class:
