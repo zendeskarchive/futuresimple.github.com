@@ -13,6 +13,10 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
+preprocess do
+  paginate_articles
+end
+
 compile '/sass/*' do
   # don’t filter or layout
   filter :sass
@@ -33,14 +37,18 @@ compile '/js/*' do
 end
 
 
-compile '/index*' do
-  if item.identifier =~ /html/
-    filter :haml, :ugly => true
-    layout 'default.html'
+compile '/index.xml.haml' do
+  filter :haml
+end
 
-  elsif item.identifier =~ /xml/
-    filter :haml
-  end
+compile '/page/*' do
+  filter :haml, :ugly => true
+  layout 'posts.html'
+end
+
+compile '/index.html.haml' do
+  filter :haml, :ugly => true
+  layout 'posts.html'
 end
 
 compile '*' do

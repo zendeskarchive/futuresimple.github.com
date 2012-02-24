@@ -1,0 +1,23 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+      = render "_meta.html"
+  %body
+    .container
+      = render "_header.html"
+      .clear
+      .row
+        .span7
+          - @item[:articles].each do |article|
+            %h2.post-title
+              %a{href: article.path}= article[:title]
+            %h6.post-author= article[:author]
+            = article.compiled_content
+          - if @item[:prev]
+            %a{href: @item[:prev].path}= "Prev page"
+          - if @item[:next]
+            %a{href: @item[:next].path}= "Next page"
+        .span5
+          = render "_twitter.html"
+          = render "_github.html"
