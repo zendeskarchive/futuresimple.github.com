@@ -26,10 +26,6 @@ end
 compile '/js/*' do
 end
 
-compile "/layouts/_welcome*" do
-  filter :kramdown
-  filter :colorize_syntax
-end
 
 compile '/index*' do
   if item.identifier =~ /html/
@@ -78,4 +74,5 @@ route '*' do
   end
 end
 
+layout '_welcome.html', :kramdown
 layout '*', :haml, :ugly => true
