@@ -1,7 +1,7 @@
 ---
 kind: 'article'
 created_at: '2012-02-24 12:00:00'
-title: 'Gracefully exiting from console program'
+title: 'Gracefully exiting from console programs in Ruby'
 author: "Marcin Bunsch"
 ---
 Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You'd love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.
