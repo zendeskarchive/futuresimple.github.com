@@ -27,18 +27,26 @@ article
   top: 100px
 
 @media (max-width: 480px)
+  #twtr-widget-1
+    .twtr-doc
+      margin: 0 auto
+      width: 90% !important
   #header
     .nav
       float: left
-
       li
         padding: 5px 20px 5px 0 !important
 
   .logo
-    padding-bottom: 30px
+    padding-bottom: 0px
     padding-right: 40px
     float: left
 
+@media (max-width: 767px)
+  #header
+    .logo
+      padding-bottom: 0px
+      float: left
 
 .stay-right
   position: fixed
@@ -50,13 +58,15 @@ article
   font-size: 1.1em
   margin-top: 15px
   margin-bottom: 15px
-  height: 45px
   border-bottom: 1px solid $light-gray
 
+  .logo
+    margin-bottom: 10px
   .nav
     text-transform: uppercase
     padding: 0
     border: 0
+    margin: 0
 
     li
       padding: 5px 0 5px 20px
