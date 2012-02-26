@@ -17,7 +17,7 @@
                 %a{href: article.path }= article[:title]
               %h6.post-author= article[:author]
               = article_excerpt(article.compiled_content)
-              %a{href: article.path + "#disqus_thread", "data-disqus-identifier" => article[:identifier] }= = article[:title]
+              %a{href: article.path + "#disqus_thread", "data-disqus-identifier" => article[:identifier]} Comments
               = render 'disquss_sum_up.html'
             - if @item[:prev]
               %a{href: @item[:prev].path}= "Prev page"
