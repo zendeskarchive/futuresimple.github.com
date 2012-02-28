@@ -8,7 +8,7 @@ identifier: "building-this-blog"
 
 Remember the classic "build a blog in 10 minutes" Rails tutorial? Back then, it blew our minds. Nowadays parts of
 *the Web* move towards static content. Plain old <abbr title="Hyper-Text Markup Language">HTML</abbr> with
-<abbr title="Cascading Style Sheets">CSS</abbr> suit the needs of many, many people. Bulletproof, easy, and almost free
+<abbr title="Cascading Style Sheets">CSS</abbr> suit the needs of many, many people. Being bulletproof, easy and almost free,
 this combination has many advantages over complicated, backend-driven sites.
 
 This blog is an example of such a static site, take a look how it was created. You can certainly set it up in 10 minutes
@@ -16,15 +16,15 @@ This blog is an example of such a static site, take a look how it was created. Y
 
 EXCERPT
 
-We came up with the idea of blog couple of days ago. As programmers we were excited to code it ourselves, that's why we
+We came up with the idea of a blog couple of days ago. As programmers we were excited to code it ourselves, that's why we
 didn't use an online blogging engine like [tumblr](http://www.tumblr.com/) or [wordpress.com](http://wordpress.com).
-Instead we wanted to make it a static site with JavaScript commenting system. We were looking in Ruby--powered
-generators as it is our favourite language, there were plenty of possibilities on
+Instead we wanted to make it a static site with a JavaScript commenting system. We were browsing through Ruby--powered
+generators as it is our favourite language. There were plenty of possibilities on
 [ruby-toolbox.com](https://www.ruby-toolbox.com/categories/static_website_generation):
 
-1. We had some experience with [Jekyll](http://jekyllrb.com/), but it is too simple in our opionion. It suits GitHub
+1. We already had some experience with [Jekyll](http://jekyllrb.com/), but it is too simple in our opionion. It suits GitHub
    pages well, but we wanted to have something more powerful.
-2. I was trying [Middleman](http://middlemanapp.com/) once, but it failed somewhere between encoding and
+2. I tried [Middleman](http://middlemanapp.com/) once, but it failed somewhere between encoding and
    template--loading.
 3. [@marcinbunsch](https://twitter.com/marcinbunsch) had some experience with [Stasis](http://stasis.me/).
 4. I was working with [nanoc](http://nanoc.stoneship.org/)
