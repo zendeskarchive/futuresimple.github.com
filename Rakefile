@@ -4,14 +4,17 @@ require "bundler/setup"
 require "nanoc"
 require "nanoc/cli"
 
+desc "Run a webserver watching for changes"
 task :server do
   Nanoc::CLI.run ["autocompile"]
 end
 
+desc "Build source"
 task :build do
   Nanoc::CLI.run ["compile"]
 end
 
+desc "Generate github json data"
 task :github do
   require "octokit"
   require 'yajl'
