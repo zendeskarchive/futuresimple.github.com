@@ -13,7 +13,7 @@
           %h6.post-author= @item[:author]
           %article
             = article_content(yield)
-          = render "_disquss.html"
+          = render "_disquss.html", :disqus_identifier => @item[:identifier]
         .span4
           = render "_twitter.html"
           = render "_github.html"
