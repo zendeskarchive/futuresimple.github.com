@@ -13,3 +13,7 @@ end
 def article_excerpt(content)
   content.split("<p>EXCERPT</p>")[0]
 end
+
+def date_display(value)
+  attribute_to_time(value).strftime("%Y-%m-%d")
+end

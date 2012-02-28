@@ -10,7 +10,10 @@
       .row
         .span8
           %h2.post-title= @item[:title]
-          %h6.post-author= @item[:author]
+          %h6.post-author
+            = @item[:author]
+            @
+            = date_display(@item[:created_at])
           %article
             = article_content(yield)
           = render "_disquss.html", :disqus_identifier => @item[:identifier]
