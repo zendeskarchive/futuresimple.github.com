@@ -3,6 +3,7 @@
 %script{:type => "text/javascript"}
   var disqus_shortname = 'futuresimblelab'; // required: replace example with your forum shortname
   = "var disqus_identifier = '#{@disqus_identifier}';"
+  = "var disqus_url = '#{url_for(@item)}';"
   :plain
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
