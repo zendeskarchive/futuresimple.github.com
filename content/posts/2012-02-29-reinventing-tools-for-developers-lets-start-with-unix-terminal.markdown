@@ -57,4 +57,4 @@ Related interesting stuff:
 1. [Ivo - Terminal, reimagined](http://lubutu.com/idea/ivo);
 2. [TermKit](https://github.com/unconed/TermKit);
 
-If you have any questions or you are enthusiastic about the idea please drop me an email at [pawel@futuresimple.com](mailto:pawel@futuresimple.com).
+If you have any questions or you are enthusiastic about the idea feel free to drop a comment below!
