@@ -26,7 +26,7 @@ task :github do
       :language => repo.language,
       :forks => repo.forks,
       :watchers => repo.watchers,
-      :url => repo.url,
+      :url => repo.html_url,
       :updated_at => repo.updated_at
     })
   end
