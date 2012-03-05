@@ -22,7 +22,6 @@
                 = date_display(article[:created_at])
               = article_excerpt(article.compiled_content)
               %a{href: article.path + "#disqus_thread", "data-disqus-identifier" => article[:identifier]} Comments
-              = render 'disquss_sum_up.html'
             - if @item[:prev]
               %a{href: @item[:prev].path}= "Prev page"
             - if @item[:next]
@@ -30,3 +29,11 @@
         .span4
           = render "_twitter.html"
           = render "_github.html"
+    :javascript
+      var disqus_shortname = 'futuresimplelab';
+      (function () {
+          var s = document.createElement('script'); s.async = true;
+          s.type = 'text/javascript';
+          s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+          (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+      }());
