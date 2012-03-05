@@ -6,7 +6,7 @@ author: "Paweł Niżnik"
 identifier: "reinventing-tools-for-developers-lets-start-with-unix-terminal"
 ---
 
-A big chunk of our day-to-day work concentrates around unix terminal. We all know the usual flow, opening our loved text editors, running scripts, consoles, profilers, running tests, ack’ing, logging into servers, shipping code to production etc. Actually if I were about to pick the most important development tool (except programming language), I would have hard times choosing between a text editor and a terminal.
+A big chunk of our day-to-day work concentrates around unix terminal. We all know the usual flow, opening our loved text editors, running scripts, consoles, profilers, running tests, ack’ing, logging into servers, shipping code to production etc. Actually if I were about to pick the most important development tool (except for the programming language), I would have a hard time choosing between a text editor and the terminal.
 
 EXCERPT
 
@@ -24,13 +24,13 @@ I feel that working with the terminal is not really that efficient. We do the sa
 
 We write code in text editors but when we want to do something else we need to switch context to terminal - how much time is wasted on continuous context change and ‘miss clicking’ terminal / text editor / other icons?
 
-We operate on data in plain text mode - no friendly and quick data visualization.
+We operate on data in plain text mode - not a friendly nor quick way of visualizing data.
 
-Finally there is no easy way to edit text that we enter in the terminal. Going to the end/beginning of the line depending which place it’s closer to the point you want to edit, and then moving your cursor over one character at a time to get to the destination - sound familiar? I was so frustrated with that, that I made a habit to enter all the commands in text editor then copy & paste to the terminal window!
+Finally, there is no easy way to edit text that we enter in the terminal. Going to the end/beginning of the line depending which place it’s closer to the point you want to edit, and then moving your cursor over one character at a time to get to the destination - sounds familiar? I was so frustrated with that, that I made it a habit to enter all the commands in text editor then copy & paste to the terminal window!
 
 Recently, I realized that the terminal that we all use to build the most sophisticated products, cutting edge technologies (AWS, Facebook, Google, even Airplanes) was invented a long time ago. Is it already 20 years old, or even more? How crazy is that?
 
-Since then so many things changed in our world, we learned so much in context of human computer interaction, we came up with user experience, we design easy, simple products (iPhone, and recently the Windows Phone popped out, which seems to be amazingly designed), yet the terminal remained the same. How productive and effective could we be if the terminal was also up to date?
+Since then so many things changed in our world, we learned so much in the context of human computer interaction, we came up with user experience, we design easy, simple products (iPhone, and recently the Windows Phone popped out, which seems to be amazingly designed), yet the terminal remained the same. How productive and effective could we be if the terminal was also up to date?
 
 **No more ranting! What can be done about it?**
 

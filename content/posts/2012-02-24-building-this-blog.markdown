@@ -7,7 +7,7 @@ identifier: "building-this-blog"
 ---
 
 Remember the classic "build a blog in 10 minutes" Rails tutorial? Back then, it blew our minds. Nowadays parts of
-*the Web* move towards static content. Plain old <abbr title="Hyper-Text Markup Language">HTML</abbr> with
+*the Web* are moving towards static content. Plain old <abbr title="Hyper-Text Markup Language">HTML</abbr> with
 <abbr title="Cascading Style Sheets">CSS</abbr> suit the needs of many, many people. Being bulletproof, easy and almost free,
 this combination has many advantages over complicated, backend-driven sites.
 
@@ -22,22 +22,22 @@ Instead we wanted to make it a static site with a JavaScript commenting system. 
 generators as it is our favourite language. There were plenty of possibilities on
 [ruby-toolbox.com](https://www.ruby-toolbox.com/categories/static_website_generation):
 
-1. We already had some experience with [Jekyll](http://jekyllrb.com/), but it is too simple in our opionion. It suits GitHub
+1. We already had some experience with [Jekyll](http://jekyllrb.com/), but it is too simple in our opinion. It suits GitHub
    pages well, but we wanted to have something more powerful.
 2. I tried [Middleman](http://middlemanapp.com/) once, but it failed somewhere between encoding and
    template--loading.
 3. [@marcinbunsch](https://twitter.com/marcinbunsch) had some experience with [Stasis](http://stasis.me/).
 4. I was working with [nanoc](http://nanoc.stoneship.org/)
 
-We gave nanoc a try. It was my call, I did a lot of stuff with it and felt it is quite flexible which was our
-requirement.
+We gave nanoc a try. It was my call, I did a lot of stuff with it and felt it is quite flexible which was one of our
+requirements.
 
 From now on, there are some default steps every Ruby developer does when starting a new project: first `git init` the
-repository, then do some `bundle`ing and finally don't forget to `rvm` all this. The latest Ruby `1.9.3-p125` was out
-already when we started this so why not use it?
+repository, then do some `bundle`ing and finally don't forget to `rvm` all this. The latest Ruby `1.9.3-p125` was already
+out when we started this so why not use it?
 
 [Bootstrap project](http://twitter.github.com/bootstrap/) lays out the blog for us. It's amazing how these guys got it
-all figured out. Just include the styles in your site, assign a class to a list and boom - a fancy menu appears. Also
+all figured out. Just link the stylesheets in your site, assign a class to a list and boom - a fancy menu appears. Also
 the naming convention forces you to stick to it, you don't have to come up with class names, just override the existing
 ones and you're good to go.
 
@@ -75,8 +75,8 @@ Paginating articles is described in [one of the official guides](http://nanoc.st
 
 One disadvantage of static sites is that... they're static, so you cannot have comments on your blog. Or can you?
 [Disqus](http://disqus.com/) provides a neat solution to this problem allowing you to have comments by using JavaScript.
-They are actually a production-ready solution, providing the functionality to many, many sites. Setting up a blog
-requires two things: post comments and displaying number of comments on index page under each entry. Simple JavaScript
+They are actually a production-ready solution, already providing the functionality to multiple sites. Setting up a blog
+requires two things: posting comments and displaying number of comments on index page under each entry. Simple JavaScript
 code and HTML tweaking:
 
     #!html
