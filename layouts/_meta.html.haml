@@ -1,4 +1,7 @@
-%title Future Simple Lab
+- if @item
+  %title= "#{@item[:title]} | Future Simple Lab"
+- else
+  %title Future Simple Lab
 %link{:href => "/css/bootstrap.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
 %link{:href => "/css/bootstrap-responsive.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
 %link{:href => "/css/style.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
