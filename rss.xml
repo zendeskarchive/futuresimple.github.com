@@ -303,11 +303,11 @@ some_collection.each &lt;span class="keyword"&gt;do&lt;/span&gt; |item|
 </summary>
   </entry>
   <entry>
-    <id>tag:futuresimple.github.com,2012-02-24:/posts/2012-02-24-building-this-blog/</id>
-    <title type="html">Building this blog</title>
+    <id>tag:futuresimple.github.com,2012-02-24:/posts/2012-02-24-building-a-blog-using-nanoc/</id>
+    <title type="html">Building a blog using nanoc</title>
     <published>2012-02-24T11:00:00Z</published>
     <updated>2012-02-24T11:00:00Z</updated>
-    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-02-24-building-this-blog/"/>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-02-24-building-a-blog-using-nanoc/"/>
     <content type="html">&lt;p&gt;Remember the classic “build a blog in 10 minutes” Rails tutorial? Back then, it blew our minds. Nowadays parts of
 &lt;em&gt;the Web&lt;/em&gt; are moving towards static content. Plain old &lt;abbr title="Hyper-Text Markup Language"&gt;HTML&lt;/abbr&gt; with
 &lt;abbr title="Cascading Style Sheets"&gt;CSS&lt;/abbr&gt; suit the needs of many, many people. Being bulletproof, easy and almost free,
