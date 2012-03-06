@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://futuresimple.github.com/</id>
   <title>Future Simple Lab</title>
-  <updated>2012-02-24T11:00:00Z</updated>
+  <updated>2012-03-04T17:00:00Z</updated>
   <link rel="alternate" href="http://futuresimple.github.com/"/>
   <link rel="self" href="http://futuresimple.github.com/rss.xml"/>
   <author>
@@ -10,10 +10,225 @@
     <uri>Future Simple Lab</uri>
   </author>
   <entry>
+    <id>tag:futuresimple.github.com,2012-03-04:/posts/2012-03-04-csrf-attack/</id>
+    <title type="html">CSRF Attack using JavaScript</title>
+    <published>2012-03-04T17:00:00Z</published>
+    <updated>2012-03-04T17:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-03-04-csrf-attack/"/>
+    <content type="html">&lt;p&gt;Most of you are aware of the &lt;a href="http://pl.wikipedia.org/wiki/Cross-site_request_forgery"&gt;CSRF attack&lt;/a&gt;. I use JS on a daily basis but I actually never thought that the code I develop could be CSRF-prone.&lt;/p&gt;
+
+&lt;p&gt;You saw that coming -  I was wrong and I want to share that harsh lesson.&lt;/p&gt;
+
+&lt;p&gt;Let’s assume you’re developing a web app called omg-app.com (obviously because it’s so good it will make everyone say OMG!). The app is getting bigger, lots of people use it, new features are being added on a weekly basis. At some point you conclude it would be nice to inform users about some recently added features.&lt;/p&gt;
+
+
+
+&lt;p&gt;How do you do that? The most common solution would be to display a banner for users who logged in describing the newly released stuff.&lt;/p&gt;
+
+&lt;p&gt;Banner can be saying sth like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Hello bart@futuresimple.com! Great news - new file upload has just been released!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, the code that will embed the banner is coming from a separate application - the banner app. A great, asynchronous way is to make the omg-app embed a javascript file, so that the banner app can inject the banner into the page.&lt;/p&gt;
+
+&lt;p&gt;It’s simple and designed for failure. If it doesn’t load, nothing bad happens and it is easy to embed in other future applications.&lt;/p&gt;
+
+&lt;p&gt;The embed will look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-html"&gt;&lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;text/javascript&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;/banner.js&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, the banner app will respond to /banner.js with rendering of javascript code prepopulated with appropriate content, like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;&lt;span class="comment"&gt;// This is how banner.js.erb looks like inside&lt;/span&gt;
+&lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;body&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;).append(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;&amp;lt;div class='banner'/&amp;gt;&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;);
+&lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;.banner&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;).html(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;Hello &amp;lt;%= current_user.email %&amp;gt;! Great news - new file upload has just been released!&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt; }&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now if a user is logged in and she hasn’t seen the new upload yet - the following script will be loaded to the page:
+(I assume jQuery is available)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;&lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;body&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;).append(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;&amp;lt;div class='banner'/&amp;gt;&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;);
+&lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;.banner&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;).html(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;Hello bart@futuresimple.com! Great news - new file upload has just been released!&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Great! Problem solved, time to play some office ping-pong… Not so fast dude.&lt;/p&gt;
+
+&lt;p&gt;As it happens omg-app.com is super popular and many people are logged in at all times. Authentication information for omg-app is
+being kept in browsers’ cookie. What is the problem?&lt;/p&gt;
+
+&lt;p&gt;Lets assume that my good pal Mike is logged in. At the same time he clicked on a link which leads to the site with funny cats
+(what a lovely site it is …) in other tab of his browser.  Not only is the kitten site unbearably cute, it is also a malicious site which
+loads exactly the same script as omg-app.com:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-html"&gt;&lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;text/javascript&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;http://omg-app.com/banner.js&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Since Mike is logged in to omg-app and the authentication cookie is present - the kitten site gets the same response - meaning:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;"Hello bart@futuresimple.com - new file upload was just released".
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now all the attacker needs to do is read the content of the div with the class “banner”. Boom - email stolen.&lt;/p&gt;
+
+&lt;p&gt;How can it be fixed then?&lt;/p&gt;
+
+&lt;p&gt;My first idea was to verify if a script was loaded from omg-app.com domain on the server-side:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-ruby"&gt;&lt;span class="keyword"&gt;def&lt;/span&gt; &lt;span class="function"&gt;banner&lt;/span&gt;
+   &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt; &lt;span class="keyword"&gt;unless&lt;/span&gt; request.referrer.match( &lt;span class="regexp"&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;span class="content"&gt;^http:&lt;/span&gt;&lt;span class="char"&gt;\/&lt;/span&gt;&lt;span class="char"&gt;\/&lt;/span&gt;&lt;span class="content"&gt;omg-app.com&lt;/span&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;/span&gt;)
+   ...
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That solution isn’t really good for the following reasons:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+    &lt;p&gt;in Rails specifically you can’t always get the request referrer of the page where script was loaded. This applies to requests coming from the script tag.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;if the user has a plugin which blocks the referrer from being sent, your app will never get the referrer url&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;How about adding a check to the code returned by the banner app to verify the location and only then embedding the html.&lt;/p&gt;
+
+&lt;p&gt;Seems like a great idea … Now the code responsible for the banner would look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;&lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="keyword"&gt;function&lt;/span&gt;(){
+ &lt;span class="keyword"&gt;var&lt;/span&gt; regex = &lt;span class="regexp"&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;span class="content"&gt;\.&lt;/span&gt;&lt;span class="content"&gt;omg-app&lt;/span&gt;&lt;span class="content"&gt;\.&lt;/span&gt;&lt;span class="content"&gt;com$&lt;/span&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="keyword"&gt;if&lt;/span&gt; (regex.test(window.location.host)) {
+    &lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;body&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;).append(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;&amp;lt;div class='banner'/&amp;gt;&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;);
+    &lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;.banner&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;).html(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;Hello  bart@futuresimple.com!  Great news - new file upload has just been released!&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
+  }
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We wrap the code in a function to make the regex a private variable.&lt;/p&gt;
+
+&lt;p&gt;Bad news - this is not safe at all.&lt;/p&gt;
+
+&lt;p&gt;Even if the malicious site would include the whole code above, RegExp.prototype.test method can be easily overwitten (welcome to JS world…) to always return true.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;RegExp.prototype.&lt;span class="function"&gt;test&lt;/span&gt; = &lt;span class="keyword"&gt;function&lt;/span&gt;() { &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="predefined-constant"&gt;true&lt;/span&gt; }&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With this tiny bit of code, the condition will be always true and we’re back to the initial problem.&lt;/p&gt;
+
+&lt;p&gt;Ok - so now I can pull out the big guns and include the banner information in iframe on each page. This starts to be really complicated and I’m not a big fan of iframes.&lt;/p&gt;
+
+&lt;p&gt;The solution I decided to go for is to load the banner after getting its content via an AJAX request.&lt;/p&gt;
+
+&lt;p&gt;My Rails action looks sth like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-ruby"&gt;&lt;span class="keyword"&gt;class&lt;/span&gt; &lt;span class="class"&gt;BannerController&lt;/span&gt; &amp;lt; &lt;span class="constant"&gt;ApplicationController&lt;/span&gt;
+  &lt;span class="keyword"&gt;def&lt;/span&gt; &lt;span class="function"&gt;show&lt;/span&gt;
+    respond_to &lt;span class="keyword"&gt;do&lt;/span&gt; |format|
+      &lt;span class="keyword"&gt;if&lt;/span&gt; current_user.saw_new_upload?
+        format.json {
+          render &lt;span class="symbol"&gt;:json&lt;/span&gt; =&amp;gt; {&lt;span class="symbol"&gt;:message&lt;/span&gt; =&amp;gt; &lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;Hello &lt;/span&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;#{&lt;/span&gt;current_user.email&lt;span class="inline-delimiter"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class="content"&gt; - new file upload was just released&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;  } }
+      &lt;span class="keyword"&gt;else&lt;/span&gt;
+        format.json { render &lt;span class="symbol"&gt;:json&lt;/span&gt; =&amp;gt; {} }
+      &lt;span class="keyword"&gt;end&lt;/span&gt;
+      &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now in omg-app, I simply implement a client to pick up this information.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;(&lt;span class="keyword"&gt;function&lt;/span&gt;() {
+  &lt;span class="keyword"&gt;var&lt;/span&gt; methods = {
+    &lt;span class="function"&gt;display_html&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;(message) {
+      &lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;body&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;).append(&lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;&amp;lt;div class='banner'/&amp;gt;&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;));
+      &lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;.banner&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;).append(message);
+    }
+  }
+  &lt;span class="predefined"&gt;$&lt;/span&gt;.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;/banner.json&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="keyword"&gt;function&lt;/span&gt;(data) {
+    display_html(data.message)
+  })
+}());&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Why is this solution safe? (is it?!)
+Because of &lt;a href="http://en.wikipedia.org/wiki/Same_origin_policy"&gt;same origin policy&lt;/a&gt;. In nutshell - only scripts (e.x. ajax requests) originating from the same site (omg-app.com) can access banner action in your web app.&lt;/p&gt;
+
+&lt;p&gt;That means that browser blocks any ajax requests originated on kitty site to access your application hence CSRF attack described earlier is not a problem any more.&lt;/p&gt;
+
+&lt;p&gt;So far so good. There surely are some pitfalls (e.g. subdomains) of this approach, but that’s the best one I came up with so far.
+If you have any suggestions, share them in the comments!&lt;/p&gt;</content>
+    <summary type="html">&lt;p&gt;Most of you are aware of the &lt;a href="http://pl.wikipedia.org/wiki/Cross-site_request_forgery"&gt;CSRF attack&lt;/a&gt;. I use JS on a daily basis but I actually never thought that the code I develop could be CSRF-prone.&lt;/p&gt;
+
+&lt;p&gt;You saw that coming -  I was wrong and I want to share that harsh lesson.&lt;/p&gt;
+
+&lt;p&gt;Let’s assume you’re developing a web app called omg-app.com (obviously because it’s so good it will make everyone say OMG!). The app is getting bigger, lots of people use it, new features are being added on a weekly basis. At some point you conclude it would be nice to inform users about some recently added features.&lt;/p&gt;
+
+</summary>
+  </entry>
+  <entry>
+    <id>tag:futuresimple.github.com,2012-02-29:/posts/2012-02-29-reinventing-tools-for-developers-lets-start-with-unix-terminal/</id>
+    <title type="html">Reinventing tools for developers, let's start with unix terminal</title>
+    <published>2012-02-29T17:00:00Z</published>
+    <updated>2012-02-29T17:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-02-29-reinventing-tools-for-developers-lets-start-with-unix-terminal/"/>
+    <content type="html">&lt;p&gt;A big chunk of our day-to-day work concentrates around unix terminal. We all know the usual flow, opening our loved text editors, running scripts, consoles, profilers, running tests, ack’ing, logging into servers, shipping code to production etc. Actually if I were about to pick the most important development tool (except for the programming language), I would have a hard time choosing between a text editor and the terminal.&lt;/p&gt;
+
+
+
+&lt;p&gt;I feel that working with the terminal is not really that efficient. We do the same stuff over and over again; we repeat ourselves:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-shell"&gt;$ cd;
+$ cd ~/;
+$ git status;
+$ rm -rf / (just kidding);
+$ vim;
+$ mate .;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;… and so on - every single day.&lt;/p&gt;
+
+&lt;p&gt;We write code in text editors but when we want to do something else we need to switch context to terminal - how much time is wasted on continuous context change and ‘miss clicking’ terminal / text editor / other icons?&lt;/p&gt;
+
+&lt;p&gt;We operate on data in plain text mode - not a friendly nor quick way of visualizing data.&lt;/p&gt;
+
+&lt;p&gt;Finally, there is no easy way to edit text that we enter in the terminal. Going to the end/beginning of the line depending which place it’s closer to the point you want to edit, and then moving your cursor over one character at a time to get to the destination - sounds familiar? I was so frustrated with that, that I made it a habit to enter all the commands in text editor then copy &amp;amp; paste to the terminal window!&lt;/p&gt;
+
+&lt;p&gt;Recently, I realized that the terminal that we all use to build the most sophisticated products, cutting edge technologies (AWS, Facebook, Google, even Airplanes) was invented a long time ago. Is it already 20 years old, or even more? How crazy is that?&lt;/p&gt;
+
+&lt;p&gt;Since then so many things changed in our world, we learned so much in the context of human computer interaction, we came up with user experience, we design easy, simple products (iPhone, and recently the Windows Phone popped out, which seems to be amazingly designed), yet the terminal remained the same. How productive and effective could we be if the terminal was also up to date?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;No more ranting! What can be done about it?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I think that there are some key assumptions that terminal needs to meet in present times:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+    &lt;p&gt;Intelligent automation - no more repetition;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Seamless integration into working environment - no need for a context switch;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Friendly way to visualize data;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Ease of text edition;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;I believe that this will change our lives - for better obviously!&lt;/p&gt;
+
+&lt;p&gt;I played around for a while with Automator on Mac and managed to bring shell &amp;amp; programming languages runtimes to a text editor. You can find the output of my work -&amp;gt; &lt;a href="http://cziko.github.com/yoke"&gt;http://cziko.github.com/yoke&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It’s neat; you simply can use all shell commands and for instance ruby in a text editor. You need to install both extensions (ruby and a shell one) and hot key both of them. Then you just select text in you editor of choice, press adequate shortcut and magic happens. Recently I even managed to make it stateful - meaning that there is a shared memory in between the commands execution. That can be used to store e.g. a current working directory. I use it on a daily basis, especially for testing parts of my ruby code.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;I hope more people will identify the terminal problem. Maybe some good designers will pick it up too and we can kill it 2gether!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Related interesting stuff:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;a href="http://lubutu.com/idea/ivo"&gt;Ivo - Terminal, reimagined&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;
+&lt;a href="https://github.com/unconed/TermKit"&gt;TermKit&lt;/a&gt;;&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;If you have any questions or you are enthusiastic about the idea feel free to drop a comment below!&lt;/p&gt;</content>
+    <summary type="html">&lt;p&gt;A big chunk of our day-to-day work concentrates around unix terminal. We all know the usual flow, opening our loved text editors, running scripts, consoles, profilers, running tests, ack’ing, logging into servers, shipping code to production etc. Actually if I were about to pick the most important development tool (except for the programming language), I would have a hard time choosing between a text editor and the terminal.&lt;/p&gt;
+
+</summary>
+  </entry>
+  <entry>
     <id>tag:futuresimple.github.com,2012-02-24:/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/</id>
     <title type="html">Gracefully exiting from console programs in Ruby</title>
-    <published>2012-02-24T11:00:00Z</published>
-    <updated>2012-02-24T11:00:00Z</updated>
+    <published>2012-02-24T12:00:00Z</published>
+    <updated>2012-02-24T12:00:00Z</updated>
     <link rel="alternate" href="http://futuresimple.github.com/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/"/>
     <content type="html">&lt;p&gt;Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You’d love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.&lt;/p&gt;
 
@@ -84,6 +299,104 @@ some_collection.each &lt;span class="keyword"&gt;do&lt;/span&gt; |item|
     <summary type="html">&lt;p&gt;Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You’d love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.&lt;/p&gt;
 
 &lt;p&gt;You could handle the &lt;code&gt;Interrupt&lt;/code&gt; exception or add some conditions. But how about a cleaner and reusable way?&lt;/p&gt;
+
+</summary>
+  </entry>
+  <entry>
+    <id>tag:futuresimple.github.com,2012-02-24:/posts/2012-02-24-building-this-blog/</id>
+    <title type="html">Building this blog</title>
+    <published>2012-02-24T11:00:00Z</published>
+    <updated>2012-02-24T11:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-02-24-building-this-blog/"/>
+    <content type="html">&lt;p&gt;Remember the classic “build a blog in 10 minutes” Rails tutorial? Back then, it blew our minds. Nowadays parts of
+&lt;em&gt;the Web&lt;/em&gt; are moving towards static content. Plain old &lt;abbr title="Hyper-Text Markup Language"&gt;HTML&lt;/abbr&gt; with
+&lt;abbr title="Cascading Style Sheets"&gt;CSS&lt;/abbr&gt; suit the needs of many, many people. Being bulletproof, easy and almost free,
+this combination has many advantages over complicated, backend-driven sites.&lt;/p&gt;
+
+&lt;p&gt;This blog is an example of such a static site, take a look how it was created. You can certainly set it up in 10 minutes
+(the design doesn’t count, right?).&lt;/p&gt;
+
+
+
+&lt;p&gt;We came up with the idea of a blog couple of days ago. As programmers we were excited to code it ourselves, that’s why we
+didn’t use an online blogging engine like &lt;a href="http://www.tumblr.com/"&gt;tumblr&lt;/a&gt; or &lt;a href="http://wordpress.com"&gt;wordpress.com&lt;/a&gt;.
+Instead we wanted to make it a static site with a JavaScript commenting system. We were browsing through Ruby–powered
+generators as it is our favourite language. There were plenty of possibilities on
+&lt;a href="https://www.ruby-toolbox.com/categories/static_website_generation"&gt;ruby-toolbox.com&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;We already had some experience with &lt;a href="http://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;, but it is too simple in our opinion. It suits GitHub
+pages well, but we wanted to have something more powerful.&lt;/li&gt;
+  &lt;li&gt;I tried &lt;a href="http://middlemanapp.com/"&gt;Middleman&lt;/a&gt; once, but it failed somewhere between encoding and
+template–loading.&lt;/li&gt;
+  &lt;li&gt;
+&lt;a href="https://twitter.com/marcinbunsch"&gt;@marcinbunsch&lt;/a&gt; had some experience with &lt;a href="http://stasis.me/"&gt;Stasis&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;I was working with &lt;a href="http://nanoc.stoneship.org/"&gt;nanoc&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;We gave nanoc a try. It was my call, I did a lot of stuff with it and felt it is quite flexible which was one of our
+requirements.&lt;/p&gt;
+
+&lt;p&gt;From now on, there are some default steps every Ruby developer does when starting a new project: first &lt;code&gt;git init&lt;/code&gt; the
+repository, then do some &lt;code&gt;bundle&lt;/code&gt;ing and finally don’t forget to &lt;code&gt;rvm&lt;/code&gt; all this. The latest Ruby &lt;code&gt;1.9.3-p125&lt;/code&gt; was already
+out when we started this so why not use it?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://twitter.github.com/bootstrap/"&gt;Bootstrap project&lt;/a&gt; lays out the blog for us. It’s amazing how these guys got it
+all figured out. Just link the stylesheets in your site, assign a class to a list and boom - a fancy menu appears. Also
+the naming convention forces you to stick to it, you don’t have to come up with class names, just override the existing
+ones and you’re good to go.&lt;/p&gt;
+
+&lt;p&gt;Creating a blog itself was quite easy. Nanoc tries to keep it in two simple steps: first compile, then route. It means
+that first it takes all the files, finds a compilation rule which matches every file and processes it. Then the file is
+routed, which basically means it is assigned a path. Everything is configured within &lt;code&gt;Rules&lt;/code&gt; file. This is how a simple
+&lt;code&gt;Rules&lt;/code&gt; file might look:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-ruby"&gt;compile &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;*&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+  &lt;span class="keyword"&gt;if&lt;/span&gt; item.binary?
+    &lt;span class="comment"&gt;# don’t filter binary items&lt;/span&gt;
+  &lt;span class="keyword"&gt;else&lt;/span&gt;
+    filter &lt;span class="symbol"&gt;:haml&lt;/span&gt;
+    layout &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;default.html&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+route &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;*&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+  &lt;span class="keyword"&gt;if&lt;/span&gt; item.binary?
+    &lt;span class="comment"&gt;# Write item with identifier /foo/ to /foo.ext&lt;/span&gt;
+    item.identifier.chop + &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;.&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; + item[&lt;span class="symbol"&gt;:extension&lt;/span&gt;]
+  &lt;span class="keyword"&gt;else&lt;/span&gt;
+    &lt;span class="comment"&gt;# write item with identifier /site/ to /site/index.html&lt;/span&gt;
+    item.identifier + &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;index.html&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We fought a little bit with files with the same name but different extensions. We like naming files with their original
+extensions and then adding the extensions of preprocessor which is used to generate them, for example &lt;code&gt;index.html.haml&lt;/code&gt;.
+Nanoc treats skips all extensions by default, which generates errors for &lt;code&gt;index.html.haml&lt;/code&gt; and &lt;code&gt;index.xml.haml&lt;/code&gt;. We had
+to tweak &lt;code&gt;config.yml&lt;/code&gt; to skip only last extension: &lt;code&gt;allow_periods_in_identifiers: true&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Paginating articles is described in &lt;a href="http://nanoc.stoneship.org/docs/6-guides/#paginating-articles"&gt;one of the official guides&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;One disadvantage of static sites is that… they’re static, so you cannot have comments on your blog. Or can you?
+&lt;a href="http://disqus.com/"&gt;Disqus&lt;/a&gt; provides a neat solution to this problem allowing you to have comments by using JavaScript.
+They are actually a production-ready solution, already providing the functionality to multiple sites. Setting up a blog
+requires two things: posting comments and displaying number of comments on index page under each entry. Simple JavaScript
+code and HTML tweaking:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-html"&gt;&lt;span class="tag"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="attribute-name"&gt;href&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;/your/article#disqus_thread&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;
+   &lt;span class="attribute-name"&gt;data-disqus-identifier&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;unique-disqus-identifier&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;Comments&lt;span class="tag"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Important stuff: the &lt;code&gt;#disqus_thread&lt;/code&gt; anchor at the end of &lt;code&gt;href&lt;/code&gt; and &lt;code&gt;data-disqus-identifier&lt;/code&gt; which you should provide
+to uniquely identify your articles across the whole blog.&lt;/p&gt;
+
+&lt;p&gt;You can see all the work &lt;a href="https://github.com/futuresimple/futuresimple.github.com"&gt;on our github page&lt;/a&gt;. It’s amazing how
+easy it is to create such a blog. Everything you need is free out there, waiting for you to use it. Thank you, Open Source!&lt;/p&gt;</content>
+    <summary type="html">&lt;p&gt;Remember the classic “build a blog in 10 minutes” Rails tutorial? Back then, it blew our minds. Nowadays parts of
+&lt;em&gt;the Web&lt;/em&gt; are moving towards static content. Plain old &lt;abbr title="Hyper-Text Markup Language"&gt;HTML&lt;/abbr&gt; with
+&lt;abbr title="Cascading Style Sheets"&gt;CSS&lt;/abbr&gt; suit the needs of many, many people. Being bulletproof, easy and almost free,
+this combination has many advantages over complicated, backend-driven sites.&lt;/p&gt;
+
+&lt;p&gt;This blog is an example of such a static site, take a look how it was created. You can certainly set it up in 10 minutes
+(the design doesn’t count, right?).&lt;/p&gt;
 
 </summary>
   </entry>

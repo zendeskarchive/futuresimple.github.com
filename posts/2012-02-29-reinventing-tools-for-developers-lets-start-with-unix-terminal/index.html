@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8'>
-<title>Gracefully exiting from console programs in Ruby | Future Simple Lab</title>
+<title>Reinventing tools for developers, let's start with unix terminal | Future Simple Lab</title>
 <link href='/css/bootstrap.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='/css/bootstrap-responsive.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='/css/style.css' media='screen' rel='stylesheet' type='text/css' />
@@ -49,93 +49,85 @@
 <div class='clear'></div>
 <div class='row'>
 <div class='span8'>
-<h2 class='post-title'>Gracefully exiting from console programs in Ruby</h2>
+<h2 class='post-title'>Reinventing tools for developers, let's start with unix terminal</h2>
 <div class='post-meta'>
-<div class='author'>Marcin Bunsch @ 2012-02-24</div>
+<div class='author'>Paweł Niżnik @ 2012-02-29</div>
 <div class='facebook-share'>
 <a name='fb_share'></a>
 <script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script>
 </div>
 <div class='twitter-button'>
-<a class='twitter-share-button' data-text='Gracefully exiting from console programs in Ruby' data-url='http://futuresimple.github.com//posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
+<a class='twitter-share-button' data-text="Reinventing tools for developers, let's start with unix terminal" data-url='http://futuresimple.github.com//posts/2012-02-29-reinventing-tools-for-developers-lets-start-with-unix-terminal/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
 </div>
 <div class='clear'></div>
 <article>
-<p>Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You’d love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.</p>
-
-<p>You could handle the <code>Interrupt</code> exception or add some conditions. But how about a cleaner and reusable way?</p>
+<p>A big chunk of our day-to-day work concentrates around unix terminal. We all know the usual flow, opening our loved text editors, running scripts, consoles, profilers, running tests, ack’ing, logging into servers, shipping code to production etc. Actually if I were about to pick the most important development tool (except for the programming language), I would have a hard time choosing between a text editor and the terminal.</p>
 
 
 
-<p>No problem - you can trap signals, which means we can trap the ctrl-c (which is an INT signal). Servers, like unicorn, use signals for graceful restarts.</p>
+<p>I feel that working with the terminal is not really that efficient. We do the same stuff over and over again; we repeat ourselves:</p>
 
-<p>How it works - you can use the <a href="http://www.ruby-doc.org/core-1.9.3/Kernel.html#method-i-trap">trap method</a> which accepts the name of the signal and a block to which replaces the system’s default handler.</p>
+<pre><code class="language-shell">$ cd;
+$ cd ~/;
+$ git status;
+$ rm -rf / (just kidding);
+$ vim;
+$ mate .;</code></pre>
 
-<pre><code class="language-ruby">trap <span class="string"><span class="delimiter">"</span><span class="content">INT</span><span class="delimiter">"</span></span> {
-  <span class="comment"># You can do your own stuff here</span>
-  <span class="comment">#</span>
-  <span class="comment"># Remember, the signal dies here - if you don't</span>
-  <span class="comment"># raise an exception or exit the process, nothing will happen</span>
-}</code></pre>
+<p>… and so on - every single day.</p>
 
-<p>Here’s a simple example where I wrapped this pattern in a singleton class:</p>
+<p>We write code in text editors but when we want to do something else we need to switch context to terminal - how much time is wasted on continuous context change and ‘miss clicking’ terminal / text editor / other icons?</p>
 
-<pre><code class="language-ruby">require <span class="string"><span class="delimiter">"</span><span class="content">singleton</span><span class="delimiter">"</span></span>
+<p>We operate on data in plain text mode - not a friendly nor quick way of visualizing data.</p>
 
-<span class="keyword">class</span> <span class="class">GracefulQuit</span>
-  include <span class="constant">Singleton</span>
+<p>Finally, there is no easy way to edit text that we enter in the terminal. Going to the end/beginning of the line depending which place it’s closer to the point you want to edit, and then moving your cursor over one character at a time to get to the destination - sounds familiar? I was so frustrated with that, that I made it a habit to enter all the commands in text editor then copy &amp; paste to the terminal window!</p>
 
-  attr_accessor <span class="symbol">:breaker</span>
+<p>Recently, I realized that the terminal that we all use to build the most sophisticated products, cutting edge technologies (AWS, Facebook, Google, even Airplanes) was invented a long time ago. Is it already 20 years old, or even more? How crazy is that?</p>
 
-  <span class="keyword">def</span> <span class="function">initialize</span>
-    <span class="predefined-constant">self</span>.breaker = <span class="predefined-constant">false</span>
-  <span class="keyword">end</span>
+<p>Since then so many things changed in our world, we learned so much in the context of human computer interaction, we came up with user experience, we design easy, simple products (iPhone, and recently the Windows Phone popped out, which seems to be amazingly designed), yet the terminal remained the same. How productive and effective could we be if the terminal was also up to date?</p>
 
-  <span class="keyword">def</span> <span class="predefined-constant">self</span>.<span class="function">enable</span>
-    trap(<span class="string"><span class="delimiter">'</span><span class="content">INT</span><span class="delimiter">'</span></span>) {
-      <span class="keyword">yield</span> <span class="keyword">if</span> block_given?
-      <span class="predefined-constant">self</span>.instance.breaker = <span class="predefined-constant">true</span>
-    }
-  <span class="keyword">end</span>
+<p><strong>No more ranting! What can be done about it?</strong></p>
 
-  <span class="keyword">def</span> <span class="predefined-constant">self</span>.<span class="function">check</span>(message = <span class="string"><span class="delimiter">"</span><span class="content">Quitting</span><span class="delimiter">"</span></span>)
-    <span class="keyword">if</span> <span class="predefined-constant">self</span>.instance.breaker
-      <span class="keyword">yield</span> <span class="keyword">if</span> block_given?
-      puts message
-      exit
-    <span class="keyword">end</span>
-  <span class="keyword">end</span>
+<p>I think that there are some key assumptions that terminal needs to meet in present times:</p>
 
-<span class="keyword">end</span></code></pre>
+<ul>
+<li>
+    <p>Intelligent automation - no more repetition;</p>
+  </li>
+  <li>
+    <p>Seamless integration into working environment - no need for a context switch;</p>
+  </li>
+  <li>
+    <p>Friendly way to visualize data;</p>
+  </li>
+  <li>
+    <p>Ease of text edition;</p>
+  </li>
+</ul><p>I believe that this will change our lives - for better obviously!</p>
 
-<p>So now how to use it? First, enable it before the loop using <code>GracefulQuit.enable</code> and then somewhere within the loop call <code>GracefulQuit.check</code>. Like in this example:</p>
+<p>I played around for a while with Automator on Mac and managed to bring shell &amp; programming languages runtimes to a text editor. You can find the output of my work -&gt; <a href="http://cziko.github.com/yoke">http://cziko.github.com/yoke</a>.</p>
 
-<pre><code class="language-ruby"><span class="constant">GracefulQuit</span>.enable
-some_collection.each <span class="keyword">do</span> |item|
-  heavy_duty_work_on item
-  <span class="constant">GracefulQuit</span>.check
-<span class="keyword">end</span></code></pre>
+<p>It’s neat; you simply can use all shell commands and for instance ruby in a text editor. You need to install both extensions (ruby and a shell one) and hot key both of them. Then you just select text in you editor of choice, press adequate shortcut and magic happens. Recently I even managed to make it stateful - meaning that there is a shared memory in between the commands execution. That can be used to store e.g. a current working directory. I use it on a daily basis, especially for testing parts of my ruby code.</p>
 
-<p>And that’s it - when you press ctrl-c, an exception will not be raised but the program will quit when you want it to. You can even add your own handler for this event.</p>
+<p><strong>I hope more people will identify the terminal problem. Maybe some good designers will pick it up too and we can kill it 2gether!</strong></p>
 
-<pre><code class="language-ruby"><span class="constant">GracefulQuit</span>.enable
-some_collection.each <span class="keyword">do</span> |item|
-  heavy_duty_work_on item
-  <span class="constant">GracefulQuit</span>.check <span class="keyword">do</span>
-    cleanup
-  <span class="keyword">end</span>
-<span class="keyword">end</span></code></pre>
+<p>Related interesting stuff:</p>
 
-<p>Of course, this doesn’t solve other problems, like picking up when you left off, but allows to have better control over console programs or Rake tasks.</p>
+<ol>
+<li>
+<a href="http://lubutu.com/idea/ivo">Ivo - Terminal, reimagined</a>;</li>
+  <li>
+<a href="https://github.com/unconed/TermKit">TermKit</a>;</li>
+</ol><p>If you have any questions or you are enthusiastic about the idea feel free to drop a comment below!</p>
 </article>
 <div id='disqus_thread'></div>
 <script type='text/javascript'>
 var disqus_shortname = 'futuresimplelab'; // required: replace example with your forum shortname
-var disqus_identifier = 'gracefully-exiting-from-console-programs-in-ruby';
-var disqus_url = 'http://futuresimple.github.com/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/';
+var disqus_identifier = 'reinventing-tools-for-developers-lets-start-with-unix-terminal';
+var disqus_url = 'http://futuresimple.github.com/posts/2012-02-29-reinventing-tools-for-developers-lets-start-with-unix-terminal/';
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

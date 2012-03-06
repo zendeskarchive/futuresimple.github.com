@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8'>
-<title>Gracefully exiting from console programs in Ruby | Future Simple Lab</title>
+<title>Building this blog | Future Simple Lab</title>
 <link href='/css/bootstrap.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='/css/bootstrap-responsive.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='/css/style.css' media='screen' rel='stylesheet' type='text/css' />
@@ -49,93 +49,109 @@
 <div class='clear'></div>
 <div class='row'>
 <div class='span8'>
-<h2 class='post-title'>Gracefully exiting from console programs in Ruby</h2>
+<h2 class='post-title'>Building this blog</h2>
 <div class='post-meta'>
-<div class='author'>Marcin Bunsch @ 2012-02-24</div>
+<div class='author'>Michał Bugno @ 2012-02-24</div>
 <div class='facebook-share'>
 <a name='fb_share'></a>
 <script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script>
 </div>
 <div class='twitter-button'>
-<a class='twitter-share-button' data-text='Gracefully exiting from console programs in Ruby' data-url='http://futuresimple.github.com//posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
+<a class='twitter-share-button' data-text='Building this blog' data-url='http://futuresimple.github.com//posts/2012-02-24-building-this-blog/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
 </div>
 <div class='clear'></div>
 <article>
-<p>Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You’d love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.</p>
+<p>Remember the classic “build a blog in 10 minutes” Rails tutorial? Back then, it blew our minds. Nowadays parts of
+<em>the Web</em> are moving towards static content. Plain old <abbr title="Hyper-Text Markup Language">HTML</abbr> with
+<abbr title="Cascading Style Sheets">CSS</abbr> suit the needs of many, many people. Being bulletproof, easy and almost free,
+this combination has many advantages over complicated, backend-driven sites.</p>
 
-<p>You could handle the <code>Interrupt</code> exception or add some conditions. But how about a cleaner and reusable way?</p>
+<p>This blog is an example of such a static site, take a look how it was created. You can certainly set it up in 10 minutes
+(the design doesn’t count, right?).</p>
 
 
 
-<p>No problem - you can trap signals, which means we can trap the ctrl-c (which is an INT signal). Servers, like unicorn, use signals for graceful restarts.</p>
+<p>We came up with the idea of a blog couple of days ago. As programmers we were excited to code it ourselves, that’s why we
+didn’t use an online blogging engine like <a href="http://www.tumblr.com/">tumblr</a> or <a href="http://wordpress.com">wordpress.com</a>.
+Instead we wanted to make it a static site with a JavaScript commenting system. We were browsing through Ruby–powered
+generators as it is our favourite language. There were plenty of possibilities on
+<a href="https://www.ruby-toolbox.com/categories/static_website_generation">ruby-toolbox.com</a>:</p>
 
-<p>How it works - you can use the <a href="http://www.ruby-doc.org/core-1.9.3/Kernel.html#method-i-trap">trap method</a> which accepts the name of the signal and a block to which replaces the system’s default handler.</p>
+<ol>
+<li>We already had some experience with <a href="http://jekyllrb.com/">Jekyll</a>, but it is too simple in our opinion. It suits GitHub
+pages well, but we wanted to have something more powerful.</li>
+  <li>I tried <a href="http://middlemanapp.com/">Middleman</a> once, but it failed somewhere between encoding and
+template–loading.</li>
+  <li>
+<a href="https://twitter.com/marcinbunsch">@marcinbunsch</a> had some experience with <a href="http://stasis.me/">Stasis</a>.</li>
+  <li>I was working with <a href="http://nanoc.stoneship.org/">nanoc</a>
+</li>
+</ol><p>We gave nanoc a try. It was my call, I did a lot of stuff with it and felt it is quite flexible which was one of our
+requirements.</p>
 
-<pre><code class="language-ruby">trap <span class="string"><span class="delimiter">"</span><span class="content">INT</span><span class="delimiter">"</span></span> {
-  <span class="comment"># You can do your own stuff here</span>
-  <span class="comment">#</span>
-  <span class="comment"># Remember, the signal dies here - if you don't</span>
-  <span class="comment"># raise an exception or exit the process, nothing will happen</span>
-}</code></pre>
+<p>From now on, there are some default steps every Ruby developer does when starting a new project: first <code>git init</code> the
+repository, then do some <code>bundle</code>ing and finally don’t forget to <code>rvm</code> all this. The latest Ruby <code>1.9.3-p125</code> was already
+out when we started this so why not use it?</p>
 
-<p>Here’s a simple example where I wrapped this pattern in a singleton class:</p>
+<p><a href="http://twitter.github.com/bootstrap/">Bootstrap project</a> lays out the blog for us. It’s amazing how these guys got it
+all figured out. Just link the stylesheets in your site, assign a class to a list and boom - a fancy menu appears. Also
+the naming convention forces you to stick to it, you don’t have to come up with class names, just override the existing
+ones and you’re good to go.</p>
 
-<pre><code class="language-ruby">require <span class="string"><span class="delimiter">"</span><span class="content">singleton</span><span class="delimiter">"</span></span>
+<p>Creating a blog itself was quite easy. Nanoc tries to keep it in two simple steps: first compile, then route. It means
+that first it takes all the files, finds a compilation rule which matches every file and processes it. Then the file is
+routed, which basically means it is assigned a path. Everything is configured within <code>Rules</code> file. This is how a simple
+<code>Rules</code> file might look:</p>
 
-<span class="keyword">class</span> <span class="class">GracefulQuit</span>
-  include <span class="constant">Singleton</span>
-
-  attr_accessor <span class="symbol">:breaker</span>
-
-  <span class="keyword">def</span> <span class="function">initialize</span>
-    <span class="predefined-constant">self</span>.breaker = <span class="predefined-constant">false</span>
+<pre><code class="language-ruby">compile <span class="string"><span class="delimiter">'</span><span class="content">*</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+  <span class="keyword">if</span> item.binary?
+    <span class="comment"># don’t filter binary items</span>
+  <span class="keyword">else</span>
+    filter <span class="symbol">:haml</span>
+    layout <span class="string"><span class="delimiter">'</span><span class="content">default.html</span><span class="delimiter">'</span></span>
   <span class="keyword">end</span>
+<span class="keyword">end</span>
 
-  <span class="keyword">def</span> <span class="predefined-constant">self</span>.<span class="function">enable</span>
-    trap(<span class="string"><span class="delimiter">'</span><span class="content">INT</span><span class="delimiter">'</span></span>) {
-      <span class="keyword">yield</span> <span class="keyword">if</span> block_given?
-      <span class="predefined-constant">self</span>.instance.breaker = <span class="predefined-constant">true</span>
-    }
-  <span class="keyword">end</span>
-
-  <span class="keyword">def</span> <span class="predefined-constant">self</span>.<span class="function">check</span>(message = <span class="string"><span class="delimiter">"</span><span class="content">Quitting</span><span class="delimiter">"</span></span>)
-    <span class="keyword">if</span> <span class="predefined-constant">self</span>.instance.breaker
-      <span class="keyword">yield</span> <span class="keyword">if</span> block_given?
-      puts message
-      exit
-    <span class="keyword">end</span>
-  <span class="keyword">end</span>
-
-<span class="keyword">end</span></code></pre>
-
-<p>So now how to use it? First, enable it before the loop using <code>GracefulQuit.enable</code> and then somewhere within the loop call <code>GracefulQuit.check</code>. Like in this example:</p>
-
-<pre><code class="language-ruby"><span class="constant">GracefulQuit</span>.enable
-some_collection.each <span class="keyword">do</span> |item|
-  heavy_duty_work_on item
-  <span class="constant">GracefulQuit</span>.check
-<span class="keyword">end</span></code></pre>
-
-<p>And that’s it - when you press ctrl-c, an exception will not be raised but the program will quit when you want it to. You can even add your own handler for this event.</p>
-
-<pre><code class="language-ruby"><span class="constant">GracefulQuit</span>.enable
-some_collection.each <span class="keyword">do</span> |item|
-  heavy_duty_work_on item
-  <span class="constant">GracefulQuit</span>.check <span class="keyword">do</span>
-    cleanup
+route <span class="string"><span class="delimiter">'</span><span class="content">*</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+  <span class="keyword">if</span> item.binary?
+    <span class="comment"># Write item with identifier /foo/ to /foo.ext</span>
+    item.identifier.chop + <span class="string"><span class="delimiter">'</span><span class="content">.</span><span class="delimiter">'</span></span> + item[<span class="symbol">:extension</span>]
+  <span class="keyword">else</span>
+    <span class="comment"># write item with identifier /site/ to /site/index.html</span>
+    item.identifier + <span class="string"><span class="delimiter">'</span><span class="content">index.html</span><span class="delimiter">'</span></span>
   <span class="keyword">end</span>
 <span class="keyword">end</span></code></pre>
 
-<p>Of course, this doesn’t solve other problems, like picking up when you left off, but allows to have better control over console programs or Rake tasks.</p>
+<p>We fought a little bit with files with the same name but different extensions. We like naming files with their original
+extensions and then adding the extensions of preprocessor which is used to generate them, for example <code>index.html.haml</code>.
+Nanoc treats skips all extensions by default, which generates errors for <code>index.html.haml</code> and <code>index.xml.haml</code>. We had
+to tweak <code>config.yml</code> to skip only last extension: <code>allow_periods_in_identifiers: true</code>.</p>
+
+<p>Paginating articles is described in <a href="http://nanoc.stoneship.org/docs/6-guides/#paginating-articles">one of the official guides</a>.</p>
+
+<p>One disadvantage of static sites is that… they’re static, so you cannot have comments on your blog. Or can you?
+<a href="http://disqus.com/">Disqus</a> provides a neat solution to this problem allowing you to have comments by using JavaScript.
+They are actually a production-ready solution, already providing the functionality to multiple sites. Setting up a blog
+requires two things: posting comments and displaying number of comments on index page under each entry. Simple JavaScript
+code and HTML tweaking:</p>
+
+<pre><code class="language-html"><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">/your/article#disqus_thread</span><span class="delimiter">"</span></span>
+   <span class="attribute-name">data-disqus-identifier</span>=<span class="string"><span class="delimiter">"</span><span class="content">unique-disqus-identifier</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>Comments<span class="tag">&lt;/a&gt;</span></code></pre>
+
+<p>Important stuff: the <code>#disqus_thread</code> anchor at the end of <code>href</code> and <code>data-disqus-identifier</code> which you should provide
+to uniquely identify your articles across the whole blog.</p>
+
+<p>You can see all the work <a href="https://github.com/futuresimple/futuresimple.github.com">on our github page</a>. It’s amazing how
+easy it is to create such a blog. Everything you need is free out there, waiting for you to use it. Thank you, Open Source!</p>
 </article>
 <div id='disqus_thread'></div>
 <script type='text/javascript'>
 var disqus_shortname = 'futuresimplelab'; // required: replace example with your forum shortname
-var disqus_identifier = 'gracefully-exiting-from-console-programs-in-ruby';
-var disqus_url = 'http://futuresimple.github.com/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/';
+var disqus_identifier = 'building-this-blog';
+var disqus_url = 'http://futuresimple.github.com/posts/2012-02-24-building-this-blog/';
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
