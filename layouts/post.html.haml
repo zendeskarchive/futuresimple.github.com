@@ -17,7 +17,7 @@
               %a{:name => "fb_share"}
               %script{:src => "http://static.ak.fbcdn.net/connect.php/js/FB.Share", :type => "text/javascript"}
             %div.twitter-button
-              = render "_twitter_button.html", :url => @config[:base_url] + "/" + @item.path, :title => @item[:title]
+              = render "_twitter_button.html", :url => @config[:base_url] + @item.path, :title => @item[:title]
               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           .clear
           %article
