@@ -1,9 +1,9 @@
 ---
 kind: "article"
 created_at: 2012-02-24 11:00:00
-title: "Building this blog"
+title: "Building a blog using nanoc"
 author: "Michał Bugno"
-identifier: "building-this-blog"
+identifier: "building-a-blog-using-nanoc"
 ---
 
 Remember the classic "build a blog in 10 minutes" Rails tutorial? Back then, it blew our minds. Nowadays parts of
