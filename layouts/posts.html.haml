@@ -19,7 +19,7 @@
               .post-meta
                 %div.author= "#{article[:author]} @ #{date_display(article[:created_at])}"
                 %div.facebook-share
-                  %a{:name => "fb_share"}
+                  %a{:name => "fb_share", :share_url => @config[:base_url] + article.path}
                   %script{:src => "http://static.ak.fbcdn.net/connect.php/js/FB.Share", :type => "text/javascript"}
                 %div.twitter-button
                   = render "_twitter_button.html", :url => @config[:base_url] + article.path, :title => article[:title]
