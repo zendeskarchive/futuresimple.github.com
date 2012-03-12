@@ -56,5 +56,6 @@ Related interesting stuff:
 
 1. [Ivo - Terminal, reimagined](http://lubutu.com/idea/ivo);
 2. [TermKit](https://github.com/unconed/TermKit);
+3. [Bret Victor - Inventing on Principle](http://vimeo.com/36579366) /thanks czzarr; 
 
 If you have any questions or you are enthusiastic about the idea feel free to drop a comment below!
