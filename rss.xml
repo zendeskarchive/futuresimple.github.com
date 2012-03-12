@@ -302,6 +302,8 @@ $ mate .;&lt;/code&gt;&lt;/pre&gt;
 &lt;a href="http://lubutu.com/idea/ivo"&gt;Ivo - Terminal, reimagined&lt;/a&gt;;&lt;/li&gt;
   &lt;li&gt;
 &lt;a href="https://github.com/unconed/TermKit"&gt;TermKit&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;
+&lt;a href="http://vimeo.com/36579366"&gt;Bret Victor - Inventing on Principle&lt;/a&gt; /thanks czzarr; &lt;/li&gt;
 &lt;/ol&gt;&lt;p&gt;If you have any questions or you are enthusiastic about the idea feel free to drop a comment below!&lt;/p&gt;</content>
     <summary type="html">&lt;p&gt;A big chunk of our day-to-day work concentrates around unix terminal. We all know the usual flow, opening our loved text editors, running scripts, consoles, profilers, running tests, ack’ing, logging into servers, shipping code to production etc. Actually if I were about to pick the most important development tool (except for the programming language), I would have a hard time choosing between a text editor and the terminal.&lt;/p&gt;
 
