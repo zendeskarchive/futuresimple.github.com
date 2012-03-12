@@ -17,11 +17,11 @@ to share our experiences.
 
 EXCERPT
 
-We left Krakow on Friday evening and arrived just in time for the before
+We left Kraków on Friday evening and arrived just in time for the before
 party.  We met some amazing developers, i.e. [Nick
 Sutterer](http://twitter.com/apotonick), [Steve
 Klabnik](http://twitter.com/steveklabnik). After a few beers we went
-home to get ready for the first day of talks.
+home to get ready for the first day of the conference.
 
 <center>
   <img src="/images/wroclaw.jpg">
@@ -54,8 +54,8 @@ soon as we get a chance, we'll consider adopting.
 </center>
 
 The next day we woke up to a talk on improving yourself as a programmer
-by [Michał Taszycki](http://twitter.com/mehowte). We can only recommend
-you to skim through his
+by [Michał Taszycki](http://twitter.com/mehowte). We encourage you to
+skim through his
 [slides](http://speakerdeck.com/u/mehowte/p/programming-workout) and
 register yourself at [Programming
 Workout](http://programmingworkout.com). Another great talk was
