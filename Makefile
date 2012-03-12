@@ -8,6 +8,6 @@ release:
 	git pull origin master
 	cp -r output/* .
 	git add .
-	git ci -m "Updating blog"
+	git commit -m "Updating blog"
 	git push origin master
 	git checkout development
