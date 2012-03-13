@@ -24,9 +24,9 @@ Klabnik](http://twitter.com/steveklabnik). After a few beers we went
 home to get ready for the first day of the conference.
 
 <center>
-  <img src="/images/wroclaw.jpg">
+  <img src="/images/wroclaw.png">
   <br/>
-  <span class="note">Wrocław by night - by <a href="http://commons.wikimedia.org/wiki/User:Janericloebe">Janericloebe</a></span>
+  <span class="note">Wrocław - by <a href="http://twitter.com/amylg">amylg</a></span>
 </center>
 
 On Saturday Nick Sutterer gave a relaxed talk about respect in the open
