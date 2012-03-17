@@ -27,10 +27,10 @@
               .clear
               = article_excerpt(article.compiled_content)
               %a{href: article.path + "#disqus_thread", "data-disqus-identifier" => article[:identifier]} Comments
-            - if @item[:prev]
-              %a{href: @item[:prev].path}= "Prev page"
-            - if @item[:next]
-              %a{href: @item[:next].path}= "Next page"
+          - if @item[:prev]
+            %a{href: @item[:prev].path}= "Prev page"
+          - if @item[:next]
+            %a{href: @item[:next].path}= "Next page"
         .span4
           = render "_twitter.html"
           = render "_github.html"
