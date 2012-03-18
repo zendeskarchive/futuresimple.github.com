@@ -1,6 +1,7 @@
 body {
   background: url("/images/bg-noise.jpg") repeat;
-  color: #666666; }
+  color: #666666;
+  padding-bottom: 30px; }
 
 h1, h2, h3 {
   color: #666666;
@@ -111,6 +112,10 @@ article p, article li {
     width: 90% !important; } }
 h2.post-title {
   color: #0088cc; }
+
+h3 {
+  color: #444444;
+  padding-bottom: 9px; }
 
 .bottom-space {
   padding-bottom: 30px; }

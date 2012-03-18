@@ -2,13 +2,69 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://futuresimple.github.com/</id>
   <title>Future Simple Lab</title>
-  <updated>2012-03-12T17:00:00Z</updated>
+  <updated>2012-03-16T11:00:00Z</updated>
   <link rel="alternate" href="http://futuresimple.github.com/"/>
   <link rel="self" href="http://futuresimple.github.com/rss.xml"/>
   <author>
     <name>Future Simple Lab</name>
     <uri>Future Simple Lab</uri>
   </author>
+  <entry>
+    <id>tag:futuresimple.github.com,2012-03-16:/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/</id>
+    <title type="html">Is it time to fold on iOS4 and go all-in on iOS5?</title>
+    <published>2012-03-16T11:00:00Z</published>
+    <updated>2012-03-16T11:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/"/>
+    <content type="html">&lt;p&gt;Most iOS developers occasionally ask themselves whether it’s time to ditch iOS(n-1) and only support the latest and greatest iOS(n). This seems to be a common dilemma since Apple releases on average one major version of its mobile operating system per year.&lt;/p&gt;
+
+
+
+&lt;h3 id="why-would-you-want-to-stop-supporting-old-ios-versions-anyway"&gt;Why would you want to stop supporting old iOS versions anyway?&lt;/h3&gt;
+
+&lt;p&gt;First of all - new language features: &lt;a href="https://developer.apple.com/library/ios/#documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html"&gt;&lt;em&gt;blocks&lt;/em&gt;&lt;/a&gt; in iOS4 or &lt;a href="http://clang.llvm.org/docs/AutomaticReferenceCounting.html"&gt;&lt;em&gt;Automatic Reference Counting&lt;/em&gt;&lt;/a&gt; in iOS5 (ARC works under iOS4 but it’s crippled there). Objective-C evolves rapidly, but sometimes a new runtime is required to utilize its the latest features.&lt;/p&gt;
+
+&lt;p&gt;Next up, new and updated APIs. Here are some cherry picks from iOS5:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;em&gt;iCloud&lt;/em&gt; - a huge thing, but do you have any apps on your phone that actually utilize it (except for Apple’s apps)? Probably not, or not many, that’s because it would be difficult (if not impossible in some cases) to support iOS4 and still build an app on top of the iCloud service.&lt;/li&gt;
+  &lt;li&gt;
+&lt;em&gt;Core Image&lt;/em&gt; - a great framework known from OS X, did you know that you can do &lt;a href="http://maniacdev.com/2011/11/tutorial-easy-face-detection-with-core-image-in-ios-5/"&gt;face recognition&lt;/a&gt; with it? Great! Now do you want to enable it for iOS5 users only and make the iOS4 users suffer?&lt;/li&gt;
+  &lt;li&gt;then there are many improvements like a clean way to move a row in &lt;code&gt;UITableView&lt;/code&gt; in iOS5 with &lt;code&gt;-moveRowAtIndexPath:toIndexPath:&lt;/code&gt; (under iOS4 you would have to first remove and than add a row - more code and worse animation)&lt;/li&gt;
+  &lt;li&gt;also, there are seemingly small things that actually matter &lt;em&gt;a lot&lt;/em&gt;, ex.: &lt;code&gt;-addChildViewController:&lt;/code&gt; found in &lt;code&gt;UIViewController&lt;/code&gt;. It enables &lt;a href="https://developer.apple.com/videos/wwdc/2011/?id=102"&gt;UIViewController containment&lt;/a&gt; and finally cuts the need to &lt;a href="http://blog.carbonfive.com/2011/03/09/abusing-uiviewcontrollers/"&gt;abuse iOS view controllers&lt;/a&gt;. This is most useful on iPad, where the screen is big and it really makes sense to use multiple view controllers at once, but on the iPhone it also can be very handy. (Just look at the new Path/Facebook/Sparrow &lt;a href="https://github.com/edgecase/ECSlidingViewController"&gt;slide navigation interfaces&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Obviously the list could go on and on, but my conclusion is that using the new/improved stuff will save you time (both during development and later during maintenance) and make your apps better. On the other hand, supporting an old version of iOS and utilizing the new APIs at the same time is troublesome. Especially if you’re trying to replicate the new API features under the old system version. I’m not saying you shouldn’t do it, it’s a noble thing to do, I do it (sometimes :), but maybe it’s just high time to stop doing it for iOS4?&lt;/p&gt;
+
+&lt;h3 id="what-you-should-consider"&gt;What you should consider&lt;/h3&gt;
+
+&lt;h4 id="your-time"&gt;Your time&lt;/h4&gt;
+
+&lt;p&gt;Do you want to slave yourself to death by maintaining multiple sets of code that let you use the newest and greatest features while not breaking your app for users on old devices? Such an approach produces more less maintainable and more bug prone code. &lt;/p&gt;
+
+&lt;h4 id="your-apps-statistics"&gt;Your app’s statistics&lt;/h4&gt;
+
+&lt;p&gt;You should always look at your user-base and check &lt;a href="http://code.google.com/apis/analytics/docs/mobile/ios.html"&gt;how many iOS(n-1) users you have&lt;/a&gt;. It might be different than the market average. There is no good answer to what percentage is low enough to ditch an old iOS version. The big issue here: App Store keeps only the newest version of your app. Once an iOS(n-1) user removes your app after you go iOS(n)-only than he will not be able to reinstall. (Even if it’s a paid app!)&lt;/p&gt;
+
+&lt;h4 id="global-adoption-rate"&gt;Global adoption rate&lt;/h4&gt;
+
+&lt;p&gt;One of the great things about the iOS platform is that it has a very high adoption rate for new system versions, especially with Over The Air updates introduced in iOS5. Apple gives us about one new major iOS version per year. The infamous App Store review process can easily take up to two weeks, add to that another two weeks of delay in your development process (or more ;) and suddenly the statistics that you were trying to base your decision on are at least one month old! Well, like &lt;a href="http://en.wikipedia.org/wiki/Emmett_Brown"&gt;Emmet “Doc” Brown&lt;/a&gt; used to say… “You’ve got to think in four dimensions!”. I recently came across &lt;a href="http://pxldot.com/post/18754186750/ios-ebb-and-flow"&gt;a great article&lt;/a&gt; that will help you to estimate what the adoption rate could be in a few weeks. &lt;/p&gt;
+
+&lt;h4 id="how-many-people-are-you-going-to-abandon"&gt;How many people are you going to abandon?&lt;/h4&gt;
+
+&lt;p&gt;At the end of the day, the way I look at it, is how many users will be left with nothing if my app will go iOS(n)-only. These would be the users who are unable to upgrade to iOS(n) because of hardware limitations, for iOS5 it doesn’t seem to be a big number. Here’s why:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;all iPads can run iOS5,&lt;/li&gt;
+  &lt;li&gt;iPhones above 3G can run it,&lt;/li&gt;
+  &lt;li&gt;and finally iPods above 2nd generation will handle it as well.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;The system upgrade is free and painless, unless one have a jailbroken device, which nowadays is a popular tool of software piracy on iOS (thus developers shouldn’t care much about jailbroken devices). From my point of view the only problem here is that dropping support for old devices that can’t be upgraded to iOS5, might mean that they will end up in garbage (or hopefully rather at recycling centers). The key device here is iPhone 3G, which can’t run iOS5 and runs iOS4 slowly, but it’s almost 4 years old now and in the smartphone world it’s a long time, so it’s pretty much just dead anyway. Don’t get me wrong, I really care about the natural environment and would love to see Apple supporting its devices longer (without compromising on new features of course ;).&lt;/p&gt;
+
+&lt;h3 id="the-final-message"&gt;The final message&lt;/h3&gt;
+
+&lt;p&gt;It’s always a difficult decision whether it’s time to drop support for old hardware/software, but I think it’s high time to ditch iOS4! Lately, I wanted to install &lt;a href="https://www.mint.com/"&gt;Mint’s&lt;/a&gt; app on my iPad, and it turned out I had to update to iOS5 first, so I did. Gladly and finally! Also, it didn’t hurt ;) These guys (Mint devs) pushed me into doing it and I’m really grateful for that - iCloud synchronization works great on iPad which I didn’t use to sync much before! Fellow developers, let’s push the ecosystem forward and focus on innovation over legacy code!&lt;/p&gt;</content>
+    <summary type="html">&lt;p&gt;Most iOS developers occasionally ask themselves whether it’s time to ditch iOS(n-1) and only support the latest and greatest iOS(n). This seems to be a common dilemma since Apple releases on average one major version of its mobile operating system per year.&lt;/p&gt;
+
+</summary>
+  </entry>
   <entry>
     <id>tag:futuresimple.github.com,2012-03-12:/posts/2012-03-12-wroclove-rb-conference/</id>
     <title type="html">The wroc_love.rb Conference</title>
@@ -384,104 +440,6 @@ some_collection.each &lt;span class="keyword"&gt;do&lt;/span&gt; |item|
     <summary type="html">&lt;p&gt;Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You’d love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.&lt;/p&gt;
 
 &lt;p&gt;You could handle the &lt;code&gt;Interrupt&lt;/code&gt; exception or add some conditions. But how about a cleaner and reusable way?&lt;/p&gt;
-
-</summary>
-  </entry>
-  <entry>
-    <id>tag:futuresimple.github.com,2012-02-24:/posts/2012-02-24-building-a-blog-using-nanoc/</id>
-    <title type="html">Building a blog using nanoc</title>
-    <published>2012-02-24T11:00:00Z</published>
-    <updated>2012-02-24T11:00:00Z</updated>
-    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-02-24-building-a-blog-using-nanoc/"/>
-    <content type="html">&lt;p&gt;Remember the classic “build a blog in 10 minutes” Rails tutorial? Back then, it blew our minds. Nowadays parts of
-&lt;em&gt;the Web&lt;/em&gt; are moving towards static content. Plain old &lt;abbr title="Hyper-Text Markup Language"&gt;HTML&lt;/abbr&gt; with
-&lt;abbr title="Cascading Style Sheets"&gt;CSS&lt;/abbr&gt; suit the needs of many, many people. Being bulletproof, easy and almost free,
-this combination has many advantages over complicated, backend-driven sites.&lt;/p&gt;
-
-&lt;p&gt;This blog is an example of such a static site, take a look how it was created. You can certainly set it up in 10 minutes
-(the design doesn’t count, right?).&lt;/p&gt;
-
-
-
-&lt;p&gt;We came up with the idea of a blog couple of days ago. As programmers we were excited to code it ourselves, that’s why we
-didn’t use an online blogging engine like &lt;a href="http://www.tumblr.com/"&gt;tumblr&lt;/a&gt; or &lt;a href="http://wordpress.com"&gt;wordpress.com&lt;/a&gt;.
-Instead we wanted to make it a static site with a JavaScript commenting system. We were browsing through Ruby–powered
-generators as it is our favourite language. There were plenty of possibilities on
-&lt;a href="https://www.ruby-toolbox.com/categories/static_website_generation"&gt;ruby-toolbox.com&lt;/a&gt;:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;We already had some experience with &lt;a href="http://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;, but it is too simple in our opinion. It suits GitHub
-pages well, but we wanted to have something more powerful.&lt;/li&gt;
-  &lt;li&gt;I tried &lt;a href="http://middlemanapp.com/"&gt;Middleman&lt;/a&gt; once, but it failed somewhere between encoding and
-template–loading.&lt;/li&gt;
-  &lt;li&gt;
-&lt;a href="https://twitter.com/marcinbunsch"&gt;@marcinbunsch&lt;/a&gt; had some experience with &lt;a href="http://stasis.me/"&gt;Stasis&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;I was working with &lt;a href="http://nanoc.stoneship.org/"&gt;nanoc&lt;/a&gt;
-&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;We gave nanoc a try. It was my call, I did a lot of stuff with it and felt it is quite flexible which was one of our
-requirements.&lt;/p&gt;
-
-&lt;p&gt;From now on, there are some default steps every Ruby developer does when starting a new project: first &lt;code&gt;git init&lt;/code&gt; the
-repository, then do some &lt;code&gt;bundle&lt;/code&gt;ing and finally don’t forget to &lt;code&gt;rvm&lt;/code&gt; all this. The latest Ruby &lt;code&gt;1.9.3-p125&lt;/code&gt; was already
-out when we started this so why not use it?&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://twitter.github.com/bootstrap/"&gt;Bootstrap project&lt;/a&gt; lays out the blog for us. It’s amazing how these guys got it
-all figured out. Just link the stylesheets in your site, assign a class to a list and boom - a fancy menu appears. Also
-the naming convention forces you to stick to it, you don’t have to come up with class names, just override the existing
-ones and you’re good to go.&lt;/p&gt;
-
-&lt;p&gt;Creating a blog itself was quite easy. Nanoc tries to keep it in two simple steps: first compile, then route. It means
-that first it takes all the files, finds a compilation rule which matches every file and processes it. Then the file is
-routed, which basically means it is assigned a path. Everything is configured within &lt;code&gt;Rules&lt;/code&gt; file. This is how a simple
-&lt;code&gt;Rules&lt;/code&gt; file might look:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-ruby"&gt;compile &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;*&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
-  &lt;span class="keyword"&gt;if&lt;/span&gt; item.binary?
-    &lt;span class="comment"&gt;# don’t filter binary items&lt;/span&gt;
-  &lt;span class="keyword"&gt;else&lt;/span&gt;
-    filter &lt;span class="symbol"&gt;:haml&lt;/span&gt;
-    layout &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;default.html&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;
-  &lt;span class="keyword"&gt;end&lt;/span&gt;
-&lt;span class="keyword"&gt;end&lt;/span&gt;
-
-route &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;*&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
-  &lt;span class="keyword"&gt;if&lt;/span&gt; item.binary?
-    &lt;span class="comment"&gt;# Write item with identifier /foo/ to /foo.ext&lt;/span&gt;
-    item.identifier.chop + &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;.&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; + item[&lt;span class="symbol"&gt;:extension&lt;/span&gt;]
-  &lt;span class="keyword"&gt;else&lt;/span&gt;
-    &lt;span class="comment"&gt;# write item with identifier /site/ to /site/index.html&lt;/span&gt;
-    item.identifier + &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;index.html&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;
-  &lt;span class="keyword"&gt;end&lt;/span&gt;
-&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We fought a little bit with files with the same name but different extensions. We like naming files with their original
-extensions and then adding the extensions of preprocessor which is used to generate them, for example &lt;code&gt;index.html.haml&lt;/code&gt;.
-Nanoc treats skips all extensions by default, which generates errors for &lt;code&gt;index.html.haml&lt;/code&gt; and &lt;code&gt;index.xml.haml&lt;/code&gt;. We had
-to tweak &lt;code&gt;config.yml&lt;/code&gt; to skip only last extension: &lt;code&gt;allow_periods_in_identifiers: true&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Paginating articles is described in &lt;a href="http://nanoc.stoneship.org/docs/6-guides/#paginating-articles"&gt;one of the official guides&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;One disadvantage of static sites is that… they’re static, so you cannot have comments on your blog. Or can you?
-&lt;a href="http://disqus.com/"&gt;Disqus&lt;/a&gt; provides a neat solution to this problem allowing you to have comments by using JavaScript.
-They are actually a production-ready solution, already providing the functionality to multiple sites. Setting up a blog
-requires two things: posting comments and displaying number of comments on index page under each entry. Simple JavaScript
-code and HTML tweaking:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-html"&gt;&lt;span class="tag"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="attribute-name"&gt;href&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;/your/article#disqus_thread&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;
-   &lt;span class="attribute-name"&gt;data-disqus-identifier&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;unique-disqus-identifier&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;Comments&lt;span class="tag"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Important stuff: the &lt;code&gt;#disqus_thread&lt;/code&gt; anchor at the end of &lt;code&gt;href&lt;/code&gt; and &lt;code&gt;data-disqus-identifier&lt;/code&gt; which you should provide
-to uniquely identify your articles across the whole blog.&lt;/p&gt;
-
-&lt;p&gt;You can see all the work &lt;a href="https://github.com/futuresimple/futuresimple.github.com"&gt;on our github page&lt;/a&gt;. It’s amazing how
-easy it is to create such a blog. Everything you need is free out there, waiting for you to use it. Thank you, Open Source!&lt;/p&gt;</content>
-    <summary type="html">&lt;p&gt;Remember the classic “build a blog in 10 minutes” Rails tutorial? Back then, it blew our minds. Nowadays parts of
-&lt;em&gt;the Web&lt;/em&gt; are moving towards static content. Plain old &lt;abbr title="Hyper-Text Markup Language"&gt;HTML&lt;/abbr&gt; with
-&lt;abbr title="Cascading Style Sheets"&gt;CSS&lt;/abbr&gt; suit the needs of many, many people. Being bulletproof, easy and almost free,
-this combination has many advantages over complicated, backend-driven sites.&lt;/p&gt;
-
-&lt;p&gt;This blog is an example of such a static site, take a look how it was created. You can certainly set it up in 10 minutes
-(the design doesn’t count, right?).&lt;/p&gt;
 
 </summary>
   </entry>

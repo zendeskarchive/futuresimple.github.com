@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>Is it time to fold on iOS4 and go all-in on iOS5? | Future Simple Lab</title>
+<link href='/css/bootstrap.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/bootstrap-responsive.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/style.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/post.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/coderay.css' media='screen' rel='stylesheet' type='text/css' />
+<script src='/js/jquery.js' type='text/javascript'></script>
+<script src='/js/welcome_code.js' type='text/javascript'></script>
+<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+<meta content='http://futuresimple.github.com/images/logo-fs-short.png' property='og:image' />
+<link href='/index.xml' rel='alternate' title='Future Simple Lab' type='application/atom+xml' />
+
+</meta>
+</head>
+<body>
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-29668048-1']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+
+<div class='container bottom-space'>
+<div id='header'>
+<a href='/'>
+<img alt='FS Logo' class='logo' src='/images/logo-fs.png' />
+</a>
+<ul class='nav nav-pills pull-right'>
+<li>
+<a href='/rss.xml'>Subscribe</a>
+</li>
+<li>
+<a href='http://hackkrk.com/' target='_blank'>HackKRK</a>
+</li>
+<li>
+<a href='http://www.futuresimple.com/company/careers/' target='_blank'>Jobs</a>
+</li>
+</ul>
+<div class='clear'></div>
+</div>
+
+<div class='clear'></div>
+<div class='row'>
+<div class='span8'>
+<h2 class='post-title'>Is it time to fold on iOS4 and go all-in on iOS5?</h2>
+<div class='post-meta'>
+<div class='author'>Błażej Biesiada @ 2012-03-16</div>
+<div class='facebook-share'>
+<a name='fb_share'></a>
+<script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script>
+</div>
+<div class='twitter-button'>
+<a class='twitter-share-button' data-text='Is it time to fold on iOS4 and go all-in on iOS5?' data-url='http://futuresimple.github.com/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+</div>
+<div class='clear'></div>
+<article>
+<p>Most iOS developers occasionally ask themselves whether it’s time to ditch iOS(n-1) and only support the latest and greatest iOS(n). This seems to be a common dilemma since Apple releases on average one major version of its mobile operating system per year.</p>
+
+
+
+<h3 id="why-would-you-want-to-stop-supporting-old-ios-versions-anyway">Why would you want to stop supporting old iOS versions anyway?</h3>
+
+<p>First of all - new language features: <a href="https://developer.apple.com/library/ios/#documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html"><em>blocks</em></a> in iOS4 or <a href="http://clang.llvm.org/docs/AutomaticReferenceCounting.html"><em>Automatic Reference Counting</em></a> in iOS5 (ARC works under iOS4 but it’s crippled there). Objective-C evolves rapidly, but sometimes a new runtime is required to utilize its the latest features.</p>
+
+<p>Next up, new and updated APIs. Here are some cherry picks from iOS5:</p>
+
+<ul>
+<li>
+<em>iCloud</em> - a huge thing, but do you have any apps on your phone that actually utilize it (except for Apple’s apps)? Probably not, or not many, that’s because it would be difficult (if not impossible in some cases) to support iOS4 and still build an app on top of the iCloud service.</li>
+  <li>
+<em>Core Image</em> - a great framework known from OS X, did you know that you can do <a href="http://maniacdev.com/2011/11/tutorial-easy-face-detection-with-core-image-in-ios-5/">face recognition</a> with it? Great! Now do you want to enable it for iOS5 users only and make the iOS4 users suffer?</li>
+  <li>then there are many improvements like a clean way to move a row in <code>UITableView</code> in iOS5 with <code>-moveRowAtIndexPath:toIndexPath:</code> (under iOS4 you would have to first remove and than add a row - more code and worse animation)</li>
+  <li>also, there are seemingly small things that actually matter <em>a lot</em>, ex.: <code>-addChildViewController:</code> found in <code>UIViewController</code>. It enables <a href="https://developer.apple.com/videos/wwdc/2011/?id=102">UIViewController containment</a> and finally cuts the need to <a href="http://blog.carbonfive.com/2011/03/09/abusing-uiviewcontrollers/">abuse iOS view controllers</a>. This is most useful on iPad, where the screen is big and it really makes sense to use multiple view controllers at once, but on the iPhone it also can be very handy. (Just look at the new Path/Facebook/Sparrow <a href="https://github.com/edgecase/ECSlidingViewController">slide navigation interfaces</a>)</li>
+</ul><p>Obviously the list could go on and on, but my conclusion is that using the new/improved stuff will save you time (both during development and later during maintenance) and make your apps better. On the other hand, supporting an old version of iOS and utilizing the new APIs at the same time is troublesome. Especially if you’re trying to replicate the new API features under the old system version. I’m not saying you shouldn’t do it, it’s a noble thing to do, I do it (sometimes :), but maybe it’s just high time to stop doing it for iOS4?</p>
+
+<h3 id="what-you-should-consider">What you should consider</h3>
+
+<h4 id="your-time">Your time</h4>
+
+<p>Do you want to slave yourself to death by maintaining multiple sets of code that let you use the newest and greatest features while not breaking your app for users on old devices? Such an approach produces more less maintainable and more bug prone code. </p>
+
+<h4 id="your-apps-statistics">Your app’s statistics</h4>
+
+<p>You should always look at your user-base and check <a href="http://code.google.com/apis/analytics/docs/mobile/ios.html">how many iOS(n-1) users you have</a>. It might be different than the market average. There is no good answer to what percentage is low enough to ditch an old iOS version. The big issue here: App Store keeps only the newest version of your app. Once an iOS(n-1) user removes your app after you go iOS(n)-only than he will not be able to reinstall. (Even if it’s a paid app!)</p>
+
+<h4 id="global-adoption-rate">Global adoption rate</h4>
+
+<p>One of the great things about the iOS platform is that it has a very high adoption rate for new system versions, especially with Over The Air updates introduced in iOS5. Apple gives us about one new major iOS version per year. The infamous App Store review process can easily take up to two weeks, add to that another two weeks of delay in your development process (or more ;) and suddenly the statistics that you were trying to base your decision on are at least one month old! Well, like <a href="http://en.wikipedia.org/wiki/Emmett_Brown">Emmet “Doc” Brown</a> used to say… “You’ve got to think in four dimensions!”. I recently came across <a href="http://pxldot.com/post/18754186750/ios-ebb-and-flow">a great article</a> that will help you to estimate what the adoption rate could be in a few weeks. </p>
+
+<h4 id="how-many-people-are-you-going-to-abandon">How many people are you going to abandon?</h4>
+
+<p>At the end of the day, the way I look at it, is how many users will be left with nothing if my app will go iOS(n)-only. These would be the users who are unable to upgrade to iOS(n) because of hardware limitations, for iOS5 it doesn’t seem to be a big number. Here’s why:</p>
+
+<ul>
+<li>all iPads can run iOS5,</li>
+  <li>iPhones above 3G can run it,</li>
+  <li>and finally iPods above 2nd generation will handle it as well.</li>
+</ul><p>The system upgrade is free and painless, unless one have a jailbroken device, which nowadays is a popular tool of software piracy on iOS (thus developers shouldn’t care much about jailbroken devices). From my point of view the only problem here is that dropping support for old devices that can’t be upgraded to iOS5, might mean that they will end up in garbage (or hopefully rather at recycling centers). The key device here is iPhone 3G, which can’t run iOS5 and runs iOS4 slowly, but it’s almost 4 years old now and in the smartphone world it’s a long time, so it’s pretty much just dead anyway. Don’t get me wrong, I really care about the natural environment and would love to see Apple supporting its devices longer (without compromising on new features of course ;).</p>
+
+<h3 id="the-final-message">The final message</h3>
+
+<p>It’s always a difficult decision whether it’s time to drop support for old hardware/software, but I think it’s high time to ditch iOS4! Lately, I wanted to install <a href="https://www.mint.com/">Mint’s</a> app on my iPad, and it turned out I had to update to iOS5 first, so I did. Gladly and finally! Also, it didn’t hurt ;) These guys (Mint devs) pushed me into doing it and I’m really grateful for that - iCloud synchronization works great on iPad which I didn’t use to sync much before! Fellow developers, let’s push the ecosystem forward and focus on innovation over legacy code!</p>
+</article>
+<div id='disqus_thread'></div>
+<script type='text/javascript'>
+var disqus_shortname = 'futuresimplelab'; // required: replace example with your forum shortname
+var disqus_identifier = 'ios4-vs-ios5';
+var disqus_url = 'http://futuresimple.github.com/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>
+Please enable JavaScript to view the
+<a href='http://disqus.com/?ref_noscript'>comments powered by Disqus.</a>
+</noscript>
+<a class='dsq-brlink' href='http://disqus.com'>
+blog comments powered by
+<span class='logo-disqus'>Disqus</span>
+</a>
+
+</div>
+<div class='span4'>
+<script charset='utf-8' src='http://widgets.twimg.com/j/2/widget.js'></script>
+<script type='text/javascript'>
+  //<![CDATA[
+    new TWTR.Widget({
+      version: 2,
+      type: 'profile',
+      rpp: 6,
+      interval: 30000,
+      width: 'auto',
+      height: 300,
+      theme: {
+        shell: {
+          background: '#ffffff',
+          color: '#666666'
+        },
+        tweets: {
+          background: '#ffffff',
+          color: '#666666',
+          links: '#2A95B3'
+        }
+      },
+      features: {
+        scrollbar: false,
+        loop: false,
+        live: false,
+        behavior: 'all'
+      }
+    }).render().setUser('futuresimplelab').start();
+  //]]>
+</script>
+
+<div class='github'>
+<div class='repos'>
+<div class='logo'>
+<img alt='Github' src='/images/github_logo.png' />
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+158
+<img src='/images/icons/fork_11x12.png' />
+6
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/broadcast'>
+broadcast
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+A broadcasting microframework making publishing of messages to different services easy.
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+128
+<img src='/images/icons/fork_11x12.png' />
+10
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/dropbox-api'>
+dropbox-api
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+Dropbox API Ruby Client
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+91
+<img src='/images/icons/fork_11x12.png' />
+14
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/jessie'>
+jessie
+</a>
+</div>
+<div class='language'>
+JavaScript
+</div>
+<div class='description'>
+Node runner for Jasmine JavaScript BDD testing framework
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+4
+<img src='/images/icons/fork_11x12.png' />
+1
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/futuresimple.github.com'>
+futuresimple.github.com
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+Future Simple's github homepage
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+2
+<img src='/images/icons/fork_11x12.png' />
+1
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/api_client'>
+api_client
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+HTTP API Client Builder
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+2
+<img src='/images/icons/fork_11x12.png' />
+0
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/obedience-core'>
+obedience-core
+</a>
+</div>
+<div class='language'>
+JavaScript
+</div>
+<div class='description'>
+Obedience Core
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+1
+<img src='/images/icons/fork_11x12.png' />
+1
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/restart_butler'>
+restart_butler
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+1
+<img src='/images/icons/fork_11x12.png' />
+1
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/presentations'>
+presentations
+</a>
+</div>
+<div class='language'>
+
+</div>
+<div class='description'>
+All kinds of presentations delivered by FS team members
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+1
+<img src='/images/icons/fork_11x12.png' />
+1
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/blog-lab'>
+blog-lab
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>
