@@ -6,7 +6,7 @@ author: "Paweł Niżnik"
 identifier: "the-battle-of-soa-long-term-vision"
 ---
 
-Recently there has been a lot of buzz on the Internet about SOA. One of the inspirations for this article was a note by Steve Yegge - [Google Platforms Rant](https://plus.google.com/112678702228711889851/posts/eVeouesvaVX), which was accidentally made public - thanks Steve for keeping it this way! 
+Recently there has been a lot of buzz on the Internet about SOA. One of the inspirations for this article was a note by Steve Yegge - Google Platforms Rant, which was accidentally made public - thanks Steve for keeping it this way!
 
 I try to keep up with all the information, but there is just too much. Sometimes reading more about SOA makes you more confused then educated :). When this happens to me, I try to step back a little bit to get a nice distant view. It's like with the Golden Gate Bridge. It looks beautiful from the right perspective, but once you start approaching it, the bridge loses its thing - don't get me wrong it's still exciting - but different :).
 
