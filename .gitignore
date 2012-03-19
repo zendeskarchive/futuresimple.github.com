@@ -4,3 +4,4 @@
 /.bundle
 /.sass-cache
 /output
+.DS_Store

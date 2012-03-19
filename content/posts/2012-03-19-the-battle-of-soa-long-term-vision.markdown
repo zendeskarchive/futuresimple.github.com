@@ -8,11 +8,11 @@ identifier: "the-battle-of-soa-long-term-vision"
 
 Recently there is a lot of buzz on the Internet about SOA, actually one of the inspirations for that article was a note by Steve Yegge - Google Platforms Rant, which accidentally was made public - thanks Steve for keeping it this way! 
 
-I try to keep up with it, but there is just too much stuff. Sometimes reading more about it makes you more confused then educated :). When this happens to me I try to step back a little bit to get a nice distant view. It's like with the Golden Gate Bridge. It looks beautiful from the right perspective, but once you start approaching it, the bridge looses its thing - don't get me wrong it's still exciting - but different :).
+I try to keep up with it, but there is just too much stuff. Sometimes reading more about it makes you more confused then educated :). When this happens to me I try to step back a little bit to get a nice distant view. It's like with the Golden Gate Bridge. It looks beautiful from the right perspective, but once you start approaching it, the bridge loses its thing - don't get me wrong it's still exciting - but different :).
 
 EXCERPT
  
-The actual problem that we are all trying constantly to understand is whether SOA the right approach? I think this question can't be asked without knowing what we want to use Service Oriented Architecture for. What's the context for that? Unfortunately I see arguments happening without asking that very question whatsoever.
+The actual problem that we are all trying constantly to understand is whether SOA is the right approach? I think this question can't be asked without knowing what we want to use Service Oriented Architecture for. What's the context for that? Unfortunately I see arguments happening without asking that very question whatsoever.
  
 I believe that if you want to build a very scalable business that will have a huge impact on the market, SOA is the way to go. In this post I'm going to focus mostly on the Long term vision.
 
@@ -22,7 +22,7 @@ The fact is that all big systems tend to be highly distributed. Let's look at th
  
 I like to look at SOA from Super String Theory perspective :). Services for me are like small strings. They randomly vibrate - act differently and they interact with each other. Together they create something bigger that they are even not aware of. They can create different things too depending of the mixture of the right strings. It all feels really coherent.
  
-Btw we do exactly the same thing in our code. We encapsulate parts of the logic and put it in one place.
+By the way, we do exactly the same thing in our code. We encapsulate parts of the logic and put it in one place.
  
 ## **Development**
  
@@ -66,7 +66,7 @@ So what's the takeaway from all of that? Actually I love that there's a lot happ
  
 As for me I truly believe that building a huge scalable business requires good organization and SOA is the organization system in the end, pretty well thought trough as it turns out.
 
-Guys I would love to hear you feedback about the Long term SOA in context building very big businesses. Short Term & Transition time article is coming up next. Stay Tuned!
+I would love to hear you feedback about the Long term SOA in context building very big businesses. Short Term & Transition time article is coming up next. Stay Tuned!
 
 * [Steve Yegge - Google Platforms Rant](https://plus.google.com/112678702228711889851/posts/eVeouesvaVX);
 
