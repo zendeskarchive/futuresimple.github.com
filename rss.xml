@@ -2,13 +2,91 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://futuresimple.github.com/</id>
   <title>Future Simple Lab</title>
-  <updated>2012-03-16T11:00:00Z</updated>
+  <updated>2012-03-19T14:00:00Z</updated>
   <link rel="alternate" href="http://futuresimple.github.com/"/>
   <link rel="self" href="http://futuresimple.github.com/rss.xml"/>
   <author>
     <name>Future Simple Lab</name>
     <uri>Future Simple Lab</uri>
   </author>
+  <entry>
+    <id>tag:futuresimple.github.com,2012-03-19:/posts/2012-03-19-the-battle-of-soa-long-term-vision/</id>
+    <title type="html"> The battle of SOA - Long term vision</title>
+    <published>2012-03-19T14:00:00Z</published>
+    <updated>2012-03-19T14:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-03-19-the-battle-of-soa-long-term-vision/"/>
+    <content type="html">&lt;p&gt;Recently there has been a lot of buzz on the Internet about SOA. One of the inspirations for this article was a note by Steve Yegge - Google Platforms Rant, which was accidentally made public - thanks Steve for keeping it this way!&lt;/p&gt;
+
+&lt;p&gt;I try to keep up with all the information, but there is just too much. Sometimes reading more about SOA makes you more confused then educated :). When this happens to me, I try to step back a little bit to get a nice distant view. It’s like with the Golden Gate Bridge. It looks beautiful from the right perspective, but once you start approaching it, the bridge loses its thing - don’t get me wrong it’s still exciting - but different :).&lt;/p&gt;
+
+
+
+&lt;p&gt;The actual problem that we are all constantly trying to understand is whether Service Oriented Architecture is the right approach? I think this question can’t be asked without knowing what we want to use it for. What’s the context for that? Unfortunately I see arguments being made without asking that very question whatsoever.&lt;/p&gt;
+
+&lt;p&gt;I believe that if you want to build a very scalable business that will have a huge impact on the market, SOA is the way to go. In this post I’m going to focus mostly on the Long term vision.&lt;/p&gt;
+
+&lt;h2 id="theory"&gt;&lt;strong&gt;Theory&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;The fact is that all big systems tend to be highly distributed. Let’s look at the web world: Amazon, Apple, Microsoft, Twitter… Why? It’s much easier to get a grip on such systems both tech and organizational wise. The whole idea is to encapsulate business logic / functionality into smaller, reusable, more manageable parts that are similar to each other. Parts that work in the same manner and obey certain rules of the ecosystem they are in.&lt;/p&gt;
+
+&lt;p&gt;I like to look at SOA from Super String Theory perspective :). Services for me are like small strings. They randomly vibrate - act differently and they interact with each other. Together they create something bigger that they are even not aware of. They can create different things too depending of the mixture of the right strings. It all feels really coherent.&lt;/p&gt;
+
+&lt;p&gt;By the way, we do exactly the same thing in our code. We encapsulate parts of the logic and put it in one place.&lt;/p&gt;
+
+&lt;h2 id="development"&gt;&lt;strong&gt;Development&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Let’s focus on development for a while as this is the essential part. Once again, I want to stress the importance of the scale your business wants to achieve. I want to contcentrate on growing as big as it is possible.&lt;/p&gt;
+
+&lt;p&gt;In terms of development speed with SOA, you need to think long term. Short term it’s an investment, though I believe that once you reach a certain point of how big your business is and how fast it grows then you will be able to develop stuff really fast. Why?&lt;/p&gt;
+
+&lt;p&gt;First of all, you are going to be able to build stuff on top of services that are already out there. You don’t repeat yourself along the way. This will save you time in the long run. Obviously you need to design your services in a good way - but that’s the point too. Imaging extracting authentication and authorization into separate services. Once you have it up &amp;amp; running you can easily hook up new services to it without the need of duplicating most of your code in different locations.&lt;/p&gt;
+
+&lt;p&gt;If you organize your development in the right way – teams own services – then it’s pretty easy to understand what everyone is doing and who is responsible for what. It’s easy to identify people who know how to help you. It’s much harder to do that with one codebase, as blaming is not the most efficient way. Often it will point you to a part of the code that was written by a number of people - each line authored by a different person.&lt;/p&gt;
+
+&lt;p&gt;Every part of the system is very similar. You don’t waste time figuring out how a certain thing works, or what’s the best way to get data from this service, or even how to deploy. For instance if teams change ownership of services (which is a good practice), then they already know the new environment.&lt;/p&gt;
+
+&lt;h2 id="design"&gt;&lt;strong&gt;Design&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;SOA design is a tricky thing. There are certain rules of the architecture itself like isolation of services. Each needs to be designed for failure and they should not duplicate functionality. That’s a pretty easy set of rules. The tricky part, which I’m talking about, is how to design services from the business logic perspective - here there are no firm rules. You need to understand your data and the product you are building. If you get it wrong your road is gonna be really bumpy :). It will really affect development.&lt;/p&gt;
+
+&lt;h2 id="prototyping"&gt;&lt;strong&gt;Prototyping&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;You want to get something out and fast, validate your idea, pivot and so on. SOA doesn’t seem like the best choice for that. Actually Ruby on Rails is great for that. So let’s say you start off with neat prototype built with Rails. So if you want to go big, when is the right time to switch to SOA? Obviously there is no easy answer to that. Let’s look at Twitter. After some time they needed to change the architecture to a more distributed one. Was that good timing? How many resources did they waste on that? Would they waste less if they had started thinking about SOA earlier? Could they start off with SOA?&lt;/p&gt;
+
+&lt;p&gt;There is also the Amazon lesson that we should look at. They did rewrite everything to SOA. They didn’t have a clue that this would have such a huge impact. They created AWS out of it. “You wouldn’t really think that an online bookstore needs to be an extensible, programmable platform. Would you?” (from Steve Yegge’s note) :).&lt;/p&gt;
+
+&lt;p&gt;I believe it’s just a matter of the right tools and accessibility of knowledge. Imagine if there were good tools for SOA development with a prototyping twist? If communities would educate about SOA, so that SOA would be as easy to understand as web application development is?&lt;/p&gt;
+
+&lt;p&gt;I think good tools will soon pop out and people will share even more. That’s the way to go!&lt;/p&gt;
+
+&lt;h2 id="data--interfaces"&gt;&lt;strong&gt;Data &amp;amp; Interfaces&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;I think the core of our products is DATA - I can’t stress enough (with capital letters) how important it is to think about the data all the time. Web applications are just interfaces (and they are addressed to users, not other programs) to access that data. I think many people confuse that.&lt;/p&gt;
+
+&lt;p&gt;From our ‘development childhood’ times we learn the craft of building Web Applications. There is one thing that I just can’t get - how did that happen in the web world (even historically I would love to understand it) that in so many tools we coupled interfaces with backend processing and data. We ended up working on client side stuff in the backend - e.g. ruby generating html &amp;amp; javascript on the server side and then just sending it to the client.&lt;/p&gt;
+
+&lt;p&gt;For me it looks like this: we took client side technologies that are meant to build user interfaces, server side technologies, and data; mixed up all of those things in one code base and called it a web application. Interfaces &amp;amp; Data coupled together.&lt;/p&gt;
+
+&lt;p&gt;SOA just makes you focus on data. That’s it. If it could speak it would say that there is data, there are interfaces - for users and application, and there is communication taking place constantly between them. Depending on whether the communication occurs in a browser, phone or within an application, different protocol for communication might be used. I love it, it’s simple and it emphasizes the most important parts drawing a visible line in between them. Period.&lt;/p&gt;
+
+&lt;h2 id="summary"&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;So what should be take away from all of that? Actually I love that there’s a lot happening in the tech world around SOA. It means that people care in one sense or another. All in all it makes people think and come up with their own arguments. I think we should remember to think about the most important question: what’s the context for SOA in my case?&lt;/p&gt;
+
+&lt;p&gt;As for me I truly believe that building a huge scalable business requires good organization and SOA is the organization system to stick with.&lt;/p&gt;
+
+&lt;p&gt;I would love to hear you feedback about the Long term SOA in context building very big businesses. Short Term &amp;amp; Transition time article is coming up next. Stay Tuned!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href="https://plus.google.com/112678702228711889851/posts/eVeouesvaVX"&gt;Steve Yegge - Google Platforms Rant&lt;/a&gt;;&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <summary type="html">&lt;p&gt;Recently there has been a lot of buzz on the Internet about SOA. One of the inspirations for this article was a note by Steve Yegge - Google Platforms Rant, which was accidentally made public - thanks Steve for keeping it this way!&lt;/p&gt;
+
+&lt;p&gt;I try to keep up with all the information, but there is just too much. Sometimes reading more about SOA makes you more confused then educated :). When this happens to me, I try to step back a little bit to get a nice distant view. It’s like with the Golden Gate Bridge. It looks beautiful from the right perspective, but once you start approaching it, the bridge loses its thing - don’t get me wrong it’s still exciting - but different :).&lt;/p&gt;
+
+</summary>
+  </entry>
   <entry>
     <id>tag:futuresimple.github.com,2012-03-16:/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/</id>
     <title type="html">Is it time to fold on iOS4 and go all-in on iOS5?</title>
@@ -362,84 +440,6 @@ $ mate .;&lt;/code&gt;&lt;/pre&gt;
 &lt;a href="http://vimeo.com/36579366"&gt;Bret Victor - Inventing on Principle&lt;/a&gt; /thanks czzarr; &lt;/li&gt;
 &lt;/ol&gt;&lt;p&gt;If you have any questions or you are enthusiastic about the idea feel free to drop a comment below!&lt;/p&gt;</content>
     <summary type="html">&lt;p&gt;A big chunk of our day-to-day work concentrates around unix terminal. We all know the usual flow, opening our loved text editors, running scripts, consoles, profilers, running tests, ack’ing, logging into servers, shipping code to production etc. Actually if I were about to pick the most important development tool (except for the programming language), I would have a hard time choosing between a text editor and the terminal.&lt;/p&gt;
-
-</summary>
-  </entry>
-  <entry>
-    <id>tag:futuresimple.github.com,2012-02-24:/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/</id>
-    <title type="html">Gracefully exiting from console programs in Ruby</title>
-    <published>2012-02-24T12:00:00Z</published>
-    <updated>2012-02-24T12:00:00Z</updated>
-    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/"/>
-    <content type="html">&lt;p&gt;Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You’d love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.&lt;/p&gt;
-
-&lt;p&gt;You could handle the &lt;code&gt;Interrupt&lt;/code&gt; exception or add some conditions. But how about a cleaner and reusable way?&lt;/p&gt;
-
-
-
-&lt;p&gt;No problem - you can trap signals, which means we can trap the ctrl-c (which is an INT signal). Servers, like unicorn, use signals for graceful restarts.&lt;/p&gt;
-
-&lt;p&gt;How it works - you can use the &lt;a href="http://www.ruby-doc.org/core-1.9.3/Kernel.html#method-i-trap"&gt;trap method&lt;/a&gt; which accepts the name of the signal and a block to which replaces the system’s default handler.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-ruby"&gt;trap &lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;INT&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt; {
-  &lt;span class="comment"&gt;# You can do your own stuff here&lt;/span&gt;
-  &lt;span class="comment"&gt;#&lt;/span&gt;
-  &lt;span class="comment"&gt;# Remember, the signal dies here - if you don't&lt;/span&gt;
-  &lt;span class="comment"&gt;# raise an exception or exit the process, nothing will happen&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here’s a simple example where I wrapped this pattern in a singleton class:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-ruby"&gt;require &lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;singleton&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;
-
-&lt;span class="keyword"&gt;class&lt;/span&gt; &lt;span class="class"&gt;GracefulQuit&lt;/span&gt;
-  include &lt;span class="constant"&gt;Singleton&lt;/span&gt;
-
-  attr_accessor &lt;span class="symbol"&gt;:breaker&lt;/span&gt;
-
-  &lt;span class="keyword"&gt;def&lt;/span&gt; &lt;span class="function"&gt;initialize&lt;/span&gt;
-    &lt;span class="predefined-constant"&gt;self&lt;/span&gt;.breaker = &lt;span class="predefined-constant"&gt;false&lt;/span&gt;
-  &lt;span class="keyword"&gt;end&lt;/span&gt;
-
-  &lt;span class="keyword"&gt;def&lt;/span&gt; &lt;span class="predefined-constant"&gt;self&lt;/span&gt;.&lt;span class="function"&gt;enable&lt;/span&gt;
-    trap(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;INT&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;) {
-      &lt;span class="keyword"&gt;yield&lt;/span&gt; &lt;span class="keyword"&gt;if&lt;/span&gt; block_given?
-      &lt;span class="predefined-constant"&gt;self&lt;/span&gt;.instance.breaker = &lt;span class="predefined-constant"&gt;true&lt;/span&gt;
-    }
-  &lt;span class="keyword"&gt;end&lt;/span&gt;
-
-  &lt;span class="keyword"&gt;def&lt;/span&gt; &lt;span class="predefined-constant"&gt;self&lt;/span&gt;.&lt;span class="function"&gt;check&lt;/span&gt;(message = &lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;Quitting&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;)
-    &lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="predefined-constant"&gt;self&lt;/span&gt;.instance.breaker
-      &lt;span class="keyword"&gt;yield&lt;/span&gt; &lt;span class="keyword"&gt;if&lt;/span&gt; block_given?
-      puts message
-      exit
-    &lt;span class="keyword"&gt;end&lt;/span&gt;
-  &lt;span class="keyword"&gt;end&lt;/span&gt;
-
-&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So now how to use it? First, enable it before the loop using &lt;code&gt;GracefulQuit.enable&lt;/code&gt; and then somewhere within the loop call &lt;code&gt;GracefulQuit.check&lt;/code&gt;. Like in this example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-ruby"&gt;&lt;span class="constant"&gt;GracefulQuit&lt;/span&gt;.enable
-some_collection.each &lt;span class="keyword"&gt;do&lt;/span&gt; |item|
-  heavy_duty_work_on item
-  &lt;span class="constant"&gt;GracefulQuit&lt;/span&gt;.check
-&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And that’s it - when you press ctrl-c, an exception will not be raised but the program will quit when you want it to. You can even add your own handler for this event.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-ruby"&gt;&lt;span class="constant"&gt;GracefulQuit&lt;/span&gt;.enable
-some_collection.each &lt;span class="keyword"&gt;do&lt;/span&gt; |item|
-  heavy_duty_work_on item
-  &lt;span class="constant"&gt;GracefulQuit&lt;/span&gt;.check &lt;span class="keyword"&gt;do&lt;/span&gt;
-    cleanup
-  &lt;span class="keyword"&gt;end&lt;/span&gt;
-&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Of course, this doesn’t solve other problems, like picking up when you left off, but allows to have better control over console programs or Rake tasks.&lt;/p&gt;</content>
-    <summary type="html">&lt;p&gt;Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You’d love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.&lt;/p&gt;
-
-&lt;p&gt;You could handle the &lt;code&gt;Interrupt&lt;/code&gt; exception or add some conditions. But how about a cleaner and reusable way?&lt;/p&gt;
 
 </summary>
   </entry>

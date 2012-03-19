@@ -95,6 +95,30 @@ FutureSimpleLab::publish();</code></pre></div>
 
 <article>
 <h2 class='post-title'>
+<a href='/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/'>Gracefully exiting from console programs in Ruby</a>
+</h2>
+<div class='post-meta'>
+<div class='author'>Marcin Bunsch @ 2012-02-24</div>
+<div class='facebook-share'>
+<a name='fb_share' share_url='http://futuresimple.github.com/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/'></a>
+<script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script>
+</div>
+<div class='twitter-button'>
+<a class='twitter-share-button' data-text='Gracefully exiting from console programs in Ruby' data-url='http://futuresimple.github.com/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+</div>
+<div class='clear'></div>
+<p>Imagine you write a CLI program or a Rake task which loops through some data performing some work on it. You run it and then you remembered something. You’d love to kill the process with ctrl-c, but that will raise an exception somewhere in the loop. What you want is for the iteration to complete and then you want the program to quit.</p>
+
+<p>You could handle the <code>Interrupt</code> exception or add some conditions. But how about a cleaner and reusable way?</p>
+
+
+<a data-disqus-identifier='gracefully-exiting-from-console-programs-in-ruby' href='/posts/2012-02-24-graceful-exiting-from-console-programs-in-ruby/#disqus_thread'>Comments</a>
+</article>
+<article>
+<h2 class='post-title'>
 <a href='/posts/2012-02-24-building-a-blog-using-nanoc/'>Building a blog using nanoc</a>
 </h2>
 <div class='post-meta'>
