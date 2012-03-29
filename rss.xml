@@ -2,13 +2,73 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://futuresimple.github.com/</id>
   <title>Future Simple Lab</title>
-  <updated>2012-03-19T14:00:00Z</updated>
+  <updated>2012-03-29T18:00:00Z</updated>
   <link rel="alternate" href="http://futuresimple.github.com/"/>
   <link rel="self" href="http://futuresimple.github.com/rss.xml"/>
   <author>
     <name>Future Simple Lab</name>
     <uri>Future Simple Lab</uri>
   </author>
+  <entry>
+    <id>tag:futuresimple.github.com,2012-03-29:/posts/2012-03-29-meetjs-krakow/</id>
+    <title type="html">meet.js Kraków</title>
+    <published>2012-03-29T18:00:00Z</published>
+    <updated>2012-03-29T18:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-03-29-meetjs-krakow/"/>
+    <content type="html">&lt;p&gt;Third meet.js in Kraków is no more! &lt;a href="http://www.futuresimple.com/"&gt;Future
+Simple&lt;/a&gt; had a pleasure to be a big part of it. We
+sponsored beer, one speaker and few attendees :) But how was it?  Here’re our
+impressions.&lt;/p&gt;
+
+
+
+&lt;p&gt;Drukarnia is a very nice place for this kind of events. There are drinks, food
+and plenty of space available. The only missing thing is Internet downstairs,
+Drukarnia should really invest in wi-fi. All started at 6:15 pm when our very
+own &lt;a href="https://twitter.com/marcinbunsch"&gt;Marcin Bunsch&lt;/a&gt; took a stage.&lt;/p&gt;
+
+&lt;p&gt;He delivered a presentation about
+&lt;a href="http://documentcloud.github.com/backbone/"&gt;Backbone.js&lt;/a&gt; fundamentals, going
+through main elements of the framework. He also presented how to make it work
+with &lt;a href="http://handlebarsjs.com/"&gt;Handlebars&lt;/a&gt; templating engine. After the
+presentation Marcin answered some interesting questions about Backbone. JS
+frameworks are hot today and it was very nice to see speech about it, we need
+more!&lt;/p&gt;
+
+&lt;p&gt;Next up was &lt;a href="https://twitter.com//krzychukula"&gt;Krzysztof Kula&lt;/a&gt; and he was
+talking about testing JS. Personally I liked the talk however I think it had
+enough content for a lightning talk but not for a full speech. Krzysztof
+mentioned why testing JS is important and how to make it faster using static
+test runners like &lt;a href="http://busterjs.org/"&gt;buster.js&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Right after Krzysztof, Grzegorz started his speech about Node.js in a big scale.
+Grzegorz works for DreamLab at Onet.pl. He started by describing how Onet
+infrastructure looks like. It’s called Onet Cloud and looks like a subset of
+Amazon EC2. Then he introduced a concept that made a crowd anxious. All Onet
+Cloud production boxes die after 90 minutes. Apparently it’s a design that is
+supposed to make infrastructure more bullet-proof but I still don’t know why
+after 90 minutes and not after 60 minutes and why to kill them at all! It looks
+like a poor-mans implementation of &lt;a href="http://www.codinghorror.com/blog/2011/04/working-with-the-chaos-monkey.html"&gt;Chaos
+Monkey&lt;/a&gt;
+I didn’t feel that talk answered the question how to scale Node.js and why they
+decided to use Node in the first place. “Stateless web apps”? Come on!&lt;/p&gt;
+
+&lt;p&gt;Last talk was delivered by &lt;a href="https://twitter.com/hfrntt"&gt;Sławek&lt;/a&gt; and it concerned
+SVG vs Canvas. One could easily see that Sławek had spend a lot of time working
+both with Canvas and SVG and he’s the guy you want to talk about this stuff. We
+had a chance to see a few demos comparing performance and responsiveness, there
+was also nice scaling example done using Firefox logo. Then Sławek talked about
+SVG files sizes and concluded with browser support.&lt;/p&gt;
+
+&lt;p&gt;Wrapping up, meet.js #3 was a decent meeting, gathered quite a big crowd and
+provoked discussions. See you next time!&lt;/p&gt;</content>
+    <summary type="html">&lt;p&gt;Third meet.js in Kraków is no more! &lt;a href="http://www.futuresimple.com/"&gt;Future
+Simple&lt;/a&gt; had a pleasure to be a big part of it. We
+sponsored beer, one speaker and few attendees :) But how was it?  Here’re our
+impressions.&lt;/p&gt;
+
+</summary>
+  </entry>
   <entry>
     <id>tag:futuresimple.github.com,2012-03-19:/posts/2012-03-19-the-battle-of-soa-long-term-vision/</id>
     <title type="html"> The battle of SOA - Long term vision</title>
@@ -370,76 +430,6 @@ If you have any suggestions, share them in the comments!&lt;/p&gt;</content>
 &lt;p&gt;You saw that coming -  I was wrong and I want to share that harsh lesson.&lt;/p&gt;
 
 &lt;p&gt;Let’s assume you’re developing a web app called omg-app.com (obviously because it’s so good it will make everyone say OMG!). The app is getting bigger, lots of people use it, new features are being added on a weekly basis. At some point you conclude it would be nice to inform users about some recently added features.&lt;/p&gt;
-
-</summary>
-  </entry>
-  <entry>
-    <id>tag:futuresimple.github.com,2012-02-29:/posts/2012-02-29-reinventing-tools-for-developers-lets-start-with-unix-terminal/</id>
-    <title type="html">Reinventing tools for developers, let's start with unix terminal</title>
-    <published>2012-02-29T17:00:00Z</published>
-    <updated>2012-02-29T17:00:00Z</updated>
-    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-02-29-reinventing-tools-for-developers-lets-start-with-unix-terminal/"/>
-    <content type="html">&lt;p&gt;A big chunk of our day-to-day work concentrates around unix terminal. We all know the usual flow, opening our loved text editors, running scripts, consoles, profilers, running tests, ack’ing, logging into servers, shipping code to production etc. Actually if I were about to pick the most important development tool (except for the programming language), I would have a hard time choosing between a text editor and the terminal.&lt;/p&gt;
-
-
-
-&lt;p&gt;I feel that working with the terminal is not really that efficient. We do the same stuff over and over again; we repeat ourselves:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-shell"&gt;$ cd;
-$ cd ~/;
-$ git status;
-$ rm -rf / (just kidding);
-$ vim;
-$ mate .;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;… and so on - every single day.&lt;/p&gt;
-
-&lt;p&gt;We write code in text editors but when we want to do something else we need to switch context to terminal - how much time is wasted on continuous context change and ‘miss clicking’ terminal / text editor / other icons?&lt;/p&gt;
-
-&lt;p&gt;We operate on data in plain text mode - not a friendly nor quick way of visualizing data.&lt;/p&gt;
-
-&lt;p&gt;Finally, there is no easy way to edit text that we enter in the terminal. Going to the end/beginning of the line depending which place it’s closer to the point you want to edit, and then moving your cursor over one character at a time to get to the destination - sounds familiar? I was so frustrated with that, that I made it a habit to enter all the commands in text editor then copy &amp;amp; paste to the terminal window!&lt;/p&gt;
-
-&lt;p&gt;Recently, I realized that the terminal that we all use to build the most sophisticated products, cutting edge technologies (AWS, Facebook, Google, even Airplanes) was invented a long time ago. Is it already 20 years old, or even more? How crazy is that?&lt;/p&gt;
-
-&lt;p&gt;Since then so many things changed in our world, we learned so much in the context of human computer interaction, we came up with user experience, we design easy, simple products (iPhone, and recently the Windows Phone popped out, which seems to be amazingly designed), yet the terminal remained the same. How productive and effective could we be if the terminal was also up to date?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;No more ranting! What can be done about it?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I think that there are some key assumptions that terminal needs to meet in present times:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;
-    &lt;p&gt;Intelligent automation - no more repetition;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Seamless integration into working environment - no need for a context switch;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Friendly way to visualize data;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Ease of text edition;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;I believe that this will change our lives - for better obviously!&lt;/p&gt;
-
-&lt;p&gt;I played around for a while with Automator on Mac and managed to bring shell &amp;amp; programming languages runtimes to a text editor. You can find the output of my work -&amp;gt; &lt;a href="http://cziko.github.com/yoke"&gt;http://cziko.github.com/yoke&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;It’s neat; you simply can use all shell commands and for instance ruby in a text editor. You need to install both extensions (ruby and a shell one) and hot key both of them. Then you just select text in you editor of choice, press adequate shortcut and magic happens. Recently I even managed to make it stateful - meaning that there is a shared memory in between the commands execution. That can be used to store e.g. a current working directory. I use it on a daily basis, especially for testing parts of my ruby code.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;I hope more people will identify the terminal problem. Maybe some good designers will pick it up too and we can kill it 2gether!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Related interesting stuff:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;
-&lt;a href="http://lubutu.com/idea/ivo"&gt;Ivo - Terminal, reimagined&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;
-&lt;a href="https://github.com/unconed/TermKit"&gt;TermKit&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;
-&lt;a href="http://vimeo.com/36579366"&gt;Bret Victor - Inventing on Principle&lt;/a&gt; /thanks czzarr; &lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;If you have any questions or you are enthusiastic about the idea feel free to drop a comment below!&lt;/p&gt;</content>
-    <summary type="html">&lt;p&gt;A big chunk of our day-to-day work concentrates around unix terminal. We all know the usual flow, opening our loved text editors, running scripts, consoles, profilers, running tests, ack’ing, logging into servers, shipping code to production etc. Actually if I were about to pick the most important development tool (except for the programming language), I would have a hard time choosing between a text editor and the terminal.&lt;/p&gt;
 
 </summary>
   </entry>
