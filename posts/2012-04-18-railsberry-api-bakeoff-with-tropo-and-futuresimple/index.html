@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>RailsBerry API Bakeoff with Tropo and Future Simple | Future Simple Lab</title>
+<link href='/css/bootstrap.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/bootstrap-responsive.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/style.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/post.css' media='screen' rel='stylesheet' type='text/css' />
+<link href='/css/coderay.css' media='screen' rel='stylesheet' type='text/css' />
+<script src='/js/jquery.js' type='text/javascript'></script>
+<script src='/js/welcome_code.js' type='text/javascript'></script>
+<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+<meta content='http://futuresimple.github.com/images/logo-fs-short.png' property='og:image' />
+<link href='/index.xml' rel='alternate' title='Future Simple Lab' type='application/atom+xml' />
+
+</meta>
+</head>
+<body>
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-29668048-1']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+
+<div class='container bottom-space'>
+<div id='header'>
+<a href='/'>
+<img alt='FS Logo' class='logo' src='/images/logo-fs.png' />
+</a>
+<ul class='nav nav-pills pull-right'>
+<li>
+<a href='/rss.xml'>Subscribe</a>
+</li>
+<li>
+<a href='http://hackkrk.com/' target='_blank'>HackKRK</a>
+</li>
+<li>
+<a href='http://www.futuresimple.com/company/careers/' target='_blank'>Jobs</a>
+</li>
+</ul>
+<div class='clear'></div>
+</div>
+
+<div class='clear'></div>
+<div class='row'>
+<div class='span8'>
+<h2 class='post-title'>RailsBerry API Bakeoff with Tropo and Future Simple</h2>
+<div class='post-meta'>
+<div class='author'>Antek Piechnik and Bart Kiszala @ 2012-04-18</div>
+<div class='facebook-share'>
+<a name='fb_share'></a>
+<script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script>
+</div>
+<div class='twitter-button'>
+<a class='twitter-share-button' data-text='RailsBerry API Bakeoff with Tropo and Future Simple' data-url='http://futuresimple.github.com/posts/2012-04-18-railsberry-api-bakeoff-with-tropo-and-futuresimple/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+</div>
+<div class='clear'></div>
+<article>
+<p>With the <a href="http://www.railsberry.com">RailsBerry</a> conference right around the
+corner, we teamed up with <a href="http://www.tropo.com">Tropo</a> and the people behind
+the event to organize an API Bakeoff. The event was <a href="http://blog.railsberry.com/index.php/2012/04/15/railsberry-hackathon/">announced on
+Monday</a>
+and almost immediately after the ticket sale started, all the spots were taken.</p>
+
+
+
+<p>So once everyone gets here, we will announce the topics but we would like you
+to know what we want to focus on during the hackathon. We want to focus on
+building cool stuff using the Tropo and Futuresimple’s Base APIs. Here is some
+info to get you started:</p>
+
+<h2 id="tropo">Tropo</h2>
+<p>Tropo is a powerful yet simple API that adds Voice, SMS, Twitter, and IM
+support to the programming languages we know. With tropo you can call people,
+transcript voice, send IMs as well as text messages.</p>
+
+<p>You can get to know their documentation along with some instructions on their
+<a href="https://www.tropo.com/docs/">Documentation Page</a>, and once you skim through
+those, we have prepared this to get you up and running (<a href="https://gist.github.com/2413019">gist
+link</a>):</p>
+
+<pre><code class="language-ruby"><span class="comment"># In order to connect with Tropo you need to provide your username and password - if you do not</span>
+<span class="comment"># want to store it in the code you can export it to the environment variables:</span>
+
+<span class="comment"># export TROPO_USERNAME=&lt;tropo-username&gt;</span>
+<span class="comment"># export TROPO_PASSWORD=&lt;tropo-pass&gt;</span>
+
+
+<span class="comment"># Script you will be running contains of two steps:</span>
+
+<span class="comment"># Firstly you can create a tropo application by using  Tropo Provisioning API.</span>
+<span class="comment"># github repo https://github.com/tropo/tropo-provisioning </span>
+<span class="comment"># documentation - https://www.tropo.com/docs/rest/rest_tutorials.htm#prov_tutorials</span>
+
+
+require <span class="string"><span class="delimiter">'</span><span class="content">tropo-provisioning</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">rest-client</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Creates a session like object - once base_uri is not passed - it connects to "http://api.tropo.com/v1/" by default</span>
+
+tp = <span class="constant">TropoProvisioning</span>.new(<span class="predefined-constant">ENV</span>[<span class="string"><span class="delimiter">'</span><span class="content">TROPO_USERNAME</span><span class="delimiter">'</span></span>], <span class="predefined-constant">ENV</span>[<span class="string"><span class="delimiter">'</span><span class="content">TROPO_PASSWORD</span><span class="delimiter">'</span></span>], <span class="symbol">:base_uri</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">http://api.tropo.com/v1/</span><span class="delimiter">"</span></span>)
+
+<span class="comment"># =&gt; #&lt;TropoProvisioning:0x007f87498e4d38 @tropo_client=#&lt;TropoClient:0x007f8749acb020 @base_uri="http://api.tropo.com/v1/", @username="kiszal", @password="living.peryton62", @headers={"Content-Type"=&gt;"application/json"}, @proxy=nil, @http=#&lt;Net::HTTP api.tropo.com:80 open=false&gt;&gt;, @user_data=#&lt;Hashie::Mash email="bart+tropo@futuresimple.com" firstName="Bart" href="http://api.tropo.com/v1/users/kiszal" id="138100" joinDate="2012-04-18T11:05:40.507+0000" lastName="Kiszala" marketingOptIn=true phoneNumber="1234567890" status="active" username="kiszal"&gt;&gt;</span>
+<span class="comment">#creates a new application in Tropo</span>
+
+
+app_id = tp.create_application({ <span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">tropo-example-app</span><span class="delimiter">'</span></span>,
+                              <span class="symbol">:voiceUrl</span>     =&gt; <span class="string"><span class="delimiter">'</span><span class="content">http://dl.dropbox.com/u/7486597/coference.rb</span><span class="delimiter">'</span></span>,
+                              <span class="symbol">:partition</span>    =&gt; <span class="string"><span class="delimiter">'</span><span class="content">staging</span><span class="delimiter">'</span></span>,
+                              <span class="symbol">:platform</span>     =&gt; <span class="string"><span class="delimiter">'</span><span class="content">scripting</span><span class="delimiter">'</span></span> })
+
+<span class="comment"># =&gt; #&lt;Hashie::Mash application_id="345196" href="http://api.tropo.com/v1/applications/345196"&gt;</span>
+
+
+<span class="comment"># http://dl.dropbox.com/u/7486597/coference.rb - url address for a ruby script userd by the tropo application  - you</span>
+<span class="comment"># can host the file either in tropo cloud, or whatever other publicly available location - it has to be available</span>
+<span class="comment"># under HTTP (https is no good - sadly github does not work for storing the scripting file :( )</span>
+<span class="comment"># The simplest tropo app script can look sth like this (u can see it http://dl.dropbox.com/u/7486597/coference.rb ).</span>
+<span class="comment"># It creates a conference call.</span>
+
+say <span class="string"><span class="delimiter">"</span><span class="content">Welcome to the conference!</span><span class="delimiter">"</span></span>
+conference <span class="string"><span class="delimiter">"</span><span class="content">1525</span><span class="delimiter">"</span></span>
+
+<span class="comment"># Docs for Tropo Scripting API are available =&gt; https://www.tropo.com/docs/scripting/overview.htm</span>
+
+<span class="comment"># Now fetch the skype number assigned to the application.</span>
+
+app_info = tp.addresses(app_id.application_id)
+
+<span class="comment"># =&gt; [#&lt;Hashie::Mash address="9996193488@sip.tropo.com" application="http://api.tropo.com/v1/applications/345196" href="http://api.tropo.com/v1/applications/345196/addresses/sip/9996193488@sip.tropo.com" type="sip"&gt;, #&lt;Hashie::Mash application="http://api.tropo.com/v1/applications/345196" href="http://api.tropo.com/v1/applications/345196/addresses/skype/+990009369996193488" number="+990009369996193488" type="skype"&gt;]</span>
+
+skype_number = app_info.select{|e| e.type == <span class="string"><span class="delimiter">'</span><span class="content">skype</span><span class="delimiter">'</span></span>}[<span class="integer">0</span>].number
+
+
+<span class="comment"># Secondly once you have your application ready and you want to run it programmatically (ex to initiates the call) </span>
+<span class="comment"># you have to retrieve API token for that application. The only way I managed to get one is by going to tropo application </span>
+<span class="comment"># (in the web interface) and  generate voice outbound token (I could not find  API access for a token). </span>
+<span class="comment"># Once you generate one you have to launch it - also in the web interface. </span>
+<span class="comment"># It takes up to couple of minutes for token to propagate.</span>
+
+<span class="comment"># export TROPO_API_TOKEN=&lt;tropo-api-token&gt;</span>
+
+<span class="comment"># After your api token is set up - you are able to run an application assigned to a token:</span>
+
+response = <span class="constant">RestClient</span>.get <span class="string"><span class="delimiter">'</span><span class="content">http://api.tropo.com/1.0/sessions</span><span class="delimiter">'</span></span>, {
+  <span class="symbol">:params</span> =&gt; {
+    <span class="symbol">:action</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">create</span><span class="delimiter">'</span></span>,
+    <span class="symbol">:token</span> =&gt; <span class="predefined-constant">ENV</span>[<span class="string"><span class="delimiter">'</span><span class="content">TROPO_API_TOKEN</span><span class="delimiter">'</span></span>]
+  }
+}
+
+<span class="comment"># Example conference caller application is here - http://blog.tropo.com/2012/02/24/ruby-on-rails-conference-caller/</span></code></pre>
+
+<h2 id="base">Base</h2>
+
+<p>Base is a powerful CRM solution for small businesses that allows you to track
+your sales as well as your contacts. Thousands of people use it everyday to
+manage their businesses.</p>
+
+<p>Base offers a JSON-based API, documentation to which can be found at
+<a href="http://dev.futuresimple.com/">dev.futuresimple.com</a> page, but it might be
+easier to use a Ruby Gem to communicate with the API. You can find the gem <a href="https://github.com/pipejump/pipejump">on
+GitHub</a></p>
+
+<p>To get started with the API using the gem, check this out (also <a href="https://gist.github.com/2401158">available as a
+gist</a>:</p>
+
+<pre><code class="language-ruby"><span class="comment"># gem install pipejump</span>
+require <span class="string"><span class="delimiter">'</span><span class="content">rubygems</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">pipejump</span><span class="delimiter">'</span></span>
+
+fs = <span class="constant">Pipejump</span>::<span class="constant">Session</span>.new(<span class="symbol">:email</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">your.email@example.com</span><span class="delimiter">"</span></span>, <span class="symbol">:password</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">your.pass</span><span class="delimiter">"</span></span>)
+<span class="comment"># ... if you have authentication token already</span>
+<span class="comment"># fs = Pipejump::Session.new(:token =&gt; "token")</span>
+
+<span class="comment"># show your account info</span>
+account = fs.account
+
+<span class="comment"># first 40 contacts</span>
+contacts = fs.contacts.all(<span class="symbol">:per_page</span> =&gt; <span class="integer">40</span>, <span class="symbol">:page</span> =&gt; <span class="integer">1</span>)
+
+<span class="comment"># create a contact</span>
+contact = fs.contacts.create(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Foo Barsky</span><span class="delimiter">"</span></span>)
+
+<span class="comment"># add a note to this contact</span>
+note = contact.notes.create(<span class="symbol">:content</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">My first note</span><span class="delimiter">"</span></span>)
+
+<span class="comment"># show all won deals</span>
+won_deals = fs.deals.all(<span class="symbol">:stage</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">won</span><span class="delimiter">"</span></span>)
+
+<span class="comment"># create a won deal with specifict contact_id set</span>
+deal = fs.deals.create(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">I'm rich!</span><span class="delimiter">"</span></span>, <span class="symbol">:scope</span> =&gt; <span class="integer">120000</span>, <span class="symbol">:stage</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">won</span><span class="delimiter">"</span></span>, <span class="symbol">:client_id</span> =&gt; contact.id)</code></pre>
+
+<h2 id="so-what-now-">So what now ?</h2>
+
+<p>Once you’re set, you can check out one of the topics suggested by us during the
+event or let your imagination and creativity lead you and come up with either
+some app that integrates Tropo with Base or any of them on their own. Have fun!</p>
+</article>
+<div id='disqus_thread'></div>
+<script type='text/javascript'>
+var disqus_shortname = 'futuresimplelab'; // required: replace example with your forum shortname
+var disqus_identifier = 'railsberry-api-bakeoff-wuth-tropo-and-futuresimple';
+var disqus_url = 'http://futuresimple.github.com/posts/2012-04-18-railsberry-api-bakeoff-with-tropo-and-futuresimple/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>
+Please enable JavaScript to view the
+<a href='http://disqus.com/?ref_noscript'>comments powered by Disqus.</a>
+</noscript>
+<a class='dsq-brlink' href='http://disqus.com'>
+blog comments powered by
+<span class='logo-disqus'>Disqus</span>
+</a>
+
+</div>
+<div class='span4'>
+<script charset='utf-8' src='http://widgets.twimg.com/j/2/widget.js'></script>
+<script type='text/javascript'>
+  //<![CDATA[
+    new TWTR.Widget({
+      version: 2,
+      type: 'profile',
+      rpp: 6,
+      interval: 30000,
+      width: 'auto',
+      height: 300,
+      theme: {
+        shell: {
+          background: '#ffffff',
+          color: '#666666'
+        },
+        tweets: {
+          background: '#ffffff',
+          color: '#666666',
+          links: '#2A95B3'
+        }
+      },
+      features: {
+        scrollbar: false,
+        loop: false,
+        live: false,
+        behavior: 'all'
+      }
+    }).render().setUser('futuresimplelab').start();
+  //]]>
+</script>
+
+<div class='github'>
+<div class='repos'>
+<div class='logo'>
+<img alt='Github' src='/images/github_logo.png' />
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+158
+<img src='/images/icons/fork_11x12.png' />
+6
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/broadcast'>
+broadcast
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+A broadcasting microframework making publishing of messages to different services easy.
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+128
+<img src='/images/icons/fork_11x12.png' />
+10
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/dropbox-api'>
+dropbox-api
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+Dropbox API Ruby Client
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+91
+<img src='/images/icons/fork_11x12.png' />
+14
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/jessie'>
+jessie
+</a>
+</div>
+<div class='language'>
+JavaScript
+</div>
+<div class='description'>
+Node runner for Jasmine JavaScript BDD testing framework
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+4
+<img src='/images/icons/fork_11x12.png' />
+1
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/futuresimple.github.com'>
+futuresimple.github.com
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+Future Simple's github homepage
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+2
+<img src='/images/icons/fork_11x12.png' />
+1
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/api_client'>
+api_client
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+HTTP API Client Builder
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+2
+<img src='/images/icons/fork_11x12.png' />
+0
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/obedience-core'>
+obedience-core
+</a>
+</div>
+<div class='language'>
+JavaScript
+</div>
+<div class='description'>
+Obedience Core
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+1
+<img src='/images/icons/fork_11x12.png' />
+1
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/restart_butler'>
+restart_butler
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+1
+<img src='/images/icons/fork_11x12.png' />
+1
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/presentations'>
+presentations
+</a>
+</div>
+<div class='language'>
+
+</div>
+<div class='description'>
+All kinds of presentations delivered by FS team members
+</div>
+</div>
+<div class='repo'>
+<div class='stats'>
+<img src='/images/icons/eye_12x9.png' />
+1
+<img src='/images/icons/fork_11x12.png' />
+1
+</div>
+<div class='name'>
+<a href='https://github.com/futuresimple/blog-lab'>
+blog-lab
+</a>
+</div>
+<div class='language'>
+Ruby
+</div>
+<div class='description'>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>
