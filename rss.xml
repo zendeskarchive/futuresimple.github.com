@@ -2,13 +2,48 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://futuresimple.github.com/</id>
   <title>Future Simple Lab</title>
-  <updated>2012-04-18T11:00:00Z</updated>
+  <updated>2012-04-19T18:00:00Z</updated>
   <link rel="alternate" href="http://futuresimple.github.com/"/>
   <link rel="self" href="http://futuresimple.github.com/rss.xml"/>
   <author>
     <name>Future Simple Lab</name>
     <uri>Future Simple Lab</uri>
   </author>
+  <entry>
+    <id>tag:futuresimple.github.com,2012-04-19:/posts/2012-04-19-api-bakeoff-summary/</id>
+    <title type="html">Baking APIs with Tropo and Future Simple</title>
+    <published>2012-04-19T18:00:00Z</published>
+    <updated>2012-04-19T18:00:00Z</updated>
+    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-04-19-api-bakeoff-summary/"/>
+    <content type="html">&lt;p&gt;The really cool thing about APIs is that they allow you to stitch a solution together pretty quickly - at least the good ones do :)
+As it turns out, this is a great idea for hackathons - when you only have a few hours to produce something that will be able to show to the world. Yesterday’s &lt;a href="http://railsberry.com"&gt;Railsberry&lt;/a&gt; API Bakeoff was sponsored by &lt;a href="http://tropo.com"&gt;Tropo&lt;/a&gt; and &lt;a href="http://futuresimple.com"&gt;Future Simple&lt;/a&gt;. Tropo adds Voice, SMS and IM support to your applications and &lt;a href="http://futuresimple.com/base"&gt;Base&lt;/a&gt; is a CRM system that allows you to track your sales and contacts with ease.&lt;/p&gt;
+
+&lt;p&gt;Everybody was free to work on whatever they wanted but it is these two APIs that attendees abused the most :)
+And so &lt;a href="https://github.com/canimus"&gt;canimus&lt;/a&gt; created an app that could retrieve a contact from Base, call that person’s phone number and play her a pre-recorded message. Cano actually used it to call his friend in the US to say ‘Hi’ :)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://twitter.com/antoniolorusso"&gt;@antoniolorusso&lt;/a&gt;, &lt;a href="http://twitter.com/teoulas"&gt;@teoulas&lt;/a&gt; and &lt;a href="http://twitter.com/ludvik_pl"&gt;@ludvik_pl&lt;/a&gt; from &lt;a href="http://pusher.com"&gt;Pusher&lt;/a&gt; put 3 different APIs together. Their app could create contacts in Base after receiving SMS. Additionally, Pusher’s API would send a push notification to their web app and update it in real time. Now, how cool is that?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://twitter.com/michalbugno"&gt;@michalbugno&lt;/a&gt; and &lt;a href="http://twitter.com/oinopion"&gt;@oinopion&lt;/a&gt; made it possible to sync Google Spreadsheets with Base while &lt;a href="http://twitter.com/evilchelu"&gt;@evilchelu&lt;/a&gt; and &lt;a href="http://twitter.com/dira_geek_girl"&gt;@dira_geek_girl&lt;/a&gt; worked on a nutrition calculator based on Wolphram Alpha API. &lt;a href="http://twitter.com/eatingbits"&gt;@eatingbits&lt;/a&gt;, &lt;a href="http://twitter.com/peter_lind"&gt;@Peter_Lind&lt;/a&gt; and &lt;a href="http://twitter.com/patrikstenmark"&gt;@PatrikStenmark&lt;/a&gt; created an app that presents tweets about Railsberry on a Google Map and &lt;a href="http://twitter.com/makevoid"&gt;@makevoid&lt;/a&gt;’s project allows you to see where exactly on the map all Facebook events in your city are happening - &lt;a href="http://github.com/makevoid/eventyd"&gt;eventyd&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There were many more ideas and discussions going on throughout the evening - these just examples of how many cool things can be built in just a few hours. &lt;/p&gt;
+
+&lt;p&gt;Thank you all for coming and coding together. We all had lots of fun :)
+Take care and have fun at Railsberry.&lt;/p&gt;</content>
+    <summary type="html">&lt;p&gt;The really cool thing about APIs is that they allow you to stitch a solution together pretty quickly - at least the good ones do :)
+As it turns out, this is a great idea for hackathons - when you only have a few hours to produce something that will be able to show to the world. Yesterday’s &lt;a href="http://railsberry.com"&gt;Railsberry&lt;/a&gt; API Bakeoff was sponsored by &lt;a href="http://tropo.com"&gt;Tropo&lt;/a&gt; and &lt;a href="http://futuresimple.com"&gt;Future Simple&lt;/a&gt;. Tropo adds Voice, SMS and IM support to your applications and &lt;a href="http://futuresimple.com/base"&gt;Base&lt;/a&gt; is a CRM system that allows you to track your sales and contacts with ease.&lt;/p&gt;
+
+&lt;p&gt;Everybody was free to work on whatever they wanted but it is these two APIs that attendees abused the most :)
+And so &lt;a href="https://github.com/canimus"&gt;canimus&lt;/a&gt; created an app that could retrieve a contact from Base, call that person’s phone number and play her a pre-recorded message. Cano actually used it to call his friend in the US to say ‘Hi’ :)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://twitter.com/antoniolorusso"&gt;@antoniolorusso&lt;/a&gt;, &lt;a href="http://twitter.com/teoulas"&gt;@teoulas&lt;/a&gt; and &lt;a href="http://twitter.com/ludvik_pl"&gt;@ludvik_pl&lt;/a&gt; from &lt;a href="http://pusher.com"&gt;Pusher&lt;/a&gt; put 3 different APIs together. Their app could create contacts in Base after receiving SMS. Additionally, Pusher’s API would send a push notification to their web app and update it in real time. Now, how cool is that?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://twitter.com/michalbugno"&gt;@michalbugno&lt;/a&gt; and &lt;a href="http://twitter.com/oinopion"&gt;@oinopion&lt;/a&gt; made it possible to sync Google Spreadsheets with Base while &lt;a href="http://twitter.com/evilchelu"&gt;@evilchelu&lt;/a&gt; and &lt;a href="http://twitter.com/dira_geek_girl"&gt;@dira_geek_girl&lt;/a&gt; worked on a nutrition calculator based on Wolphram Alpha API. &lt;a href="http://twitter.com/eatingbits"&gt;@eatingbits&lt;/a&gt;, &lt;a href="http://twitter.com/peter_lind"&gt;@Peter_Lind&lt;/a&gt; and &lt;a href="http://twitter.com/patrikstenmark"&gt;@PatrikStenmark&lt;/a&gt; created an app that presents tweets about Railsberry on a Google Map and &lt;a href="http://twitter.com/makevoid"&gt;@makevoid&lt;/a&gt;’s project allows you to see where exactly on the map all Facebook events in your city are happening - &lt;a href="http://github.com/makevoid/eventyd"&gt;eventyd&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There were many more ideas and discussions going on throughout the evening - these just examples of how many cool things can be built in just a few hours. &lt;/p&gt;
+
+&lt;p&gt;Thank you all for coming and coding together. We all had lots of fun :)
+Take care and have fun at Railsberry.&lt;/p&gt;</summary>
+  </entry>
   <entry>
     <id>tag:futuresimple.github.com,2012-04-18:/posts/2012-04-18-railsberry-api-bakeoff-with-tropo-and-futuresimple/</id>
     <title type="html">RailsBerry API Bakeoff with Tropo and Future Simple</title>
@@ -354,89 +389,6 @@ impressions.&lt;/p&gt;
 
 &lt;p&gt;It’s always a difficult decision whether it’s time to drop support for old hardware/software, but I think it’s high time to ditch iOS4! Lately, I wanted to install &lt;a href="https://www.mint.com/"&gt;Mint’s&lt;/a&gt; app on my iPad, and it turned out I had to update to iOS5 first, so I did. Gladly and finally! Also, it didn’t hurt ;) These guys (Mint devs) pushed me into doing it and I’m really grateful for that - iCloud synchronization works great on iPad which I didn’t use to sync much before! Fellow developers, let’s push the ecosystem forward and focus on innovation over legacy code!&lt;/p&gt;</content>
     <summary type="html">&lt;p&gt;Most iOS developers occasionally ask themselves whether it’s time to ditch iOS(n-1) and only support the latest and greatest iOS(n). This seems to be a common dilemma since Apple releases on average one major version of its mobile operating system per year.&lt;/p&gt;
-
-</summary>
-  </entry>
-  <entry>
-    <id>tag:futuresimple.github.com,2012-03-12:/posts/2012-03-12-wroclove-rb-conference/</id>
-    <title type="html">The wroc_love.rb Conference</title>
-    <published>2012-03-12T17:00:00Z</published>
-    <updated>2012-03-12T17:00:00Z</updated>
-    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-03-12-wroclove-rb-conference/"/>
-    <content type="html">&lt;p&gt;During this weekend a part of the Futuresimple team
-(&lt;a href="http://twitter.com/marcinbunsch"&gt;Marcin&lt;/a&gt;,
-&lt;a href="http://twitter.com/michalbugno"&gt;Michal&lt;/a&gt;,
-&lt;a href="http://twitter.com/powczarek"&gt;Przemek&lt;/a&gt;, and
-&lt;a href="http://twitter.com/antekpiechnik"&gt;me&lt;/a&gt;) went to Wrocław to attend
-&lt;a href="http://wrocloverb.com"&gt;wroc_love.rb&lt;/a&gt; - a Ruby conference organised by
-the &lt;a href="http://www.drug.org.pl"&gt;Lower Silesian Ruby User Group&lt;/a&gt;. We’d like
-to share our experiences.&lt;/p&gt;
-
-
-
-&lt;p&gt;We left Kraków on Friday evening and arrived just in time for the before
-party.  We met some amazing developers, i.e. &lt;a href="http://twitter.com/apotonick"&gt;Nick
-Sutterer&lt;/a&gt;, &lt;a href="http://twitter.com/steveklabnik"&gt;Steve
-Klabnik&lt;/a&gt;. After a few beers we went
-home to get ready for the first day of the conference.&lt;/p&gt;
-
-&lt;center&gt;
-  &lt;img src="/images/wroclaw.png"&gt;&lt;br&gt;&lt;span class="note"&gt;Wrocław - by &lt;a href="http://twitter.com/amylg"&gt;amylg&lt;/a&gt;&lt;/span&gt;
-&lt;/center&gt;
-
-&lt;p&gt;On Saturday Nick Sutterer gave a relaxed talk about respect in the open
-source community. Of all the talks we were especially interested in one
-by &lt;a href="http://twitter.com/drogus"&gt;Piotr Sarnacki&lt;/a&gt; about the &lt;a href="http://rails-present-past-future.heroku.com/#1"&gt;past, present
-and the future of the Ruby on Rails
-framework&lt;/a&gt;. Being a core
-contributor, he provided the attendees with some great in-depth info on
-the framework’s recent history, its current development status and
-features that gained much attention lately, i.e. building API-based
-applications in Rails. Another &lt;a href="http://decoupling-wrocloverb-2012.heroku.com/"&gt;great
-talk&lt;/a&gt; was delivered by
-&lt;a href="http://twitter.com/chastell"&gt;Piotr Szotkowski&lt;/a&gt; and dealt with methods
-of decoupling persistence from models in Ruby apps. The presentation was
-quite detailed and technical, but Piotr managed to cover a lot of
-different aspects while keeping us extremely gripped. By the end of the
-day we attended a talk on Data Context Integration approach by &lt;a href="http://twitter.com/saturnflyer"&gt;Jim
-Gay&lt;/a&gt;. We got really intrigued and as
-soon as we get a chance, we’ll consider adopting.&lt;/p&gt;
-
-&lt;center&gt;
-  &lt;img src="/images/roy_talk.jpg"&gt;&lt;br&gt;&lt;span class="note"&gt;Roy Tomeij enjoying a picture by Bob Ross during his talk&lt;/span&gt;
-&lt;/center&gt;
-
-&lt;p&gt;The next day we woke up to a talk on improving yourself as a programmer
-by &lt;a href="http://twitter.com/mehowte"&gt;Michał Taszycki&lt;/a&gt;. We encourage you to
-skim through his
-&lt;a href="http://speakerdeck.com/u/mehowte/p/programming-workout"&gt;slides&lt;/a&gt; and
-register yourself at &lt;a href="http://programmingworkout.com"&gt;Programming
-Workout&lt;/a&gt;. Another great talk was
-delivered by &lt;a href="http://twitter.com/steveklabnik"&gt;Steve Klabnik&lt;/a&gt; and
-covered creating REST Hypermedia APIs. Even though we are not planning
-on employing that anytime soon, it was great to see someone tackle and
-present the problem. Next up, &lt;a href="http://twitter.com/roy"&gt;Roy Tomeij&lt;/a&gt; gave
-a &lt;a href="http://roy.io/wl12"&gt;talk&lt;/a&gt; about Modular, Reusable Frontend Code and
-Bob Ross. We have to admit we loved all the tips and ideas. Ideally,
-we’ll want to take it on in both our current and upcoming projects.
-This talk was followed by a panel discussing &lt;em&gt;Rails vs OOP&lt;/em&gt;, led by
-&lt;a href="http://twitter.com/andrzejkrzywda"&gt;Andrzej Krzywda&lt;/a&gt; and consisting of
-Piotr Szotkowski, Steve Klabnik, Nick Sutterer and Jim Gay. It was an
-extremely interesting discussion that even involved the audience
-multiple times.&lt;/p&gt;
-
-&lt;p&gt;To sum up, it’s been a great few days, we are really happy to have been
-a part of it and would love to attend it in the future.  It’s amazing to
-see new programming-related events taking place here in Poland. Once again
-we’d like to thank the organizers of the conference. Great job!&lt;/p&gt;</content>
-    <summary type="html">&lt;p&gt;During this weekend a part of the Futuresimple team
-(&lt;a href="http://twitter.com/marcinbunsch"&gt;Marcin&lt;/a&gt;,
-&lt;a href="http://twitter.com/michalbugno"&gt;Michal&lt;/a&gt;,
-&lt;a href="http://twitter.com/powczarek"&gt;Przemek&lt;/a&gt;, and
-&lt;a href="http://twitter.com/antekpiechnik"&gt;me&lt;/a&gt;) went to Wrocław to attend
-&lt;a href="http://wrocloverb.com"&gt;wroc_love.rb&lt;/a&gt; - a Ruby conference organised by
-the &lt;a href="http://www.drug.org.pl"&gt;Lower Silesian Ruby User Group&lt;/a&gt;. We’d like
-to share our experiences.&lt;/p&gt;
 
 </summary>
   </entry>
