@@ -9,6 +9,8 @@ identifier: "baking-apis-with-tropo-and-futuresimple"
 The really cool thing about APIs is that they allow you to stitch a solution together pretty quickly - at least the good ones do :)
 As it turns out, this is a great idea for hackathons - when you only have a few hours to produce something that will be able to show to the world. Yesterday’s [Railsberry](http://railsberry.com) API Bakeoff was sponsored by [Tropo](http://tropo.com) and [Future Simple](http://futuresimple.com). Tropo adds Voice, SMS and IM support to your applications and [Base](http://futuresimple.com/base) is a CRM system that allows you to track your sales and contacts with ease.
 
+EXCERPT
+
 Everybody was free to work on whatever they wanted but it is these two APIs that attendees abused the most :)
 And so [canimus](https://github.com/canimus) created an app that could retrieve a contact from Base, call that person’s phone number and play her a pre-recorded message. Cano actually used it to call his friend in the US to say ‘Hi’ :)
 
