@@ -25,6 +25,10 @@ And so &lt;a href="https://github.com/canimus"&gt;canimus&lt;/a&gt; created an a
 
 &lt;p&gt;&lt;a href="http://twitter.com/antoniolorusso"&gt;@antoniolorusso&lt;/a&gt;, &lt;a href="http://twitter.com/teoulas"&gt;@teoulas&lt;/a&gt; and &lt;a href="http://twitter.com/ludvik_pl"&gt;@ludvik_pl&lt;/a&gt; from &lt;a href="http://pusher.com"&gt;Pusher&lt;/a&gt; put 3 different APIs together. Their app could create contacts in Base after receiving SMS. Additionally, Pusher’s API would send a push notification to their web app and update it in real time. Now, how cool is that?&lt;/p&gt;
 
+&lt;center&gt;
+	&lt;img src="/images/api_bakeoff.jpg"&gt;
+&lt;/center&gt;
+
 &lt;p&gt;&lt;a href="http://twitter.com/michalbugno"&gt;@michalbugno&lt;/a&gt; and &lt;a href="http://twitter.com/oinopion"&gt;@oinopion&lt;/a&gt; made it possible to sync Google Spreadsheets with Base while &lt;a href="http://twitter.com/evilchelu"&gt;@evilchelu&lt;/a&gt; and &lt;a href="http://twitter.com/dira_geek_girl"&gt;@dira_geek_girl&lt;/a&gt; worked on a nutrition calculator based on Wolphram Alpha API. &lt;a href="http://twitter.com/eatingbits"&gt;@eatingbits&lt;/a&gt;, &lt;a href="http://twitter.com/peter_lind"&gt;@Peter_Lind&lt;/a&gt; and &lt;a href="http://twitter.com/patrikstenmark"&gt;@PatrikStenmark&lt;/a&gt; created an app that presents tweets about Railsberry on a Google Map and &lt;a href="http://twitter.com/makevoid"&gt;@makevoid&lt;/a&gt;’s project allows you to see where exactly on the map all Facebook events in your city are happening - &lt;a href="http://github.com/makevoid/eventyd"&gt;eventyd&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;There were many more ideas and discussions going on throughout the evening - these just examples of how many cool things can be built in just a few hours. &lt;/p&gt;
