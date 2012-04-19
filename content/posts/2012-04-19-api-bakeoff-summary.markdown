@@ -16,6 +16,10 @@ And so [canimus](https://github.com/canimus) created an app that could retrieve 
 
 [@antoniolorusso](http://twitter.com/antoniolorusso), [@teoulas](http://twitter.com/teoulas) and [@ludvik_pl](http://twitter.com/ludvik_pl) from [Pusher](http://pusher.com) put 3 different APIs together. Their app could create contacts in Base after receiving SMS. Additionally, Pusher’s API would send a push notification to their web app and update it in real time. Now, how cool is that?
 
+<center>
+	<img src="/images/api_bakeoff.jpg">
+</center>
+
 [@michalbugno](http://twitter.com/michalbugno) and [@oinopion](http://twitter.com/oinopion) made it possible to sync Google Spreadsheets with Base while [@evilchelu](http://twitter.com/evilchelu) and [@dira_geek_girl](http://twitter.com/dira_geek_girl) worked on a nutrition calculator based on Wolphram Alpha API. [@eatingbits](http://twitter.com/eatingbits), [@Peter_Lind](http://twitter.com/peter_lind) and [@PatrikStenmark](http://twitter.com/patrikstenmark) created an app that presents tweets about Railsberry on a Google Map and [@makevoid](http://twitter.com/makevoid)’s project allows you to see where exactly on the map all Facebook events in your city are happening - [eventyd](http://github.com/makevoid/eventyd).
 
 There were many more ideas and discussions going on throughout the evening - these just examples of how many cool things can be built in just a few hours. 
