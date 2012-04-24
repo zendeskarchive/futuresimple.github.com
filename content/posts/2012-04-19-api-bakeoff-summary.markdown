@@ -26,3 +26,7 @@ There were many more ideas and discussions going on throughout the evening - the
 
 Thank you all for coming and coding together. We all had lots of fun :)
 Take care and have fun at Railsberry.
+
+----
+Update:
+Check out [photos](http://www.facebook.com/media/set/?set=a.392037784161751.95804.301521556546708&type=1) from the event. 
