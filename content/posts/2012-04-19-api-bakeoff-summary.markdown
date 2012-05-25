@@ -11,6 +11,8 @@ As it turns out, this is a great idea for hackathons - when you only have a few 
 
 EXCERPT
 
+<iframe frameborder="0" height="337" src="http://www.youtube.com/embed/YdXFfhYQLvQ?rel=0" width="600"></iframe>
+
 Everybody was free to work on whatever they wanted but it is these two APIs that attendees abused the most :)
 And so [canimus](https://github.com/canimus) created an app that could retrieve a contact from Base, call that person’s phone number and play her a pre-recorded message. Cano actually used it to call his friend in the US to say ‘Hi’ :)
 
