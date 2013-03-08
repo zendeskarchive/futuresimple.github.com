@@ -1,6 +1,6 @@
     #!javascript
-    var futureSimpleLab = new Blog.Awesome({
+    var BaseLab = new Blog.Awesome({
       topics: ['technology', 'coding'],
-      authors: {'devs': 'Makers of Base CRM and QuoteBase'}
+      authors: {'devs': 'Makers of Base CRM'}
     })
-    futureSimpleLab.publish()
+    BaseLab.publish()

@@ -1,6 +1,6 @@
     #!cpp
-    @interface FutureSimpleLab : Blog <Awesome>
+    @interface BaseLab : Blog <Awesome>
     @property (strong) NSArray *topics = @[technology, coding];
-    @property (strong) NSDictionary *authors = @[devs : @"Makers of Base CRM and QuoteBase"];
+    @property (strong) NSDictionary *authors = @[devs : @"Makers of Base CRM"];
     @end
-    [[FutureSimpleLab new] publish];
+    [[BaseLab new] publish];

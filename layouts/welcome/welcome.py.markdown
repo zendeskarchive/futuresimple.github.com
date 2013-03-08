@@ -1,6 +1,6 @@
     #!python
     import blog
-    class FutureSimpleLab(blog.Awesome):
+    class BaseLab(blog.Awesome):
       topics = ["technology", "coding"]
-      authors = {'devs': 'Makers of Base CRM and QuoteBase'}
-    FutureSimpleLab().publish
+      authors = {'devs': 'Makers of Base CRM'}
+    BaseLab().publish

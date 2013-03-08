@@ -1,6 +1,6 @@
     #!ruby
-    class FutureSimpleLab < Blog::Awesome
+    class BaseLab < Blog::Awesome
       topics :technology, :coding
-      authors :devs => 'Makers of Base CRM and QuoteBase'
+      authors :devs => 'Makers of Base CRM'
     end
-    FutureSimpleLab.new.publish!
+    BaseLab.new.publish!
