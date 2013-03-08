@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://futuresimple.github.com/</id>
-  <title>Future Simple Lab</title>
+  <id>http://baselab.github.com/</id>
+  <title>Base Lab</title>
   <updated>2012-04-19T18:00:00Z</updated>
-  <link rel="alternate" href="http://futuresimple.github.com/"/>
-  <link rel="self" href="http://futuresimple.github.com/rss.xml"/>
+  <link rel="alternate" href="http://baselab.github.com/"/>
+  <link rel="self" href="http://baselab.github.com/rss.xml"/>
   <author>
-    <name>Future Simple Lab</name>
-    <uri>Future Simple Lab</uri>
+    <name>Base Lab</name>
+    <uri>Base Lab</uri>
   </author>
   <entry>
-    <id>tag:futuresimple.github.com,2012-04-19:/posts/2012-04-19-api-bakeoff-summary/</id>
+    <id>tag:baselab.github.com,2012-04-19:/posts/2012-04-19-api-bakeoff-summary/</id>
     <title type="html">Baking APIs with Tropo and Future Simple</title>
     <published>2012-04-19T18:00:00Z</published>
     <updated>2012-04-19T18:00:00Z</updated>
-    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-04-19-api-bakeoff-summary/"/>
+    <link rel="alternate" href="http://baselab.github.com/posts/2012-04-19-api-bakeoff-summary/"/>
     <content type="html">&lt;p&gt;The really cool thing about APIs is that they allow you to stitch a solution together pretty quickly - at least the good ones do :)
 As it turns out, this is a great idea for hackathons - when you only have a few hours to produce something that you will be able to show to the world. Yesterday’s &lt;a href="http://railsberry.com"&gt;Railsberry&lt;/a&gt; API Bakeoff was sponsored by &lt;a href="http://tropo.com"&gt;Tropo&lt;/a&gt; and &lt;a href="http://futuresimple.com"&gt;Future Simple&lt;/a&gt;. Tropo adds Voice, SMS and IM support to your applications and &lt;a href="http://futuresimple.com/base"&gt;Base&lt;/a&gt; is a CRM system that allows you to track your sales and contacts with ease.&lt;/p&gt;
 
@@ -46,11 +46,11 @@ As it turns out, this is a great idea for hackathons - when you only have a few 
 </summary>
   </entry>
   <entry>
-    <id>tag:futuresimple.github.com,2012-04-18:/posts/2012-04-18-railsberry-api-bakeoff-with-tropo-and-futuresimple/</id>
+    <id>tag:baselab.github.com,2012-04-18:/posts/2012-04-18-railsberry-api-bakeoff-with-tropo-and-futuresimple/</id>
     <title type="html">RailsBerry API Bakeoff with Tropo and Future Simple</title>
     <published>2012-04-18T11:00:00Z</published>
     <updated>2012-04-18T11:00:00Z</updated>
-    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-04-18-railsberry-api-bakeoff-with-tropo-and-futuresimple/"/>
+    <link rel="alternate" href="http://baselab.github.com/posts/2012-04-18-railsberry-api-bakeoff-with-tropo-and-futuresimple/"/>
     <content type="html">&lt;p&gt;With the &lt;a href="http://www.railsberry.com"&gt;RailsBerry&lt;/a&gt; conference right around the
 corner, we teamed up with &lt;a href="http://www.tropo.com"&gt;Tropo&lt;/a&gt; and the people behind
 the event to organize an API Bakeoff. The event was &lt;a href="http://blog.railsberry.com/index.php/2012/04/15/railsberry-hackathon/"&gt;announced on
@@ -200,11 +200,11 @@ and almost immediately after the ticket sale started, all the spots were taken.&
 </summary>
   </entry>
   <entry>
-    <id>tag:futuresimple.github.com,2012-03-29:/posts/2012-03-29-meetjs-krakow/</id>
+    <id>tag:baselab.github.com,2012-03-29:/posts/2012-03-29-meetjs-krakow/</id>
     <title type="html">meet.js Kraków</title>
     <published>2012-03-29T18:00:00Z</published>
     <updated>2012-03-29T18:00:00Z</updated>
-    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-03-29-meetjs-krakow/"/>
+    <link rel="alternate" href="http://baselab.github.com/posts/2012-03-29-meetjs-krakow/"/>
     <content type="html">&lt;p&gt;Third meet.js in Kraków is no more! &lt;a href="http://www.futuresimple.com/"&gt;Future
 Simple&lt;/a&gt; had a pleasure to be a big part of it. We
 sponsored beer, one speaker and few attendees :) But how was it?  Here’re our
@@ -260,11 +260,11 @@ impressions.&lt;/p&gt;
 </summary>
   </entry>
   <entry>
-    <id>tag:futuresimple.github.com,2012-03-19:/posts/2012-03-19-the-battle-of-soa-long-term-vision/</id>
+    <id>tag:baselab.github.com,2012-03-19:/posts/2012-03-19-the-battle-of-soa-long-term-vision/</id>
     <title type="html"> The battle of SOA - Long term vision</title>
     <published>2012-03-19T14:00:00Z</published>
     <updated>2012-03-19T14:00:00Z</updated>
-    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-03-19-the-battle-of-soa-long-term-vision/"/>
+    <link rel="alternate" href="http://baselab.github.com/posts/2012-03-19-the-battle-of-soa-long-term-vision/"/>
     <content type="html">&lt;p&gt;Recently there has been a lot of buzz on the Internet about SOA. One of the inspirations for this article was a note by Steve Yegge - Google Platforms Rant, which was accidentally made public - thanks Steve for keeping it this way!&lt;/p&gt;
 
 &lt;p&gt;I try to keep up with all the information, but there is just too much. Sometimes reading more about SOA makes you more confused then educated :). When this happens to me, I try to step back a little bit to get a nice distant view. It’s like with the Golden Gate Bridge. It looks beautiful from the right perspective, but once you start approaching it, the bridge loses its thing - don’t get me wrong it’s still exciting - but different :).&lt;/p&gt;
@@ -338,11 +338,11 @@ impressions.&lt;/p&gt;
 </summary>
   </entry>
   <entry>
-    <id>tag:futuresimple.github.com,2012-03-16:/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/</id>
+    <id>tag:baselab.github.com,2012-03-16:/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/</id>
     <title type="html">Is it time to fold on iOS4 and go all-in on iOS5?</title>
     <published>2012-03-16T11:00:00Z</published>
     <updated>2012-03-16T11:00:00Z</updated>
-    <link rel="alternate" href="http://futuresimple.github.com/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/"/>
+    <link rel="alternate" href="http://baselab.github.com/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/"/>
     <content type="html">&lt;p&gt;Most iOS developers occasionally ask themselves whether it’s time to ditch iOS(n-1) and only support the latest and greatest iOS(n). This seems to be a common dilemma since Apple releases on average one major version of its mobile operating system per year.&lt;/p&gt;
 
 
