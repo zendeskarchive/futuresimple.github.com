@@ -1,7 +1,7 @@
-base_url: "http://futuresimple.github.com"
-title: "Future Simple Lab"
-author_name: "Future Simple Lab"
-author_uri: "Future Simple Lab"
+base_url: "http://baselab.github.com"
+title: "Base Lab"
+author_name: "Base Lab"
+author_uri: "Base Lab"
 page_size: 5
 
 # A list of file extensions that nanoc will consider to be textual rather than

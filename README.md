@@ -1,6 +1,6 @@
-# Future Simple Lab Blog
+# Base Lab Blog
 
-This is the repo for the Future Simple Lab blog.
+This is the repo for the Base Lab blog.
 
 ### How to work with this
 
