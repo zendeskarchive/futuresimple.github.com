@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8'>
-<title>Home | Future Simple Lab</title>
+<title>Home | Base Lab</title>
 <link href='/css/bootstrap.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='/css/bootstrap-responsive.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='/css/style.css' media='screen' rel='stylesheet' type='text/css' />
@@ -11,7 +11,7 @@
 <script src='/js/jquery.js' type='text/javascript'></script>
 <script src='/js/welcome_code.js' type='text/javascript'></script>
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
-<meta content='http://futuresimple.github.com/images/logo-fs-short.png' property='og:image' />
+<meta content='http://futuresimple.github.com/images/base-logo-short.png' property='og:image' />
 <link href='/index.xml' rel='alternate' title='Future Simple Lab' type='application/atom+xml' />
 
 </meta>
@@ -34,7 +34,7 @@
 <div class='container'>
 <div id='header'>
 <a href='/'>
-<img alt='FS Logo' class='logo' src='/images/logo-fs.png' />
+<img alt='Base Logo' class='logo' src='/images/base-logo.png' />
 </a>
 <ul class='nav nav-pills pull-right'>
 <li>
@@ -44,7 +44,7 @@
 <a href='http://hackkrk.com/' target='_blank'>HackKRK</a>
 </li>
 <li>
-<a href='http://www.futuresimple.com/company/careers/' target='_blank'>Jobs</a>
+<a href='http://getbase.com/careers/' target='_blank'>Jobs</a>
 </li>
 </ul>
 <div class='clear'></div>
@@ -54,43 +54,43 @@
 <div class='row'>
 <div class='span8'>
 <div class='welcome'>
-<div class='ruby'><pre><code class="language-ruby"><span class="keyword">class</span> <span class="class">FutureSimpleLab</span> &lt; <span class="constant">Blog</span>::<span class="constant">Awesome</span>
+<div class='ruby'><pre><code class="language-ruby"><span class="keyword">class</span> <span class="class">BaseLab</span> &lt; <span class="constant">Blog</span>::<span class="constant">Awesome</span>
   topics <span class="symbol">:technology</span>, <span class="symbol">:coding</span>
-  authors <span class="symbol">:devs</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">'</span></span>
+  authors <span class="symbol">:devs</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">Makers of Base CRM</span><span class="delimiter">'</span></span>
 <span class="keyword">end</span>
-<span class="constant">FutureSimpleLab</span>.new.publish!</code></pre></div>
+<span class="constant">BaseLab</span>.new.publish!</code></pre></div>
 <div class='python'><pre><code class="language-python"><span class="keyword">import</span> <span class="include">blog</span>
-<span class="keyword">class</span> <span class="class">FutureSimpleLab</span>(blog.Awesome):
+<span class="keyword">class</span> <span class="class">BaseLab</span>(blog.Awesome):
   topics = [<span class="string"><span class="delimiter">"</span><span class="content">technology</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">coding</span><span class="delimiter">"</span></span>]
-  authors = {<span class="string"><span class="delimiter">'</span><span class="content">devs</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">'</span></span>}
-FutureSimpleLab().publish</code></pre></div>
-<div class='js'><pre><code class="language-javascript"><span class="keyword">var</span> futureSimpleLab = <span class="keyword">new</span> Blog.Awesome({
+  authors = {<span class="string"><span class="delimiter">'</span><span class="content">devs</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">Makers of Base CRM</span><span class="delimiter">'</span></span>}
+BaseLab().publish</code></pre></div>
+<div class='js'><pre><code class="language-javascript"><span class="keyword">var</span> BaseLab = <span class="keyword">new</span> Blog.Awesome({
   <span class="key">topics</span>: [<span class="string"><span class="delimiter">'</span><span class="content">technology</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">coding</span><span class="delimiter">'</span></span>],
-  <span class="key">authors</span>: {<span class="key"><span class="delimiter">'</span><span class="content">devs</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">'</span></span>}
+  <span class="key">authors</span>: {<span class="key"><span class="delimiter">'</span><span class="content">devs</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">Makers of Base CRM</span><span class="delimiter">'</span></span>}
 })
-futureSimpleLab.publish()</code></pre></div>
-<div class='objc'><pre><code class="language-cpp"><span class="error">@</span>interface FutureSimpleLab : Blog &lt;Awesome&gt;
+BaseLab.publish()</code></pre></div>
+<div class='objc'><pre><code class="language-cpp"><span class="error">@</span>interface BaseLab : Blog &lt;Awesome&gt;
 <span class="error">@</span>property (strong) NSArray *topics = <span class="error">@</span>[technology, coding];
-<span class="error">@</span>property (strong) NSDictionary *authors = <span class="error">@</span>[devs : <span class="error">@</span><span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>];
+<span class="error">@</span>property (strong) NSDictionary *authors = <span class="error">@</span>[devs : <span class="error">@</span><span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM</span><span class="delimiter">"</span></span>];
 <span class="error">@</span>end
-[[FutureSimpleLab <span class="keyword">new</span>] publish];</code></pre></div>
-<div class='cpp'><pre><code class="language-cpp"><span class="keyword">class</span> <span class="class">FutureSimpleLab</span> : <span class="directive">public</span> AwesomeBlog {
+[[BaseLab <span class="keyword">new</span>] publish];</code></pre></div>
+<div class='cpp'><pre><code class="language-cpp"><span class="keyword">class</span> <span class="class">BaseLab</span>: <span class="directive">public</span> AwesomeBlog {
   <span class="directive">public</span>:
-  FutureSimpleLab() {
+  BaseLab() {
     topics.push_back(<span class="string"><span class="delimiter">"</span><span class="content">technology</span><span class="delimiter">"</span></span>);
     topics.push_back(<span class="string"><span class="delimiter">"</span><span class="content">coding</span><span class="delimiter">"</span></span>);
-    authors[<span class="string"><span class="delimiter">"</span><span class="content">devs</span><span class="delimiter">"</span></span>] = <span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>;
+    authors[<span class="string"><span class="delimiter">"</span><span class="content">devs</span><span class="delimiter">"</span></span>] = <span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM</span><span class="delimiter">"</span></span>;
 };
 
-FutureSimpleLab::publish();</code></pre></div>
-<div class='java'><pre><code class="language-java"><span class="type">class</span> <span class="class">FutureSimpleLab</span> <span class="directive">extends</span> Blog.Awesome {
+BaseLab::publish();</code></pre></div>
+<div class='java'><pre><code class="language-java"><span class="type">class</span> <span class="class">BaseLab</span> <span class="directive">extends</span> Blog.Awesome {
   <span class="directive">private</span> Topic<span class="type">[]</span> topics = <span class="keyword">new</span> Topic<span class="type">[]</span> {
     <span class="keyword">new</span> Topic(<span class="string"><span class="delimiter">"</span><span class="content">technology</span><span class="delimiter">"</span></span>), <span class="keyword">new</span> Topic (<span class="string"><span class="delimiter">"</span><span class="content">coding</span><span class="delimiter">"</span></span>) };
   <span class="directive">private</span> <span class="predefined-type">Map</span>&lt;AuthorType, <span class="predefined-type">String</span>&gt; authors = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;AuthorType, <span class="predefined-type">String</span>&gt;();
-  <span class="directive">public</span> FutureSimpleLab() {
-    authors.put(<span class="keyword">new</span> AuthorType(<span class="string"><span class="delimiter">"</span><span class="content">devs</span><span class="delimiter">"</span></span>), <span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM and QuoteBase</span><span class="delimiter">"</span></span>);}
+  <span class="directive">public</span> BaseLab() {
+    authors.put(<span class="keyword">new</span> AuthorType(<span class="string"><span class="delimiter">"</span><span class="content">devs</span><span class="delimiter">"</span></span>), <span class="string"><span class="delimiter">"</span><span class="content">Makers of Base CRM</span><span class="delimiter">"</span></span>);}
 }
-<span class="keyword">new</span> FutureSimpleLab().publish();</code></pre></div>
+<span class="keyword">new</span> BaseLab().publish();</code></pre></div>
 </div>
 
 <article>
@@ -100,7 +100,7 @@ FutureSimpleLab::publish();</code></pre></div>
 <div class='post-meta'>
 <div class='author'>Piotr Nedzynski @ 2012-04-19</div>
 <div class='twitter-button'>
-<a class='twitter-share-button' data-text='Baking APIs with Tropo and Future Simple' data-url='http://futuresimple.github.com/posts/2012-04-19-api-bakeoff-summary/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
+<a class='twitter-share-button' data-text='Baking APIs with Tropo and Future Simple' data-url='http://futuresimple.github.com/posts/2012-04-19-api-bakeoff-summary/' data-via='getbaselab' href='https://twitter.com/share'>Tweet</a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
@@ -122,7 +122,7 @@ As it turns out, this is a great idea for hackathons - when you only have a few 
 <div class='post-meta'>
 <div class='author'>Antek Piechnik and Bart Kiszala @ 2012-04-18</div>
 <div class='twitter-button'>
-<a class='twitter-share-button' data-text='RailsBerry API Bakeoff with Tropo and Future Simple' data-url='http://futuresimple.github.com/posts/2012-04-18-railsberry-api-bakeoff-with-tropo-and-futuresimple/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
+<a class='twitter-share-button' data-text='RailsBerry API Bakeoff with Tropo and Future Simple' data-url='http://futuresimple.github.com/posts/2012-04-18-railsberry-api-bakeoff-with-tropo-and-futuresimple/' data-via='getbaselab' href='https://twitter.com/share'>Tweet</a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
@@ -147,7 +147,7 @@ and almost immediately after the ticket sale started, all the spots were taken.<
 <div class='post-meta'>
 <div class='author'>Przemek Owczarek @ 2012-03-29</div>
 <div class='twitter-button'>
-<a class='twitter-share-button' data-text='meet.js Kraków' data-url='http://futuresimple.github.com/posts/2012-03-29-meetjs-krakow/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
+<a class='twitter-share-button' data-text='meet.js Kraków' data-url='http://futuresimple.github.com/posts/2012-03-29-meetjs-krakow/' data-via='getbaselab' href='https://twitter.com/share'>Tweet</a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
@@ -171,7 +171,7 @@ impressions.</p>
 <div class='post-meta'>
 <div class='author'>Paweł Niżnik @ 2012-03-19</div>
 <div class='twitter-button'>
-<a class='twitter-share-button' data-text=' The battle of SOA - Long term vision' data-url='http://futuresimple.github.com/posts/2012-03-19-the-battle-of-soa-long-term-vision/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
+<a class='twitter-share-button' data-text=' The battle of SOA - Long term vision' data-url='http://futuresimple.github.com/posts/2012-03-19-the-battle-of-soa-long-term-vision/' data-via='getbaselab' href='https://twitter.com/share'>Tweet</a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
@@ -194,7 +194,7 @@ impressions.</p>
 <div class='post-meta'>
 <div class='author'>Błażej Biesiada @ 2012-03-16</div>
 <div class='twitter-button'>
-<a class='twitter-share-button' data-text='Is it time to fold on iOS4 and go all-in on iOS5?' data-url='http://futuresimple.github.com/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/' data-via='futuresimplelab' href='https://twitter.com/share'>Tweet</a>
+<a class='twitter-share-button' data-text='Is it time to fold on iOS4 and go all-in on iOS5?' data-url='http://futuresimple.github.com/posts/2012-03-16-is-it-time-to-fold-on-ios4-and-go-all-in-on-ios5/' data-via='getbaselab' href='https://twitter.com/share'>Tweet</a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
@@ -252,7 +252,7 @@ impressions.</p>
         live: false,
         behavior: 'all'
       }
-    }).render().setUser('futuresimplelab').start();
+    }).render().setUser('getbaselab').start();
   //]]>
 </script>
 
