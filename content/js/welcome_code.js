@@ -18,4 +18,5 @@ $(function(){
        self.html(html)
      });
 
+  window.location = "http://getbaselab.github.com" + window.location.pathname;
 })
