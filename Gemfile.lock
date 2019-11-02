@@ -13,7 +13,9 @@ GEM
       rack (>= 1.1.0, < 2)
     faraday_middleware (0.7.0)
       faraday (~> 0.7.3)
-    haml (3.1.4)
+    haml (5.0.0)
+      temple (>= 0.8.0)
+      tilt
     hashie (1.2.0)
     kramdown (0.13.4)
     mime-types (1.17.2)
@@ -30,6 +32,8 @@ GEM
       multi_json (~> 1.0.2)
     rack (1.4.1)
     sass (3.1.15)
+    temple (0.8.2)
+    tilt (2.0.10)
     yajl-ruby (1.1.0)
 
 PLATFORMS
